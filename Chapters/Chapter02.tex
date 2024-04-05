@@ -84,7 +84,6 @@ Using this bilinear form, we define hyperplanes with corresponding reflections f
     \[\rho : W \to GL_n(V) \cong GL_n(\R), \quad s_i \mapsto \sigma_i\]
     is an injective homomorphism and therefore a faithful representation of \(W\).
 \end{theorem}
-% TODO: evtl. ist der beweis zu nah am buch
 Before we prove the homomorphism property, we want to recall:
 A map \(\varphi: S\to G\) from a set \(S\) to a group \(G\) extends to a homomorphism \(\Hat{\varphi}:\groupp{S}{R}\to G\), if and only if the induced homomorphism \(\overline{\varphi}:F_S \to G\) from the free group over \(S\) satisfies \(\overline{\varphi}(r) = e_G\) for every \(r\in R\).
 \begin{proof}
@@ -130,7 +129,7 @@ A map \(\varphi: S\to G\) from a set \(S\) to a group \(G\) extends to a homomor
 
 % We will prove the injectivity of \(\rho\) later. % [x]: Make this part of the above proof and say where precisely it will be proved.
 We want to extend the action of \(W\) to the dual of the vector space \(V\).
-This is achieved by acting on \(V^*\) via the dual representation of \(\rho\), defined by
+This is achieved by acting on \(V^*\) via the dual representation of \(\rho\), which we define by
 % The group \(W\) will act on the dual space \(V^*\) via the dual of this representation, and we define the dual representation \(\rho^*\) as follows
 \[\rho^* : W \to GL_n(V^*),\quad w \mapsto (\rho^*(w)(\varphi))(v) = \varphi(\rho(w^{-1})(v)), \quad w\in W, \varphi\in V^*, v\in V.\]
 Notation wise, we will simply write \(w(v)\), when \(w \in W\) acts on \(v \in V\) via \(\rho(w)(v)\).
@@ -447,30 +446,45 @@ Moreover, we will work out how stabilizers of points look like and then show tha
 %     \[s_i(A_i^*) = \{\varphi\in V^* \;\vert\; s_i(\varphi)(e_i) = \varphi(s_i(e_i)) = -\varphi(e_i)>0\} = \{\varphi\in V^* \;\vert\; \varphi(e_i)<0\}.\]
 % \end{remark}
 
-The following Lemma provides a criterion for when an element \(w\in W\) leaves the open fundamental chamber \(\mathring{C}\) in one of the open halfspaces \(A_i^*\).
+% The following Lemma provides a criterion for when an element \(w\in W\) leaves the open fundamental chamber \(\mathring{C}\) in one of the open halfspaces \(A_i^*\).
+We start by translating the results of the previous section to the language of chambers and halfspaces.
+The following two lemmas capture this essence.
 
 \begin{lemma}\label{lem:translation}
     Let \(w\in W\) and \(i\in I\).
-    Then the relation \(\ell(s_iw) > \ell(w)\) of \(s_i\) and \(w\) is equivalent to \(w(\mathring{C})\subset A_i^*\), \ie \(\;w\) leaving the open chamber inside the open halfspace, corresponding to \(s_i\).
+    % Then the relation \(\ell(s_iw) > \ell(w)\) of \(s_i\) and \(w\) is equivalent to \(w(\mathring{C})\subset A_i^*\), \ie \(\;w\) leaving the open chamber inside the open halfspace, corresponding to \(s_i\).
+    The relation \(\ell(s_i w) > \ell(w)\) is equivalent to saying that \(w\) leaves the open chamber \(\mathring{C}\) inside the open halfspace \(A_i^*\), corresponding to the generator \(s_i\).
+    Put more formally, this states that the set \(w(\mathring{C})\) is a subset of the open halfspace \(A_i^*\).
 \end{lemma}
 \begin{proof}
-    Note that \(\ell(s_iw) > \ell(w)\) is equivalent to \(\ell(w^{-1}s_i) > \ell(w^{-1})\), meaning that \(w^{-1}(e_i) > 0\) by \Cref{thm:action}.
-    Now for \(\varphi\in \mathring{C}\), we have that \(w(\varphi)(e_i) = \varphi(w^{-1}(e_i))\) and therefore \(w(\varphi)\in A_i^*\).
-    % \[w(\varphi)(e_i) = \varphi(w^{-1}(e_i)) \iff w^{-1}(e_i) > 0 \iff w(\varphi) \in A_i^*.\]
-    We conclude that \(w(\mathring{C})\subset A_i^*\).
+    Observe that \(\ell(s_iw) > \ell(w)\) is equivalent to \(\ell(w^{-1}s_i) > \ell(w^{-1})\).
+    Then by by \Cref{thm:action}, we have that \(w^{-1}(e_i) > 0\).
+    Take an arbitrary point \(\varphi\in \mathring{C}\) in the open fundamental chamber, then we have that \(w(\varphi)(e_i) = \varphi(w^{-1}(e_i))\).
+    Since the chamber \(C\) lies in \(A_i^*\) for all \(i\in I\) and \(\varphi \in \mathring{C}\), we see that \(w(\varphi) > 0\) is equivalent to \(w^{-1}(e_i)>0\).
+    But this is true by assumption and since \(\varphi\) is arbitrary, we conclude that \(w(\mathring{C}) \subset A_i^*\).
 \end{proof}
 
-If we choose in the above lemma \(\Tilde{w} := s_iw\) for an \(i \in I\), we get
-\[\ell(s_i\Tilde{w}) = \ell(s_i^2 w) = \ell(w) > \ell(s_iw) = \ell(\Tilde{w}) \iff \Tilde{w} = s_iw(C)\subset A_i^*.\]
-This is again equivalent to \(w(\mathring{C}) \subset s_i(A_i^*)\), and we have just proved the following lemma as the counterpart to \Cref{lem:translation}.
+Of course this lemma also has a corresponding converse result as in the previous section.
+% If we choose in the above lemma \(\Tilde{w} := s_iw\) for an \(i \in I\), we get
+% \[\ell(s_i\Tilde{w}) = \ell(s_i^2 w) = \ell(w) > \ell(s_iw) = \ell(\Tilde{w}) \iff \Tilde{w}(C) = s_iw(C)\subset A_i^*.\]
+% This is again equivalent to \(w(\mathring{C}) \subset s_i(A_i^*)\), and we have just proved the following lemma as the counterpart to \Cref{lem:translation}.
 
 \begin{lemma}\label{lem:translation2}
     Let \(w\in W\) and \(i\in I\).
-    Then the relation \(\ell(s_iw) < \ell(w)\) holds if and only if we have \(w(\mathring{C})\subset s_i(A_i^*)\), \ie \(\;w\) moves the open chamber into the open halfspace complementary to \(A_i^*\).
+    % Then the relation \(\ell(s_iw) < \ell(w)\) holds if and only if we have \(w(\mathring{C})\subset s_i(A_i^*)\), \ie \(\;w\) moves the open chamber into the open halfspace complementary to \(A_i^*\).
+    The relation \(\ell(s_i w) < \ell(w)\) is equivalent to saying that \(w\) now moves the open chamber \(\mathring{C}\) inside the open halfspace, complementary to \(A_i^*\).
+    More formally, this states that the set \(w(\mathring{C})\) is a subset of the open halfspace \(s_i(A_i^*)\), as the \(s_i\) permute \(A_i^*\) and its corresponding complementary halfspace.
 \end{lemma}
+\begin{proof}
+    Take \(w' = s_i w\) for some \(i \in I\) and \(w \in W\) so that \(\ell(s_i w) > \ell(w)\).
+    Then we have that the length of \(s_i w' = w\) is strictly smaller then then length of \(w'\).
+    % Then we have that \(\ell(s_i w') = \ell(w) < \ell(s_i w) = \ell(w')\)
+    By applying above lemma we get that \(w(\mathring{C}) \subset A_i^*\), which is equivalent to \(s_i w'(\mathring{C}) \subset A_i^*\).
+    Apply \(s_i\) to both sides leaves us with \(w'(\mathring{C}) \subset s_i(A_i^*)\), which proves the lemma.
+\end{proof}
 
-Building onto this insight, we now want to study the action of parabolic subgroups on the tits cone to get an understanding of the stabilizers of points.
-To do so, decompose the fundamental chamber into subsets corresponding to the parabolic subgroups as follows.
+Building onto this insight, we now want to study the action of parabolic subgroups on the Tits cone to get an understanding of the stabilizers of points.
+To do so, decompose the fundamental chamber into subsets corresponding to the parabolic subgroups of \(W\) as follows.
 
 \begin{definition}
     Given a parabolic subgroup \(W_J\) corresponding to \(J\subset I\), set
@@ -493,15 +507,19 @@ To do so, decompose the fundamental chamber into subsets corresponding to the pa
 \end{theorem}
 \begin{proof}
     Let \(w\in W\) and \(J, K\subset I\) be subsets, such that \(w(C_J)\cap C_K \neq \emptyset\).
-    We also proof this theorem by induction on \(\ell(w)\), with the base case \(\ell(w) = 0\) being trivial.
+    % We also proof this theorem by induction on \(\ell(w)\), with the base case \(\ell(w) = 0\) being trivial.
+    The proof is by induction on the length of \(w\).
+    The base case \(\ell(w) = 0\) is trivial, as then \(w\) is trivial.
 
-    Assume \(\ell(w) > 0\) and take \(i\in I\), so that \(\ell(s_iw) < \ell(w)\).
-    By writing \(w = s_i(s_iw)\) and applying \Cref{lem:translation2}, we get that \(w(\mathring{C})\subset s_i(A_i^*)\).
-    Now we use the continuity of the action of \(W\) to get that \(w(C)\subset \overline{s_i(A_i^*)}\), which then implies that \(w(C)\cap C\subset H_i^*\).
-    This follows, since the (closed) fundamental chamber \(C\) by definition is a subset of \(\overline{A_i^*}\).
-    Since \(s_i\) fixes \(H_i^*\), it fixes every point in the intersection of \(C\) and its translate \(w(C)\).
+    Assume that \(\ell(w) > 0\) and choose \(i\in I\), such that \(\ell(s_iw) < \ell(w)\).
+    Writing \(w = s_i(s_iw)\), by \Cref{lem:translation2} we know that \(w\) moves the open chamber \(\mathring{C}\) into the open halfspace \(s_i(A_i^*)\), i.e. \(w(\mathring{C})\subset s_i(A_i^*)\).
+    Now using the continuity of the group action, we note that \(w(C) \subset \overline{s_i(A_i^*)}\). %is a subset of \(\overline{s_i(A_i^*)}\).
+    Recall that by definition, the fundamental chamber \(C\) lies in the halfspaces \(\overline{A_i^*}\) for all \(i \in I\).
+    % Now we use the continuity of the action of \(W\) to get that \(w(C)\subset \overline{s_i(A_i^*)}\), which then implies that \(w(C)\cap C\subset H_i^*\).
+    % This follows, since the (closed) fundamental chamber \(C\) by definition is a subset of \(\overline{A_i^*}\).
+    Thus, we record that \(w(C) \cap C \subset H_i^*\) and since \(s_i\) fixes the corresponding \(H_i^*\) by definition, it fixes every point in the intersection of \(C\) and its translate \(w(C)\).
     Note that the sets \(C_J\) and \(C_K\) are subsets of the fundamental chamber \(C\) and therefore, \(s_i\) fixes every point in the non-empty set \(w(C_J)\cap C_K\).
-    But if \(s_i\) fixes some \(\varphi\in C_K\), then
+    But if \(s_i\) fixes some point \(\varphi\) in \(C_K\), we calculate
     \[\varphi(e_i) = s_i(\varphi)(e_i) = \varphi(s_i(e_i)) = -\varphi(e_i) \implies \varphi(e_i) = 0 \iff \varphi\in H_i^*.\]
     We deduce \(i\in K\), respectively \(s_i\in W_K\).
     Using this together with the assumption, we get that \(s_iw(C_J)\cap C_K = s_i(w(C_J)\cap C_K)\) is non-empty.
@@ -509,30 +527,34 @@ To do so, decompose the fundamental chamber into subsets corresponding to the pa
     Finally, since \(s_i\in W_J = W_K\), we have that \(s_iw \in W_J\) implies \(w\in W_J\), proving the theorem.
 \end{proof}
 
-For the next theorem we want to prove, we want to recall the following definition.
+% For the next theorem we want to prove, we want to recall the following definition.
+Before proceeding with proving that the fundamental chamber lives up to its name, we want to clearly state what is meant by a fundamental domain.
 
 \begin{definition}
     Let \(G\) be a group, acting on a topological space \(X\).
-    We call a closed subset \(F\subset X\) \emph{strict fundamental domain}, if for each \(x\in F\) its orbit \(Gx\) intersects \(F\) in exactly one point.
+    We call a closed subset \(F\subset X\) a \emph{(strict) fundamental domain}, if for each \(x\in F\) its orbit \(Orb(x)\) intersects \(F\) in exactly one point.
 \end{definition}
 
 Note that, by definition of the Tits cone \(WC\), every \(W\)-orbit of a point \(\varphi\in C\) meets the fundamental chamber \(C\) in at least one point, namely \(\varphi\). % TODO: check this
-Thus, it suffices to proof that each \(W\)-orbit meets \(C\) in at most one point, to prove following theorem:
+Thus, it suffices to proof that each \(W\)-orbit meets \(C\) in at most one point, to prove the following theorem.
 
 \begin{theorem}\label{thm:funddomain}
-    The fundamental chamber is a fundamental domain for the action on the Tits cone.
+    The fundamental chamber is a fundamental domain for the action of the Coxeter group \(W\) on its Tits cone \(WC\) and thus, justifies its name.
 \end{theorem}
 \begin{proof}
-    Assume that \(\varphi,\psi\in C\) lie in the same \(W\)-orbit, but in different sets \(C_J\) and \(C_K\) for \(J,K\subset I\).
+    Assume that \(\varphi,\psi\in C\) lie in the same \(W\)-orbit, but in different parabolic subsets \(C_J\), respectively \(C_K\) of the fundamental chamber. %, for \(J,K\subset I\).
     Since they lie in the same orbit, there is a \(w\in W\) with \(\varphi = w(\psi)\).
-    Thus, the intersection \(w(C_J)\cap C_K\) is non-empty and \Cref{thm:stabilizer} implies \(J = K\) and \(w\in W_J\).
+    Thus, the intersection \(w(C_J)\cap C_K\) is non-empty and \Cref{thm:stabilizer} implies equality of \(J\) and \(K\), as well as \(w \in W_J\).
     We deduce \(\varphi = w(\psi) = \psi\).
     Thus, every \(W\)-orbit of a point \(\varphi\in C\) meets the fundamental chamber \(C\) at most in \(\varphi\), proving the theorem.
 \end{proof}
 
-Define a set \(\mathcal{C}\) as the union of all translates of parabolic subsets \(W_J\) \ie, define \(\mathcal{C}\) by
-\[\mathcal{C} := \bigcup_{J\subset I}\bigcup_{w\in W} w(C_J).\]
-Note that \Cref{thm:stabilizer} implies that this set forms a partition of the Tits cone as it shows that the sets of the form \(w(C_J)\) in \(\mathcal{C}\) are all disjoint for \(w\) in the coset \(W/W_J\) and \(J\) a subset of \(I\).
+Define a set \(\mathcal{C}\) as the union of all translates of possible parabolic subsets \(W_J\) \ie, define \(\mathcal{C}\) by
+\[\mathcal{C} := \bigcup_{J \subset I} \bigcup_{w \in W/W_J} w(C_J).\]
+We want to emphasize here that by \Cref{thm:stabilizer} the sets of the form \(w(C_J)\) in the fundamental chamber \(C\) are all disjoint for different \(J \subset I\) and \(w\) ranging over the coset \(W/W_J\).
+% Note that \Cref{thm:stabilizer} implies that this set forms a partition of the Tits cone as it shows that the sets of the form \(w(C_J)\) in \(\mathcal{C}\) are all disjoint for \(w\) in the coset \(W/W_J\) and \(J\) a subset of \(I\).
+Thus, the sets of \(\mathcal{C}\) form a decomposition of the Tits cone.
+This decomposition (altough not into chambers) is a key component in the following theorem.
 
 \begin{theorem}
     The Tits cone \(WC\) is a convex cone, and every closed line segment in the Tits cone meets only finitely many of the sets in \(\mathcal{C}\).
@@ -541,38 +563,53 @@ Note that \Cref{thm:stabilizer} implies that this set forms a partition of the T
     First note that the fundamental chamber is a convex cone as the intersection of the finitely many closed halfspaces \(\overline{A_i^*}\).
     This implies that the Tits cone is a cone as well.
     We will prove the convexity by showing that every closed segment between any two points in the Tits cone is contained in it.
-    Furthermore, we will prove that these segments can be covered by finitely many of the sets in \(\mathcal{C}\), implying latter statement.
+    Furthermore, we will prove that these segments can be covered by finitely many of the sets in the above defined union \(\mathcal{C}\), implying latter statement.
 
-    Consider the closed segment \([\varphi, \psi]\subset V^*\) and assume \(\varphi\in C\) and \(\psi\in w(C)\) for some \(w\in W\), \ie, the endpoints lie in different chambers.
-    We proceed by induction on \(\ell(w)\) with the base case \(\ell(w) = 0\) implying \(\varphi,\psi\in C\).
-    Since \(C\) is convex and can trivially be covered by finitely many of the \(C_J\), (\eg, set \(J_i = \{s_i\}\) for \(i\in I\)) we are done. % TODO: this eg is wrong
-    Therefore, assume \(\ell(w) > 0\).
-    Note that we can divide the segment \([\varphi, \psi]\) into two parts, by intersecting it with the closed chamber \(C\) to get a closed segment \([\varphi, \xi]\) inside \(C\) and a segment \([\xi, \psi]\).
-    The first segment we can cover by finitely many sets of \(\mathcal{C}\), as it lies in \(C\).
-    Thus, we need to show that we can cover the latter segment by finitely many of these sets.
-    Assume further, that \(\psi\in s_i(A_i^*)\) for \(i\in J\) and \(\psi\in\overline{A_i^*}\) for \(i\notin J\) for some \(J\subset I\), so that \(\psi\notin C\).
+    Consider the closed segment \([\varphi, \psi]\) with \(\varphi, \psi \in WC\) and assume the endpoints lie in different chambers. % \(\varphi\in C\) and \(\psi\in w(C)\) for some \(w\in W\), i.e. the endpoints lie in different chambers.
+    Proceed by induction on the word length \(\ell(w)\). %with the base case \(\ell(w) = 0\) implying \(\varphi,\psi\in C\).
+    The base case \(\ell(w) = 0\) reduces to \(\varphi, \psi \in C\).
+    Since \(C\) is convex and can trivially be covered by finitely many of the \(C_J\), this case has been dealt with. %(\eg, set \(J_i = \{s_i\}\) for \(i\in I\)) we are done. % [x]: One could choose J = \emptyset
+    
+    Therefore, we now assume \(\ell(w) > 0\).
+    Intersect the segment \([\varphi, \psi]\) with the fundamental chamber \(C\), to receive two new segments \([\varphi, \xi]\) and \([\xi, \psi]\) (cf. \Cref{img:path}).
+    % Note that we can divide the segment \([\varphi, \psi]\) into two parts, by intersecting it with the closed chamber \(C\) to get a closed segment \([\varphi, \xi]\) inside \(C\) and a segment \([\xi, \psi]\).
+    The first segment can be covered by finitely many of the sets in \(\mathcal{C}\), as it lies inside the fundamental chamber \(C\).
+    Thus, we need to show that we can cover the second segment \([\xi, \psi]\) by finitely many of these sets.
+    Assume further, that \(\psi\in s_i(A_i^*)\) for an \(i\in J\) and \(\psi\in\overline{A_i^*}\) for \(i\notin J\) for some \(J\subset I\), so that \(\psi\notin C\).
     \Claim{1}{\(\xi\) has to lie in one of the codimension-one faces \(H_i^*\) for \(i\in J\).}
     \Claimproof{1}{
-        Assume that \(\xi\in A_i^*\) for \(i\in J\).
+        Assume that \(\xi\) lies in the open halfspace \(A_i^*\) for some \(i\in J\).
         Then every point \(\zeta\) in the intersection of a neighborhood of \(\xi\) contained in \(A_i^*\) and the segment \([\xi,\psi]\) has to also lie in \(A_i^*\) for \(i\in J\). % and \(\zeta\in \overline{A_i^*}\) for \(i\notin J\).
         Clearly, \(\zeta\in\overline{A_i^*}\) for \(i\notin J\) holds as well, implying that \(\zeta\in C\).
         But this is a contradiction to the decomposition of the initial segment \([\varphi, \psi]\).
         Thus, \(\xi\) has to lie in one of the \(H_i^*\), for \(i\in J\).
     }
-    Both assumptions together, \(\psi\in s_i(A_i^*)\) and \(\psi\in w(C)\), imply \(w(C)\subset \overline{s_i(A_i^*)}\), hence by continuity \(w(\mathring{C})\subset s_i(A_i^*)\).
+    Using the assumptions \(\psi\in s_i(A_i^*)\) and \(\psi\in w(C)\), we deduce \(w(C)\subset \overline{s_i(A_i^*)}\), hence by continuity of the action \(w(\mathring{C})\subset s_i(A_i^*)\).
     By \Cref{lem:translation2} this is equivalent to \(\ell(s_iw) < \ell(w)\) and we are set up to apply the induction hypothesis to \(\xi\) and \(s_i(\psi)\in s_iw(C)\).
-    This gives a finite covering of \([\xi,s_i(\psi)]\) by sets in \(\mathcal{C}\).
-    But since we established that \(\xi\in H_i^*\), translation by \(s_i\) gives \([s_i(\xi), s_i^2(\psi)] = [\xi, \psi]\), and thus we can cover this segment by finitely many sets as well.
+    This produces a covering of \([\xi,s_i(\psi)]\) by finitely many sets in \(\mathcal{C}\).
+    But since we established that \(\xi\) has to lie in \(H_i^*\), translation by \(s_i\) gives \([s_i(\xi), s_i^2(\psi)] = [\xi, \psi]\), and thus we can cover this segment by finitely many sets as well.
     The result follows.
 \end{proof}
 
-An essential fact we want to emphasize here is that the stabilizer of the fundamental chamber is trivial.
+\begin{figure}[h]
+    \centering
+    \includegraphics{gfx/pfad durch kegel.png}
+    \caption{A path through the Tits cone.}
+    \label{img:path}
+\end{figure}
+
+To summarize, the essence of this section is that first of all the fundamental chamber is indeed a fundamental domain of the action of a Coxeter group on its Tits cone.
+This was shown in \Cref{thm:funddomain}.
+Furthermore, we want to emphasize that each point in the fundamental chamber has trivial stabilizer, which is a consequence of \Cref{thm:stabilizer}.
+Moreover, every point in a set \(C_J\), for \(J\) a subset of \(I\), is stabilized by the corresponding parabolic subgroup \(W_J\).
+
+% An essential fact we want to emphasize here is that the stabilizer of the fundamental chamber is trivial.
 % Setting \(J=K=\emptyset\), we obtain from \Cref{thm:stabilizer} (using that \(C_\emptyset = C\)), that if \(wC\cap C \neq \emptyset\) we must have \(w\in W_\emptyset = \{1\}\).
-Setting \(J=\emptyset\), we obtain from \Cref{thm:stabilizer} that the stabilizer subgroup of \(C_J = C_\emptyset = C\) (cf. \Cref{ex:parabolicset}) is precisely the parabolic subgroup \(W_J = W_\emptyset = \{1\}\).
+% Setting \(J=\emptyset\), we obtain from \Cref{thm:stabilizer} that the stabilizer subgroup of \(C_J = C_\emptyset = C\) (cf. \Cref{ex:parabolicset}) is precisely the parabolic subgroup \(W_J = W_\emptyset = \{1\}\).
 
 
 % ***********************************************
-\section{Covering actions}
+\section{Covering actions - A Toolbox}
 % ***********************************************
 
 % \begin{definition}\label{def:covering}
@@ -617,9 +654,6 @@ Setting \(J=\emptyset\), we obtain from \Cref{thm:stabilizer} that the stabilize
     For these \(g \in M\) we pick pairwise disjoint Neighborhoods \(V_g\) of \(gx\), which is possible since \(G\) acts freely, thus \(gx \neq x\) and \(X\) is Hausdorff.
     Finally, set \(V = \bigcap_{g \in M} g^{-1} V_g \cap U\), which is open as finite intersection of open sets and by definition a Neighborhood of \(x\).
 \end{proof}
-
-Note that the Tits cone \(WC\) is a Hausdorff space as a subspace of \(\R^n\) for suitable \(n \in \N\).
-Now % TODO: Fulfill this section 
 
 \begin{definition}
     A path-connected topological space \(X\) is called \emph{simply connected}, if \(\pi_1(X)\cong \{1\}\).
