@@ -612,6 +612,10 @@ Moreover, every point in a set \(C_J\), for \(J\) a subset of \(I\), is stabiliz
 \section{Covering actions - A Toolbox}
 % ***********************************************
 
+In this section we will assemble a set of tools mostly coming from algebraic topology, connecting group actions to the notion of coverings.
+They will be somewhat essential in the proof of the main theorem in forthcoming chapter.
+We start by saying what is meant by a covering.
+
 % \begin{definition}\label{def:covering}
 %     Let \(X, Y\) be topological spaces.
 %     A continuous map \(p:Y\to X\) is called a \emph{covering map} and \(Y\) a \emph{covering space} for \(X\), if
@@ -630,19 +634,21 @@ Moreover, every point in a set \(C_J\), for \(J\) a subset of \(I\), is stabiliz
     Then, \(U\) is called \emph{evenly covered} and \(\vert I \vert\) the degree of the covering, while the open sets \(U_i\) are called the \emph{sheets} over \(U\) and the preimage of an \(x\) in \(X\) is called a \emph{fiber} of \(x\).
 \end{definition}
 
+It turns out that restricting the action of a group on a topological space in the right way will give coverings by quotienting out the action.
+We make this precise in the following.
+
 \begin{definition}
     Let \(G\) be a group, acting on a space \(X\).
-    If the following is satisfied:
-    \[\forall x\in X: \exists U\in \mathcal{U}_x^X: \; \vert\{g\in G\;\vert\; g(U)\cap U \neq \emptyset\}\vert <\infty\]
-    we say that the action is \emph{properly discontinuous} on \(X\).
+    The action is said to be \emph{properly discontinuous}, if every point in \(X\) has a neighborhood \(U\) such that the set \(\{g\in G\;\vert\; g(U)\cap U \neq \emptyset\}\) is finite.
 \end{definition}
 
 \begin{definition}
     Let \(G\) be a group, acting on a space \(X\).
-    If the more restrictive condition
-    \[\forall x\in X: \exists U\in\mathcal{U}_x^X:\; \{g\in G \;\vert\; g(U)\cap U \neq \emptyset\} = \{1\}\]
-    is satisfied, we call the action a \emph{covering (space) action}.
+    The action is said to be a \emph{covering (space) action} if every point has a neighborhood \(U\) such that the set \(\{g\in G \;\vert\; g(U)\cap U \neq \emptyset\}\) consists only of the neutral element.
 \end{definition}
+
+Obviously, this last condition is even more restrictive.
+Yet, at least for Hausdorff spaces, there is a connection between the two, in addition to acting properly discontinuously, we have to demand the action to be free.
 
 \begin{lemma}
     Let \(G\) be a group, that acts freely and properly discontinuous on a Hausdorff space \(X\).
@@ -650,10 +656,12 @@ Moreover, every point in a set \(C_J\), for \(J\) a subset of \(I\), is stabiliz
 \end{lemma}
 \begin{proof}
     Let \(X\) be a Hausdorff space and \(G\) be a group acting freely, properly discontinuously on \(X\).
-    Then for a open Neighborhood \(U\) of \(x\in X\) the set \(M := \{g \in G \;\vert\; gU \cap U \neq \emptyset\}\) is finite.
-    For these \(g \in M\) we pick pairwise disjoint Neighborhoods \(V_g\) of \(gx\), which is possible since \(G\) acts freely, thus \(gx \neq x\) and \(X\) is Hausdorff.
+    Then for a open Neighborhood \(U\) of \(x\in X\), the set \(M := \{g \in G \;\vert\; gU \cap U \neq \emptyset\}\) is finite.
+    For these \(g \in M\) we pick pairwise disjoint Neighborhoods \(V_g\) of \(gx\), which is possible since \(X\) is Hausdorff and \(G\) acts freely (thus \(gx \neq x\)).
     Finally, set \(V = \bigcap_{g \in M} g^{-1} V_g \cap U\), which is open as finite intersection of open sets and by definition a Neighborhood of \(x\).
 \end{proof}
+
+To finally construct coverings from group actions and connect them in some sense, we need a last condition on the space the group acts on.
 
 \begin{definition}
     A path-connected topological space \(X\) is called \emph{simply connected}, if \(\pi_1(X)\cong \{1\}\).
