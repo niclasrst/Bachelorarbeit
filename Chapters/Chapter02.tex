@@ -539,7 +539,7 @@ Note that, by definition of the Tits cone \(WC\), every \(W\)-orbit of a point \
 Thus, it suffices to proof that each \(W\)-orbit meets \(C\) in at most one point, to prove the following theorem.
 
 \begin{theorem}\label{thm:funddomain}
-    The fundamental chamber is a fundamental domain for the action of the Coxeter group \(W\) on its Tits cone \(WC\) and thus, justifies its name.
+    The fundamental chamber is a fundamental domain for the action of the Coxeter group \(W\) on its Tits cone \(WC\), justifying its name.
 \end{theorem}
 \begin{proof}
     Assume that \(\varphi,\psi\in C\) lie in the same \(W\)-orbit, but in different parabolic subsets \(C_J\), respectively \(C_K\) of the fundamental chamber. %, for \(J,K\subset I\).
@@ -551,7 +551,7 @@ Thus, it suffices to proof that each \(W\)-orbit meets \(C\) in at most one poin
 
 Define a set \(\mathcal{C}\) as the union of all translates of possible parabolic subsets \(W_J\) \ie, define \(\mathcal{C}\) by
 \[\mathcal{C} := \bigcup_{J \subset I} \bigcup_{w \in W/W_J} w(C_J).\]
-We want to emphasize here that by \Cref{thm:stabilizer} the sets of the form \(w(C_J)\) in the fundamental chamber \(C\) are all disjoint for different \(J \subset I\) and \(w\) ranging over the coset \(W/W_J\).
+We want to emphasize here that by \Cref{thm:stabilizer} the sets of the form \(w(C_J)\) in the Tits cone \(WC\) are all disjoint for different \(J \subset I\) and \(w\) ranging over the coset \(W/W_J\).
 % Note that \Cref{thm:stabilizer} implies that this set forms a partition of the Tits cone as it shows that the sets of the form \(w(C_J)\) in \(\mathcal{C}\) are all disjoint for \(w\) in the coset \(W/W_J\) and \(J\) a subset of \(I\).
 Thus, the sets of \(\mathcal{C}\) form a decomposition of the Tits cone.
 This decomposition (altough not into chambers) is a key component in the following theorem.
@@ -575,14 +575,15 @@ This decomposition (altough not into chambers) is a key component in the followi
     % Note that we can divide the segment \([\varphi, \psi]\) into two parts, by intersecting it with the closed chamber \(C\) to get a closed segment \([\varphi, \xi]\) inside \(C\) and a segment \([\xi, \psi]\).
     The first segment can be covered by finitely many of the sets in \(\mathcal{C}\), as it lies inside the fundamental chamber \(C\).
     Thus, we need to show that we can cover the second segment \([\xi, \psi]\) by finitely many of these sets.
-    Assume further, that \(\psi\in s_i(A_i^*)\) for an \(i\in J\) and \(\psi\in\overline{A_i^*}\) for \(i\notin J\) for some \(J\subset I\), so that \(\psi\notin C\).
-    \Claim{1}{\(\xi\) has to lie in one of the codimension-one faces \(H_i^*\) for \(i\in J\).}
+    Assume further, we have a \(J \subset I\), such that \(\psi\in s_i(A_i^*)\) for an \(i\in J\) and \(\psi\in\overline{A_i^*}\) for all \(i\notin J\).
+    Then we have that \(\psi\notin C\).
+    \Claim{1}{\(\xi\) has to lie in one of the codimension-one faces \(H_i^*\), \(i\in J\).}
     \Claimproof{1}{
         Assume that \(\xi\) lies in the open halfspace \(A_i^*\) for some \(i\in J\).
-        Then every point \(\zeta\) in the intersection of a neighborhood of \(\xi\) contained in \(A_i^*\) and the segment \([\xi,\psi]\) has to also lie in \(A_i^*\) for \(i\in J\). % and \(\zeta\in \overline{A_i^*}\) for \(i\notin J\).
+        Then every point \(\zeta\) in the intersection of a neighborhood of \(\xi\), contained in \(A_i^*\), with the segment \([\xi,\psi]\) has to also lie in \(A_i^*\). % for \(i\in J\). % and \(\zeta\in \overline{A_i^*}\) for \(i\notin J\).
         Clearly, \(\zeta\in\overline{A_i^*}\) for \(i\notin J\) holds as well, implying that \(\zeta\in C\).
         But this is a contradiction to the decomposition of the initial segment \([\varphi, \psi]\).
-        Thus, \(\xi\) has to lie in one of the \(H_i^*\), for \(i\in J\).
+        Thus, \(\xi\) has to lie in one of the \(H_i^*\).
     }
     Using the assumptions \(\psi\in s_i(A_i^*)\) and \(\psi\in w(C)\), we deduce \(w(C)\subset \overline{s_i(A_i^*)}\), hence by continuity of the action \(w(\mathring{C})\subset s_i(A_i^*)\).
     By \Cref{lem:translation2} this is equivalent to \(\ell(s_iw) < \ell(w)\) and we are set up to apply the induction hypothesis to \(\xi\) and \(s_i(\psi)\in s_iw(C)\).
@@ -593,9 +594,9 @@ This decomposition (altough not into chambers) is a key component in the followi
 
 \begin{figure}[h]
     \centering
-    \includegraphics{gfx/pfad durch kegel.png}
-    \caption{A path through the Tits cone.}
-    \label{img:path}
+    \subfloat[\centering A path through the Tits cone.]{{\includegraphics[width=7cm]{gfx/pfad durch kegel.png}}\label{img:path}}
+    \qquad
+    \subfloat[\centering A neighborhood of \(\xi\).]{{\includegraphics[width=7.35cm]{gfx/the neighborhood.png}}}
 \end{figure}
 
 To summarize, the essence of this section is that first of all the fundamental chamber is indeed a fundamental domain of the action of a Coxeter group on its Tits cone.
@@ -612,7 +613,7 @@ Moreover, every point in a set \(C_J\), for \(J\) a subset of \(I\), is stabiliz
 \section{Covering actions - A Toolbox}
 % ***********************************************
 
-In this section we will assemble a set of tools mostly coming from algebraic topology, connecting group actions to the notion of coverings.
+In this section we will assemble a set of tools, mostly coming from algebraic topology, connecting group actions to the notion of coverings.
 They will be somewhat essential in the proof of the main theorem in forthcoming chapter.
 We start by saying what is meant by a covering.
 
@@ -648,7 +649,8 @@ We make this precise in the following.
 \end{definition}
 
 Obviously, this last condition is even more restrictive.
-Yet, at least for Hausdorff spaces, there is a connection between the two, in addition to acting properly discontinuously, we have to demand the action to be free.
+Yet, at least for Hausdorff spaces, there is a connection between the two.
+In addition to acting properly discontinuously, we have to demand the action to be free.
 
 \begin{lemma}
     Let \(G\) be a group, that acts freely and properly discontinuous on a Hausdorff space \(X\).
@@ -675,12 +677,15 @@ To finally construct coverings from group actions and connect them in some sense
     Let \(U\) be an open neighborhood of \(x\in X\), such that \(\{g \in G \;\vert\; gU \cap U \neq \emptyset\} = \{1\}\).
     \Claim{1}{The map \(p_G\) restricted to \(U\) is a continuous bijection.}
     \Claimproof{1}{
-        Continuity: \(U\subset G\backslash X\) is open if and only if \(p^{-1}(U)\) is open and thus \(p\) is continuous
-        Surjectivity: Since orbits are not empty, \(p\) is surjective
-        Injectivity: Assume \(x,y \in X\) with \(p(x) = p(y)\), but then there is  \(g \in G\backslash\{1\}\) with \(gx = y\) implying \(gU \cap U \neq \emptyset\).
-        This is a contradiction to \(G\) acting by covering action.
+        \begin{itemize}
+            \item Continuity: \(V\subset G\backslash X\) is open if and only if \(p_G^{-1}(V)\) is open and thus \(p_G\) is continuous
+            \item Surjectivity: Since orbits of points are non-empty, \(p_G\) is surjective
+            \item Injectivity: Assume \(x,y \in X\) distinct with \(p_G(x) = p_G(y)\), i.e. \(Orb(x) = Orb(y)\).
+                But then there is a non-trivial element \(g \in G\backslash\{1\}\) with \(gx = y\), implying \(gU \cap U \neq \emptyset\).
+                This is a contradiction to \(G\) acting by covering action.
+        \end{itemize}\vspace*{-2\parskip}
     }\vspace*{-2\parskip}
-    \Claim{2}{Every point \(Gx \in G\backslash X\) has a neighborhood \(V \subset G \backslash X\) with \(p_G^{-1}(V) = \bigsqcup_{i \in I} U_i\).}
+    \Claim{2}{Every point \(Orb(x) \in G\backslash X\) has a neighborhood \(V \subset G \backslash X\) with \(p_G^{-1}(V) = \bigsqcup_{i \in I} U_i\).}
     \Claimproof{2}{
         By assumption the sets \(gU\) are all disjoint neighborhoods of \(gx \in X\) for all \(g \in G\).
         Moreover, for \(V := p_G(U) \subset G\backslash X\), we have \(p_G^{-1}(V) = \bigsqcup_{g \in G} gU\), proving the Claim.
