@@ -41,6 +41,23 @@ We give some important examples of Coxeter groups as well as right-angled Coxete
     \end{enumerate}
 \end{example}
 
+In \Cref{fig:cayleygraphs} below, a small portion of the combinatorial Cayleygraphs of these examples are depicted.
+\newpage
+
+\begin{figure}[h]
+    \caption{Some combinatorial Cayleygraphs.}
+    \label{fig:cayleygraphs}
+    
+    \centering
+    \subfloat[\centering \(D_6\)]{{\includegraphics[width=4cm]{gfx/dihedral group cayley graph.png}}\label{img:dihedralcg}}
+    % \qquad
+    \subfloat[\centering \(\Delta (3,3,3)\)]{{\includegraphics[width=4cm]{gfx/triangle group cayley graph.png}}}
+    % \qquad
+    \subfloat[\centering \(D_\infty\)]{{\includegraphics[width=4cm]{gfx/infinite dihedral cayley graph.png}}}
+    % \qquad
+    \subfloat[\centering \(\faktor{\Z}{2\Z}\ast\faktor{\Z}{2\Z}\ast\faktor{\Z}{2\Z}\)]{{\includegraphics[width=4cm]{gfx/free product cayley graph.png}}}
+\end{figure}
+
 % % ***********************************************
 % \subsection{Parabolic subgroups}
 % % ***********************************************
@@ -182,7 +199,7 @@ While the formal defintion of the Tits cone provides a rigorous foundation, it i
 As one can think about the Tits cone quite geometrically, especially in low dimensions, we will take a closer look at an explicit example in the following section.
 Before doing so, we end this section with the following remark.
 
-\begin{remark}
+\begin{remark} % TODO: add picture
     One may ask why we transport everything to the dual space, instead of working in the standard representation \(\rho\).
     For this, consider the infinite dihedral group \(D_\infty \cong \groupp{s, t}{s^2 = t^2 = 1}\).
     We fix a basis \(\{e_1, e_2\}\) of \(V\) and obtain that the bilinear form in this basis is given by the matrix
@@ -566,7 +583,7 @@ We want to emphasize here that by \Cref{thm:stabilizer} the sets of the form \(w
 Thus, the sets of \(\mathcal{C}\) form a partition of the Tits cone.
 This decomposition (altough not into chambers) is a key component in the following theorem.
 
-\begin{theorem}
+\begin{theorem}\label{thm:convexity}
     The Tits cone \(WC\) is a convex cone, and every closed line segment in the Tits cone meets only finitely many of the sets in \(\mathcal{C}\).
 \end{theorem}
 \begin{proof}
@@ -607,6 +624,7 @@ This decomposition (altough not into chambers) is a key component in the followi
     \subfloat[\centering A path through the Tits cone.]{{\includegraphics[width=7cm]{gfx/pfad durch kegel.png}}\label{img:path}}
     \qquad
     \subfloat[\centering A neighborhood of \(\xi\).]{{\includegraphics[width=7.35cm]{gfx/the neighborhood.png}}}
+    % \caption{The picture to the proof.}
 \end{figure}
 
 To summarize, the essence of this section is that first of all the fundamental chamber is indeed a fundamental domain of the action of a Coxeter group on its Tits cone.
@@ -663,8 +681,8 @@ Yet, at least for Hausdorff spaces, there is a connection between the two.
 In addition to acting properly discontinuously, we have to demand the action to be free.
 
 \begin{lemma}
-    Let \(G\) be a group, that acts freely and properly discontinuous on a Hausdorff space \(X\).
-    Then the action is a covering action in the above sense.
+    Let \(G\) be a group that acts freely and properly discontinuous on a Hausdorff space \(X\).
+    Then the action of \(G\) is a covering action in the above sense.
 \end{lemma}
 \begin{proof}
     Let \(X\) be a Hausdorff space and \(G\) be a group acting freely, properly discontinuously on \(X\).
@@ -679,7 +697,7 @@ To finally construct coverings from group actions and connect them in some sense
     A path-connected topological space \(X\) is called \emph{simply connected}, if \(\pi_1(X)\cong \{1\}\).
 \end{definition}
 
-\begin{lemma}
+\begin{lemma}\label{lem:covering}
     Let \(G\) be a group, acting by covering action on a simply connected topological space \(X\).
     Then the quotient map \(p_G:(X, x_0)\to (G\backslash X, G\cdot x_0)\) is a covering map and \(\pi_1(G\backslash X, G\cdot x_0)\cong G\).
 \end{lemma}
