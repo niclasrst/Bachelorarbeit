@@ -336,13 +336,23 @@ In the following we will make use of the general fact that we have \(\ell(w) \le
 
 The length function turns out to be an important and powerful tool in studying Coxeter groups.
 Indeed, its role will be demonstrated in several of the forthcoming proofs, beginning with the following theorem which is a key step in proving faithfulness of our previously defined representation.
+But before doing so, we want to motivate the next theorem. % [ ]: nötig?
+We consider the set \(\{w(e_i) \;\vert\; i \in I, w \in W\}\).
+Note that we fixed a basis in our representation vector space and therefore each of these elements can be written as a linear combination of the basis vectors.
+We will use this to define `positive' and `negative' elements.
+An element \(w(e_i)\) is said to be
+\begin{itemize}
+    \item positive (denoted \(w(e_j) > 0\)), if \(w(e_j) = \sum_{i \in I} \lambda_i e_i\) with \(\lambda_i \geq 0\) for all \(i \in I\),
+    \item negative (denoted \(w(e_j) < 0\)), if \(w(e_j) = \sum_{i \in I} \lambda_i e_i\) with \(\lambda_i \leq 0\) for all \(i \in I\).
+\end{itemize}
+
 \begin{theorem}\label{thm:action}
     Let \(w\in W\) and \(s_i\in S\) for \(i\in I\).
     Then \(\ell(ws_i) > \ell(w)\) implies that \(w(e_i) > 0\).
 \end{theorem}
 
-The proof is by induction on the word length \(\ell(w)\).
-To apply the induction hypothesis, the central idea is to decompose \(w\) in a suitable way.
+% The proof is by induction on the word length \(\ell(w)\).
+% To apply the induction hypothesis, the central idea is to decompose \(w\) in a suitable way.
 
 \begin{proof}
     The base case is trivial, as \(\ell(w) = 0\) implies \(w = 1_W\) and thus \(w\) fixes every basis element.
@@ -393,7 +403,7 @@ To apply the induction hypothesis, the central idea is to decompose \(w\) in a s
     % First of all, we have
     Due to the decomposition and the fact that \(w\) lies in \(W_J\), we are now reduced to the rank two situation.
     As we have seen that all two generator subgroups are dihedral, we work in the flat plane.
-    But first, we have to observe the next claim.
+    But first, we have to observe the following claim.
     \Claim{3}{For \(v_Js_i\) and \(v_J\), we have the relation: \(\ell_J(v_Js_i)\geq \ell(v)\).}
     \Claimproof{3}{
         Assume towards contradiction, that \(\ell_J(v_Js_i) < \ell(v_J)\) holds. Then:
@@ -405,7 +415,8 @@ To apply the induction hypothesis, the central idea is to decompose \(w\) in a s
     Moreover, this shows that every reduced expression of \(v_J\) in the parabolic subgroup \(W_J\) has to end in \(s_j\).
     Otherwise, we would have \(\ell(v_J) > \ell(v_J s_i)\), which contradicts \emph{Claim 3}.
     To deduce the theorem, it suffices to show the following claim.
-    \Claim{4}{\(s_is_j\) maps \(e_i\) to a non-negative linear combination of \(e_i\) and \(e_j\).}
+    % \Claim{4}{\(s_is_j\) maps \(e_i\) to a non-negative linear combination of \(e_i\) and \(e_j\).}
+    \Claim{4}{\((s_is_j)(e_i) = \lambda_i e_i + \lambda_j e_j\) with \(\lambda_i, \lambda_j \geq 0\), implying \((s_is_j)(e_i) > 0\).}
     \Claimproof{4}{
         % Note that \(W_J\) is dihedral, either of order \(2m_{ij}\) or infinite order.
         % Then, as \(v_J\) lies in \(W_J\), any reduced expression of \(v_J\) in \(W_J\) is an alternating product of \(s_i\) and \(s_j\) ending in \(s_j\).
@@ -415,21 +426,26 @@ To apply the induction hypothesis, the central idea is to decompose \(w\) in a s
         Using this, we distinguish the two cases.
         \begin{itemize}
             \item[1)] \(m_{ij} < \infty\): \(W_J\) is dihedral of order \(2m_{ij}\). %and its Cayley graph is a cycle of length \(2m_{ij}\).
-                  Thus, any element is of length \(< m_{ij}\) and has a unique word corresponding to the edge labels in the Cayley graph.
-                  Note that the maximum length of \(w\in W_J\) is precisely \(m_{ij}\) (as the Cayley graph is a cycle of length \(2m_{ij}\)).
-                  The element of length \(m_{ij}\) is represented by the reduced expressions \(s_is_j\cdots s_j\) and \(s_js_i\cdots s_i\).
+                %   Thus, any element is of length \(\leq m_{ij}\) and has a unique word corresponding to the edge labels in the Cayley graph.
+                  Note that the maximum length of \(w \in W_J\) is precisely \(m_{ij}\) (as the Cayley graph is a cycle of length \(2m_{ij}\)) and the element of maximal length is represented by the reduced expressions \(s_is_j\cdots s_is_j\) and \(s_js_i\cdots s_js_i\).
                   This implies that \(v_J\) has to have length strictly smaller \(m_{ij}\), else it would have a reduced expression ending in \(s_i\), contradicting the above.
-                  Then \(v_J\) is a product of less than \(\frac{m_{ij}}{2}\) terms \(s_is_j\), and each of the products \(s_is_j\) is a counterclockwise rotation about \(\frac{2\pi}{m_{ij}}\).
-                  So \(v_J\) rotates \(e_i\) at most about \(\pi - \frac{2\pi}{m_{ij}}\), which still lies inside the cone spanned by \(e_i\) and \(e_j\).
-                  In particular the resulting vector is a non-negative linear combination of \(e_i\) and \(e_j\). % TODO: eventuell s_j am anfang noch!
-
+                  Then \(v_J\) is a product of less than \(\left\lfloor\frac{m_{ij}}{2}\right\rfloor\) terms \(s_is_j\), and each of the products \(s_is_j\) is a rotation about \(\frac{2\pi}{m_{ij}}\) towards \(e_j\).\newline
+                  Using that \(e_i\) and \(e_j\) are at angle \(\pi - \frac{\pi}{m_{ij}}\), we see that \(v_J\) rotates \(e_i\) at most about \(\pi - \frac{2\pi}{m_{ij}}\) towards \(e_j\).
+                  Thus, \(v_J(e_i)\) still lies inside the cone spanned by \(e_i\) and \(e_j\).
+                %   In particular the resulting vector is a non-negative linear combination of \(e_i\) and \(e_j\). % TODO: eventuell s_j am anfang noch!
+                  It could very likely be that we have another reflection \(s_j\), but as the angle between \(e_i\) and the reflecting line is \(\frac{\pi}{2} - \frac{\pi}{m_{ij}}\), the resulting vector still lies in the cone.
+                
             \item[2)] \(m_{ij} = \infty\): In the case of the infinite dihedral group, we already have seen in the proof of \Cref{thm:repr} that \((s_is_j)^n(e_i) = e_i + 2n(e_i + e_j)\).
-                  This is again a non-negative linear combination of \(e_i\) and \(e_j\).
+                  Thus, \(\lambda_i, \lambda_j \geq 0\) with \(\abs{\lambda_i - \lambda_j} = 1\).
+            %   This is again a non-negative linear combination of \(e_i\) and \(e_j\).
         \end{itemize}
         This proves the last Claim.
     }
-    Since \(v_J\) and \(v\) both map \(e_i\) to a non-negative linear combination of \(e_i\) and \(e_j\), so does \(w\) due to its decomposition.
-    Therefore, the proof is now complete.
+    % Since \(v_J\) and \(v\) both map \(e_i\) to a non-negative linear combination of \(e_i\) and \(e_j\), so does \(w\) due to its decomposition.
+    % Therefore, the proof is now complete.
+    Now that we have established that \(w = vv_J\) holds, for the element \(w(e_i)\) we have
+    \[w(e_i) = (vv_J)(e_i) = v(\lambda_i e_i + \lambda_j e_j) = \lambda_i \underbrace{v(e_i)}_{> 0} + \lambda_j \underbrace{v(e_j)}_{> 0}.\]
+    \emph{Claim 4} implies \(\lambda_i, \lambda_j \geq 0\), allowing us to conclude \(w(e_i) > 0\).
 \end{proof}
 
 The result of the previous theorem readily extends to its converse, offering valuable insights as well.
@@ -451,6 +467,12 @@ With \Cref{cor:lengthsmall} and \Cref{thm:action} in hand, we will finally be ab
     Then there is an \(i\in I\) with corresponding \(s_i\in S\), such that \(\ell(ws_i) < \ell(w)\).
     Now \Cref{cor:lengthsmall} implies \(w(e_i) < 0\), but \(w(e_i) = e_i > 0\) as \(\rho(w) = id_V\), which is a contradiction and thus, the statement holds.
 \end{proof}
+
+% \begin{figure}[h!]
+%     \centering
+%     \caption{The case of \(D_{12}\).}
+%     \includegraphics[width=5cm]{gfx/the dihedral proof case.png}
+% \end{figure} % TODO: fix the image
 
 
 % ***********************************************
@@ -614,16 +636,16 @@ This decomposition (altough not into chambers) is a key component in the followi
     }
     Using the assumptions \(\psi\in s_i(A_i^*)\) and \(\psi\in w(C)\), we deduce \(w(C)\subset \overline{s_i(A_i^*)}\), hence by continuity of the action \(w(\mathring{C})\subset s_i(A_i^*)\).
     By \Cref{lem:translation2} this is equivalent to \(\ell(s_iw) < \ell(w)\) and we are set up to apply the induction hypothesis to \(\xi\) and \(s_i(\psi)\in s_iw(C)\).
-    This produces a covering of \([\xi,s_i(\psi)]\) by finitely many sets in \(\mathcal{C}\).
+    This produces a cover of \([\xi,s_i(\psi)]\) by finitely many sets in \(\mathcal{C}\).
     But since we established that \(\xi\) has to lie in \(H_i^*\), translation by \(s_i\) gives \([s_i(\xi), s_i^2(\psi)] = [\xi, \psi]\), and thus we can cover this segment by finitely many sets as well.
     The result follows.
 \end{proof}
 
 \begin{figure}[h]
     \centering
-    \subfloat[\centering A path through the Tits cone.]{{\includegraphics[width=7cm]{gfx/pfad durch kegel.png}}\label{img:path}}
+    \subfloat[\centering A path through the Tits cone.]{{\includegraphics[width=5cm]{gfx/pfad durch kegel.png}}\label{img:path}}
     \qquad
-    \subfloat[\centering A neighborhood of \(\xi\).]{{\includegraphics[width=7.35cm]{gfx/the neighborhood.png}}}
+    \subfloat[\centering A neighborhood of \(\xi\).]{{\includegraphics[width=5.35cm]{gfx/the neighborhood.png}}}
     % \caption{The picture to the proof.}
 \end{figure}
 
