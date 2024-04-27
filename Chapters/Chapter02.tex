@@ -96,41 +96,63 @@ Before we prove the homomorphism property, we recall:
 A map \(\varphi: S\to G\) from a set \(S\) to a group \(G\) extends to a homomorphism \(\Hat{\varphi}:\groupp{S}{R}\to G\), if and only if the induced homomorphism \(\overline{\varphi}:F_S \to G\) from the free group over \(S\) satisfies \(\overline{\varphi}(r) = 1_G\) for every \(r\in R\).
 \begin{proof}
     Observe that \(\sigma_i^2 = id\) in \(GL_n(V)\) and thus to prove that \(\rho\) is a homomorphism, we apply the above to our situation to see that it suffices to show that the product \(\sigma_i\sigma_j\) has order \(m_{ij}\) in \(GL_n(V)\) for distinct \(i,j\in I\).
-    To do so, consider the two-dimensional subspace \(V_{ij}\) spanned by two basis vectors \(e_i\) and \(e_j\) in \(V\).
-    We take a general element \(v = \lambda e_i + \mu e_j\), \(\lambda,\mu\in\R\) in \(V_{ij}\) and distinguish the two cases in the definition of \(B_W\):
-    \begin{itemize}
-        \item[1)] \(m_{ij}<\infty\): In this case \(B_W\) is positive definite, since for \(v\neq 0\)
-              \begin{align*}
-                  B_W(v,v) & = \lambda^2 - 2\lambda\mu\cos\left(\frac{\pi}{m_{ij}}\right) + \mu^2
-                  = \left( \lambda - \mu\cos\left( \frac{\pi}{m_{ij}} \right) \right)^2 + \mu^2\sin^2\left( \frac{\pi}{m_{ij}} \right) > 0.
-              \end{align*}
-              Up to a change of basis, we identify \((V_{ij}, B_W\vert_{V_{ij}})\) with the euclidean plane \((\R^2, \langle\cdot, \cdot\rangle)\).
-              Now \(\sigma_i\) and \(\sigma_j\) act on \(V_{ij}\) by orthogonal reflections in the hyperplanes \(H_i, H_j\) intersected with \(V_{ij}\).
-              We take a look at the inner product of \(e_i, e_j\)
-              \[B_W(e_i, e_j) = -\cos\left(\frac{\pi}{m_{ij}}\right) = \cos\left(\pi - \frac{\pi}{m_{ij}}\right)\]
-              and obtain that the angle between them in \(V_{ij}\) is given by \(\pi - \frac{\pi}{m_{ij}}\).
-              Thus, the angle between the reflecting lines is \(\frac{\pi}{m_{ij}}\) and the product \(\sigma_i\sigma_j\) turns out to be a rotation by \(\frac{2\pi}{m_{ij}}\), showing that \(\sigma_i\sigma_j\) has order \(m_{ij}\) in the subspace \(V_{ij}\).
-              And since \(\sigma_i\sigma_j\) fixes the orthogonal complement of \(V_{ij}\) by definition of the \(\sigma_i\), it has order \(m_{ij}\) on the whole vector space \(V\).
+    Also note that in the case of \(m_{ij} = \infty\) there is nothing to prove as these relations are defined to be trivial in the presentation of \(W\).
+    
+    Thus, consider the two-dimensional subspace \(V_{ij}\) of \(V\) spanned by two basis vectors \(e_i, e_j\) and take a general element \(v = \lambda \cdot e_i + \mu \cdot e_j\) in \(V_{ij}\) with \(\lambda, \mu \in \R\) not simultaneously zero.
+    As \(m_{ij} < \infty\), the bilinear form \(B_W\) is positive definite by the following calculation
+    \[B_W (v,v) = \lambda^2 - 2\lambda\mu\cos\left(\frac{\pi}{m_{ij}}\right) + \mu^2 = \left(\lambda - \mu \cos\left(\frac{\pi}{m_{ij}}\right)\right)^2 + \mu^2\sin^2\left(\frac{\pi}{m_{ij}}\right) > 0.\]
+    Identify \((V_{ij}, B_W\vert_{V_{ij}})\) with the euclidean plane \((\R^2, \langle \cdot, \cdot \rangle)\) up to a change of basis.
+    Then \(\sigma_i\), resp. \(\sigma_j\) act by orthogonal reflections in their corresponding hyperplanes \(H_i\), resp. \(H_j\) intersected with \(V_{ij}\).
+    By having a look at the inner product of \(e_i\) and \(e_j\)
+    \[B_W(e_i, e_j) = - \cos\left(\frac{\pi}{m_{ij}}\right) = \cos\left(\pi - \frac{\pi}{m_{ij}}\right),\]
+    we observe that the angle between the two in \(V_{ij}\) is precisely \(\pi - \frac{\pi}{m_{ij}}\).
+    We conclude from this that the angle between their reflecting lines in \(\frac{\pi}{m_{ij}}\) and the composition \(\sigma_i\sigma_j\) turns out to be a rotation about \(\frac{2\pi}{m_{ij}}\).
+    As the composition \(\sigma_i\sigma_j\) fixes the orthogonal complement \(V_{ij}^\perp\) of \(V_{ij}\) by definition of the \(\sigma_i\), we see that it has order \(m_{ij}\) on the whole space \(V\).
+    % To do so, consider the two-dimensional subspace \(V_{ij}\) spanned by two basis vectors \(e_i\) and \(e_j\) in \(V\).
+    % We take a general element \(v = \lambda e_i + \mu e_j\), \(\lambda,\mu\in\R\) in \(V_{ij}\) and distinguish the two cases in the definition of \(B_W\):
+    % \begin{itemize}
+    %     \item[1)] \(m_{ij}<\infty\): In this case \(B_W\) is positive definite, since for \(v\neq 0\)
+    %           \begin{align*}
+    %               B_W(v,v) & = \lambda^2 - 2\lambda\mu\cos\left(\frac{\pi}{m_{ij}}\right) + \mu^2
+    %               = \left( \lambda - \mu\cos\left( \frac{\pi}{m_{ij}} \right) \right)^2 + \mu^2\sin^2\left( \frac{\pi}{m_{ij}} \right) > 0.
+    %           \end{align*}
+    %           Up to a change of basis, we identify \((V_{ij}, B_W\vert_{V_{ij}})\) with the euclidean plane \((\R^2, \langle\cdot, \cdot\rangle)\).
+    %           Now \(\sigma_i\) and \(\sigma_j\) act on \(V_{ij}\) by orthogonal reflections in the hyperplanes \(H_i, H_j\) intersected with \(V_{ij}\).
+    %           We take a look at the inner product of \(e_i, e_j\)
+    %           \[B_W(e_i, e_j) = -\cos\left(\frac{\pi}{m_{ij}}\right) = \cos\left(\pi - \frac{\pi}{m_{ij}}\right)\]
+    %           and obtain that the angle between them in \(V_{ij}\) is given by \(\pi - \frac{\pi}{m_{ij}}\).
+    %           Thus, the angle between the reflecting lines is \(\frac{\pi}{m_{ij}}\) and the product \(\sigma_i\sigma_j\) turns out to be a rotation by \(\frac{2\pi}{m_{ij}}\), showing that \(\sigma_i\sigma_j\) has order \(m_{ij}\) in the subspace \(V_{ij}\).
+    %           And since \(\sigma_i\sigma_j\) fixes the orthogonal complement of \(V_{ij}\) by definition of the \(\sigma_i\), it has order \(m_{ij}\) on the whole vector space \(V\).
 
-        \item[2)] \(m_{ij} = \infty:\;\) By the following, we now have to deal with a non-positive definite form:
-              \begin{align*}
-                  B_W(v,v) = \lambda^2 - 2\lambda\mu + \mu^2 = (\lambda - \mu)^2 \geq 0.
-              \end{align*}
-              Indeed, we can only expect it to be positive semidefinite on \(V_{ij}\).
-              Using the calculation
-              \begin{align*}
-                  (\sigma_i\sigma_j)(e_i) = \sigma_i (e_i + 2e_j) = e_i + 2(e_i + e_j),
-              \end{align*}
-              together with an induction argument, we get that \((\sigma_i\sigma_j)^n(e_i) = e_i + 2n(e_i + e_j)\).
-              Therefore, the concatenation has infinite order on \(V_{ij}\) and in particular on the whole of \(V\).
-    \end{itemize}
+    %     \item[2)] \(m_{ij} = \infty:\;\) By the following, we now have to deal with a non-positive definite form:
+    %           \begin{align*}
+    %               B_W(v,v) = \lambda^2 - 2\lambda\mu + \mu^2 = (\lambda - \mu)^2 \geq 0.
+    %           \end{align*}
+    %           Indeed, we can only expect it to be positive semidefinite on \(V_{ij}\).
+    %           Using the calculation
+    %           \begin{align*}
+    %               (\sigma_i\sigma_j)(e_i) = \sigma_i (e_i + 2e_j) = e_i + 2(e_i + e_j),
+    %           \end{align*}
+    %           together with an induction argument, we get that \((\sigma_i\sigma_j)^n(e_i) = e_i + 2n(e_i + e_j)\).
+    %           Therefore, the concatenation has infinite order on \(V_{ij}\) and in particular on the whole of \(V\).
+    % \end{itemize}
     This proves that \(\rho\) extends to a homomorphism.
     It remains to show the injectivity of \(\rho\).
     This will be a consequence of a bigger result in section \(2.4\), see \Cref{cor:faithful}.
 \end{proof}
 
+In contrast to the above proof, in the case of \(m_{ij} = \infty\), we cannot expect our bilinear form to be positive definite.
+Let \(v \in V_{ij}\) be as in the proof, then
+\[B_W(v,v) = \lambda^2 - 2\lambda\mu + \mu^2 = (\lambda - \mu)^2 \geq 0.\]
+This shows that we can at least expect it to be positive semidefinite.
+The direct calculation
+\[(\sigma_i\sigma_j)(e_i) = \sigma_i(e_i + 2e_j) = e_i + 2(e_i + e_j),\]
+together with an inductive argument, shows that \((\sigma_i\sigma_j)^n(e_i) = e_i + 2n(e_i + e_j)\).
+Therefore, the composition \(\sigma_i\sigma_j\) has infinite order on \(V_{ij}\) and in particular on the whole of \(V\).
+The following remark is a consequence of this, together with the observation in above proof.
+
 \begin{remark}
-    It is worth to note that in the above proof, we have seen that two-generator subgroups of Coxeter groups are dihedral.
+    From last paragraph and the proof of \Cref{thm:repr}, we conclude that two-generator subgroups of Coxeter groups are dihedral.
     Either of order \(2m_{ij}\) or infinite order.
 \end{remark}
 
@@ -163,7 +185,7 @@ Then we calculate, using the \(\sigma_i^*\) from above:
     \end{cases},
 \end{equation*}
 which implies that each reflection \(\sigma_i^*\) fixes all the hyperplanes \(H_j^*\), for distinct indices \(i\) and \(j\).
-Moreover, note that the fundamental chamber can be written of the form % TODO: rework the following paragraph --
+Moreover, note that the fundamental chamber can be written in the form % TODO: rework the following paragraph --
 \[C = \bigcap_{i\in I}\{\varphi\in V^*\;\vert\; \varphi(e_i)\geq 0\} = \bigcap_{i\in I} (H_i^* \cup \{\varphi\in V^*\;\vert\; \varphi(e_i)> 0\}),\]
 where we observe that the sets \(H_i^*\cap C\) form the pairwise distinct codimension one faces of the chamber \(C\).
 The open halfspaces \(\{\varphi \in V^* \;\vert\; \varphi(e_i) > 0\}\) in the latter term will be called \(A_i^*\) and using these, we define the open fundamental chamber to be the intersection of the open halfspaces:
@@ -676,7 +698,7 @@ To finally construct coverings from group actions and connect them in some sense
 \end{definition}
 
 \begin{lemma}\label{lem:covering}
-    Let \(G\) be a group, acting by covering action on a simply connected topological space \(X\).
+    Let \(G\) be a group, acting by a covering action on a simply connected topological space \(X\).
     Then the quotient map \(p_G:(X, x_0)\to (G\backslash X, Orb(x_0))\) is a covering map and \(\pi_1(G\backslash X, Orb(x_0))\cong G\).
 \end{lemma}
 \begin{proof}
@@ -688,10 +710,11 @@ To finally construct coverings from group actions and connect them in some sense
             \item Surjectivity: Since orbits of points are non-empty, \(p_G\) is surjective.
             \item Injectivity: Assume \(x,y \in X\) distinct with \(p_G(x) = p_G(y)\).
                 But then there is a non-trivial element \(g \in G,\; g \neq 1_G\) with \(gx = y\), implying \(g(U) \cap U \neq \emptyset\).
-                This is a contradiction to \(G\) acting by covering action.
+                This is a contradiction to \(G\) acting by a covering action.
         \end{itemize}\vspace*{-2\parskip}
     }\vspace*{-2\parskip}
-    \Claim{2}{Every point \(Orb(x) \in G\backslash X\) has a neighborhood \(V \subset G \backslash X\) with \(p_G^{-1}(V) = \bigsqcup_{i \in I} U_i\).}
+    \Claim{2}{Every point \(Orb(x) \in G\backslash X\) has a neighborhood \(V \subset G \backslash X\) with \(p_G^{-1}(V) = \bigsqcup_{g \in G} gU\).}
+    % \Claim{2}{Every point \(Orb(x) \in G\backslash X\) has a neighborhood \(V := p_G(U)\), \(U\) as in \emph{Claim 1}, hence \(p_G^{-1}(V) = \bigsqcup_{g \in G} gU\).}
     \Claimproof{2}{
         By assumption the sets \(gU\) are all disjoint neighborhoods of \(gx \in X\) for all \(g \in G\).
         Moreover, for \(V := p_G(U) \subset G\backslash X\), we have \(p_G^{-1}(V) = \bigsqcup_{g \in G} gU\), proving the Claim.
@@ -703,7 +726,7 @@ To finally construct coverings from group actions and connect them in some sense
         Therefore, the map \(p_G\) restricted to \(gU\) for \(g \in G\) is an open map and hence, by \emph{Claim 1} a homeomorphism.
     }
     Now all conditions in \Cref{def:covering} are satisfied, so \(p_G\) is a covering map.
-    For the last part of the statement, note that \(X\) is simply connected, meaning that it is the universal cover of \(G \backslash X\). %\(\faktor{X}{G}\).
+    For the last part of the statement, note that \(X\) is simply connected, implying that it is the universal cover of \(G \backslash X\). %\(\faktor{X}{G}\).
     By definition, \(G\) is the group of Deck transformations, thus \(\pi_1(G \backslash X, Orb(x_0)) \cong G\).
     % For the last part of the statement, take a homotopy class of loops \([\gamma] \in \pi_1(G \backslash X, Gx_0)\) with representative \(\gamma\).
     % Define a map \(\varphi : \pi_1(G, x_0) \to G\) on homotopy classes \([\gamma]\), such that \(\varphi([\gamma])\) takes \(\widetilde{\gamma}(0) = x_0\) to \(\widetilde{\gamma}(1)\), where \(\widetilde{\gamma}: [0,1] \to X\) is a lift of \(\gamma\).

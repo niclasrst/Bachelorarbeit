@@ -35,14 +35,19 @@ Therefore, all isotropy subgroups inject into the abelianization of \(W\).
 This implies that the intersection of an isotropy subgroup with the kernel of \(\alpha\) is trivial and consequently no isotropy group is contained in the kernel \(\ker\alpha\).
 Since finite subgroups are contained in isotropy subgroups, the kernel \(\ker\alpha\) acts freely on the Tits cone \(WC\) corresponding to \(W\).
 
-In particular, by \Cref{thm:stabilizer} the action of \(W\) on the interior of its Tits cone \(int(WC)\) is properly discontinuously and by \Cref{thm:convexity} the Tits cone is also a convex cone, implying that it has trivial fundamental group.
+In particular, by \Cref{thm:stabilizer} the action of \(W\) on the interior of its Tits cone \(int(WC)\) is properly discontinuously.
+By \Cref{thm:convexity} the Tits cone is also a convex cone, implying that it has trivial fundamental group, whence is simply-connected.
 Having all this information, we are able to apply \Cref{lem:covering} to obtain the covering
 \[int(WC) \;\longrightarrow\; \faktor{int(WC)}{\ker\alpha} \qquad x \mapsto \text{Orb}_{\ker\alpha}(x).\]
-Using the local homeomorphism property of a covering map and the fact that the Tits cone \(WC\) is a subspace of \(\R^n\), we conclude that the quotient \(\faktor{int(WC)}{\ker\alpha}\) is indeed a manifold.
+% Using the local homeomorphism property of a covering map and the fact that the Tits cone \(WC\) is a subspace of \(\R^n\), we conclude that the quotient \(\faktor{int(WC)}{\ker\alpha}\) is indeed a manifold.
+We conclude the result of this section in the following proposition.
 
-% \begin{proposition}
-    
-% \end{proposition}
+\begin{proposition}
+    Let \(W\) be a right-angled Coxeter group with corresponding Tits cone \(WC\). % and fundamental chamber \(C\).
+    Then, there is a finite index subgroup \(W' \leq W\), acting by covering action on the interior of the Tits cone, implying the quotient \(\faktor{int(WC)}{W'}\;\) is a manifold.
+    In particular, \(W' = \ker\alpha = \ker\{W \to W_{\text{ab}}\}\).
+    % In particular, we can take \(W'\) to be the kernel of the abelianization homomorphism \(\alpha : W \to W_{\text{ab}}\).
+\end{proposition}
 
 
 % ***********************************************
@@ -69,7 +74,12 @@ This is being made precise by orbifold maps.
 \end{definition}
 
 Now that we have these local definitions, we `glue' them together, to obtain an orbifold.
-Recall that a topological space is \emph{paracompact}, if 
+Before we do so, we recall some notions from topology.
+Suppose we are given an open cover \(\{U_i\}\) of a topological space \(X\).
+An open cover \(\{V_j\}\) of \(X\) is an \emph{refinement} of \(\{U_i\}\), if for every \(U_i\) there is a \(V_j\) with \(V_j \subseteq U_i\).
+An open cover \(\{U_i\}\) of \(X\) is \emph{locally finite}, if every \(x \in X\) admits a neighborhood \(N\) such that \(N \cap U_i\) is empty for all but finitely many \(i\).
+Now, a topological space \(X\) is \emph{paracompact}, if every open cover of \(X\) admits a locally finite refinement.
+
 
 \begin{definition}
     An \(n\)-dimensional \emph{(smooth) orbifold} \(Q\) is a pair \((X_Q, \mathcal{A})\).
@@ -95,17 +105,19 @@ Furthermore, when thinking about an orbifold, we can just think about the underl
 Many basic examples arise by taking the quotient relative to a properly discontinuous group action on \(\R^n\).
 We want to mention at least some examples.
 
-\begin{example}
-    % \begin{enumerate}
-    %     \item The cone as an orbifold \(C\): consider \(G \cong \Z/n\Z\) acting on \(X_C = \R^2\) by rotation about \(\frac{2\pi}{n}\) around the origin.
-    %         The quotient \(\R^2 / G\) is a cone with cone angle \(\frac{2\pi}{n}\), with the only singular point the cone point.
-    %     \item The `teardrop' orbifold \(T\): consider \(G \cong \Z/n\Z\) acting on \(X_T = S^2\) by rotation about \(\frac{2\pi}{n}\) around the north pole.
-    %         The quotient \(S^2 / G\) is a `teardrop' with the only singular point the north pole.
-    % \end{enumerate}
+\begin{example} % TODO: add pictures
+    \begin{enumerate}
+        \item Consider the flat plane \(\R^2\) with the action of a cyclic group \(\faktor{\Z}{n\Z}\) by rotation about the origin.
+            The arising orbifold is a cone with singular point the origin and cone angle \(\frac{2\pi}{n}\).
+        
+        \item Consider the round sphere \(S^2\) with the action of a cyclic group \(\faktor{\Z}{2\Z}\) by rotation about the north pole \(N\).
+            The arising orbifold now is called a \emph{teardrop} with singular point, the north pole \(N\).
+    \end{enumerate}
 \end{example}
 
 Many orbifolds arise by passing to the quotient \(M/G\) of a properly discontinuous action of a group \(G\) on a topological space \(M\).
 This is also the case for the fundamental chamber \(C\), its natural orbifold structure arises by taking the quotient of the Tits cone of \(W\) by its action. % TODO: add picture
+From another point of view, the fundamental chamber can also be seen as a quotient of the manifold \(\faktor{WC}{\ker\alpha}\) by a finite group action.
 
 Another concept worth mentioning is the theory of orbifold coverings.
 
@@ -114,8 +126,12 @@ Another concept worth mentioning is the theory of orbifold coverings.
     Furthermore, the restriction \(p\vert_{V_i} : V_i \to U\) corresponds to the natural projection \(\faktor{\widetilde{U}}{\Gamma_i} \to \faktor{\widetilde{U}}{\Gamma}\).
 \end{definition}
 
-% Recall that any manifold can be interpreted as an orbifold where every local model \(\;\faktor{\widetilde{U}}{\Gamma}\;\) has \(\Gamma\) to be the trivial group.
-% Thus, let us interpret the manifold \(\faktor{WC}{\ker\alpha}\) as such an orbifold.
+As one might have noticed, there are many analogies between `ordinary' coverings, orbifold coverings as well as orbifolds and manifolds.
+Especially, there is a notion of orbifold fundamnetal groups as well.
+The analogy here happens to be that orbifold fundamental groups behave to orbifold coverings as `ordinary' fundamental groups do to `ordinary' coverings as in \Cref{def:covering}.
+In particular, there is again a correspondence between subgroups (of index \(n\)) of the orbifold fundamental group and (\(n\)-sheeted) orbifold coverings.
+In the case of the fundamental chamber \(C \cong \faktor{WC}{W}\) this implies that the manifold \(\faktor{WC}{\ker\alpha}\), constructed in the last section, is a manifold cover of \(C\).
+This is due to the fact that a manifold is an orbifold with trivial singular locus and \(\ker\alpha\) is a finite index subgroup of \(W\).
 
 
 % ***********************************************
@@ -151,7 +167,7 @@ To state the other helping lemma we will need, we first want to show that each c
 \begin{proof}
     Let \(v(C), w(C)\) be chambers in \(WC\) for \(v, w \in W\), such that \(v \neq w\) and \(w(C) = v(C)\).\newline
     But then, by \Cref{thm:stabilizer} we have that
-    \[w(C) \cap v(C) = w(C \cap w^{-1}v(C)) \neq \emptyset \implies w^{-1}v = 1 \iff w = v.\]
+    \[w(\mathring{C}) \cap v(\mathring{C}) = w(\mathring{C} \cap w^{-1}v(\mathring{C})) \neq \emptyset \implies w^{-1}v = 1 \iff w = v.\]
     Thus, the chambers can be labeled in a unique way.
 \end{proof}
 
