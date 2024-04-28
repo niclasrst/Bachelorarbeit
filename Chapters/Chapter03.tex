@@ -122,8 +122,6 @@ By starting with a topological space \(X\), this is actually a more general way 
 Given a properly discontinuously action of a group \(G\) on \(X\), simply pass to the quotient space \(\faktor{X}{G}\) to obtain an orbifold.
 In contrast, to obtain a manifold, one has to demand the action to be free as well.
 This is not the only analogy between manifolds and orbifolds.
-% This is also the case for the fundamental chamber \(C\), its natural orbifold structure arises by taking the quotient of the Tits cone of \(W\) by its action. % TODO: add picture
-% From another point of view, the fundamental chamber can also be seen as a quotient of the manifold \(\faktor{WC}{\ker\alpha}\) by a finite group action.
 The concept of orbifold coverings translates almost one to one from the ordinary case.
 
 \begin{definition}
@@ -141,18 +139,20 @@ Having all this in mind, we have two ways of approaching the fundamental chamber
 One way, it obtains its natural orbifold structure as the quotient \(\faktor{WC}{W}\), where we observe that the orbifold fundamental group of \(C\) is precisely \(W\), as the Tits cone is simply connected, hence the universal cover of \(C\).
 On the other hand, the fundamental chamber is the quotient of the manifold \(\faktor{WC}{\ker\alpha}\) by a finite group action.
 \vspace*{\parskip}
+
 \begin{figure}[h!]
     \begin{minipage}[c]{.66\textwidth}
         Since \(\ker\alpha\) is a finite index subgroup of \(W\) and the discussion above, we get a covering map \(p\) so that the diagram on the right commutes.
         Thus, both of our approaches to the fundamental chamber \(C\) agree in the sense that the projection \(WC \to \faktor{WC}{W}\) factors through the manifold cover, constructed earlier.
     \end{minipage}\quad
     \begin{minipage}{.3\textwidth}\vspace*{-2em}
-        \[\begin{tikzcd}
+        \begin{tikzcd}
             WC \arrow[r] \arrow[d] & \faktor{WC}{W} \\
-            \faktor{WC}{\ker\alpha} \arrow[ru, dashed] & {}
-        \end{tikzcd}\]
+            \faktor{WC}{\ker\alpha} \arrow[ru, "p"', dashed]
+        \end{tikzcd}
     \end{minipage}
 \end{figure}
+
 
 % ***********************************************
 \section{The cofinal cover}
@@ -164,8 +164,6 @@ We will state and use them without proof.
 
 In the following, doubling along a face means the construction of a sequence of polytopes \(P_k = P_{k-1} \cup g_{k-1}(P_{k-1})\), where \(g_{k-1}\) is the reflection in one of the faces of the previous polytope \(P_{k-1}\).
 The following proposition will tell us, that in the case of a right-angled Coxeter group, we are able to double the fundamental chamber \(C\) in one of its faces and are still able to cover the whole Tits cone \(WC\) by reflecting in the faces of the resulting chamber.
-% By doubling, pictorially, we mean to unfold the fundamental chamber (more generally a polytope) along one of its faces, by reflecting in this face.
-% The chamber and its double will then be the new chamber of interest.
 
 \begin{proposition}\label{prop:double}
     Let \(P_k \subset \R^n\) be a polytope with orbifold structure, orbifold fundamental group \(\pi_1^{\text{orb}}(P_k)\) and universal cover \(\widetilde{P}\).
