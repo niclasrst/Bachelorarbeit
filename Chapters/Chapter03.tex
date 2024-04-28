@@ -8,12 +8,12 @@ Let us quickly recall the main theorem we want to prove.
     A finitely generated right-angled Coxeter group \(W\) has a finite index subgroup \(W'\) such that \(W'\) is residually finite and rationally solvable (RFRS).
 \end{theorem*}
 
-For the following, we consider the Tits cone \(WC\) corresponding to \(W\), living in \(\R^n\) for \(n = \abs{I}\).
-Before continuing, we want to shortly mention that the fundamental chamber \(C\) has a natural orbifold structure as the quotient \(\faktor{WC}{W}\). % \(WC/W\).
-This will be covered later on in slightly greater detail.
-% By the discussion of last chapter, we know that by taking the quotient \(WC/W\), we are left with the fundamental chamber \(C\).
-In the first section, our goal is to produce a manifold cover \(C' \to C\) of the fundamental chamber.
-This cover will be induced by a finite index subgroup in the right-angled Coxeter group \(W\).
+% For the following, we consider the Tits cone \(WC\) corresponding to \(W\), living in \(\R^n\) for \(n = \abs{I}\).
+% Before continuing, we want to shortly mention that the fundamental chamber \(C\) has a natural orbifold structure as the quotient \(\faktor{WC}{W}\). % \(WC/W\).
+% This will be covered later on in slightly greater detail.
+% % By the discussion of last chapter, we know that by taking the quotient \(WC/W\), we are left with the fundamental chamber \(C\).
+% In the first section, our goal is to produce a manifold cover \(C' \to C\) of the fundamental chamber.
+% This cover will be induced by a finite index subgroup in the right-angled Coxeter group \(W\).
 
 
 % ***********************************************
@@ -44,8 +44,8 @@ We conclude the result of this section in the following proposition.
 
 \begin{proposition}
     Let \(W\) be a right-angled Coxeter group with corresponding Tits cone \(WC\). % and fundamental chamber \(C\).
-    Then, there is a finite index subgroup \(W' \leq W\), acting by covering action on the interior of the Tits cone, implying the quotient \(\faktor{int(WC)}{W'}\;\) is a manifold.
-    In particular, \(W' = \ker\alpha = \ker\{W \to W_{\text{ab}}\}\).
+    Then, there is a finite index subgroup \(W' \leq W\), acting by covering action on the interior of the Tits cone, implying that the quotient \(\faktor{int(WC)}{W'}\;\) is a manifold.
+    In particular, \(W' = \ker\{W \to W_{\text{ab}}\}\).
     % In particular, we can take \(W'\) to be the kernel of the abelianization homomorphism \(\alpha : W \to W_{\text{ab}}\).
 \end{proposition}
 
@@ -56,30 +56,31 @@ We conclude the result of this section in the following proposition.
 
 In this section, we want to elaborate more on the natural orbifold structure of the fundamental chamber \(C\).
 We start by giving a formal definition of an orbifold.
-We break the definition down into smaller pieces, starting with local models, also called (orbifold) charts.
+We break the definition down into smaller pieces, starting with local models, sometimes called (orbifold) charts.
 
 \begin{definition}
     A \emph{local model} is a pair \((\widetilde{U}, \Gamma)\), where \(\widetilde{U} \subset \R^n\) is open and \(\Gamma\) is a finite subgroup of the group of diffeomorphisms of \(\widetilde{U}\), denoted \emph{diffeo}\((\widetilde{U})\), acting on \(\widetilde{U}\).
     By abusing notation, we will sometimes say that the quotient \(U = \faktor{\widetilde{U}}{\Gamma}\;\) is the local model.
 \end{definition}
 
-Now that we defined a local structure of an orbifold, we want to translate between these local models.
+Now that we have defined the local structure of an orbifold, we want to translate between these local models.
 This is being made precise by orbifold maps.
 
 \begin{definition}
-    An \emph{orbifold map} between local models \((\widetilde{U}_i, \Gamma_i), (\widetilde{U}_j, \Gamma_j)\) is a pair of maps \((\widetilde{\psi}, \varphi)\).
-    The map \(\widetilde{\psi} : \widetilde{U}_i \to \widetilde{U}_j\) is smooth and \(\varphi : \Gamma_i \to \Gamma_j\) a homomorphism of groups, such that the map \(\widetilde{\psi}\) is \(\varphi\)-equivariant, meaning that for all \(g \in \Gamma_i\) and all \(\widetilde{x} \in \widetilde{U}_i\), \(\widetilde{\psi}(g\widetilde{x}) = \varphi(g)\widetilde{\psi}(\widetilde{x})\) holds.
+    An \emph{orbifold map} between local models \((\widetilde{U}_i, \Gamma_i), (\widetilde{U}_j, \Gamma_j)\) is a pair of maps \((\widetilde{\psi}, \varphi)\),
+    consisting of a smooth map \(\widetilde{\psi} : \widetilde{U}_i \to \widetilde{U}_j\) and a homomorphism of groups \(\varphi : \Gamma_i \to \Gamma_j\).
+    We enforce the map \(\widetilde{\psi}\) to be \(\varphi\)-equivariant, meaning that for all \(g \in \Gamma_i\) and all \(\widetilde{x} \in \widetilde{U}_i\), \(\widetilde{\psi}(g\widetilde{x}) = \varphi(g)\widetilde{\psi}(\widetilde{x})\) holds.
     Then \(\widetilde{\psi}\) induces a map \(\psi : \faktor{\widetilde{U}_i}{\Gamma_i} \to \faktor{\widetilde{U}_j}{\Gamma_j}\), between the local models.
     When all three of these maps are injective, we call \(\psi\) a local isomorphism.
 \end{definition}
 
 Now that we have these local definitions, we `glue' them together, to obtain an orbifold.
 Before we do so, we recall some notions from topology.
-Suppose we are given an open cover \(\{U_i\}\) of a topological space \(X\).
-An open cover \(\{V_j\}\) of \(X\) is an \emph{refinement} of \(\{U_i\}\), if for every \(U_i\) there is a \(V_j\) with \(V_j \subseteq U_i\).
-An open cover \(\{U_i\}\) of \(X\) is \emph{locally finite}, if every \(x \in X\) admits a neighborhood \(N\) such that \(N \cap U_i\) is empty for all but finitely many \(i\).
-Now, a topological space \(X\) is \emph{paracompact}, if every open cover of \(X\) admits a locally finite refinement.
 
+Suppose, we are given an open cover \(\{U_i\}\) of a topological space \(X\).
+It is said to be \emph{locally finite}, if every \(x \in X\) admits a neighborhood \(N\) such that \(N \cap U_i\) is empty for all but finitely many \(i\).
+The open cover \(\{U_i\}\) is a \emph{refinement} of an open cover \(\{V_j\}\) of \(X\), if for every \(V_j\) there is a \(U_i\) with \(U_i \subseteq V_j\).
+Now, the topological space \(X\) is said to be \emph{paracompact}, if every open cover of \(X\) admits such a locally finite refinement.
 
 \begin{definition}
     An \(n\)-dimensional \emph{(smooth) orbifold} \(Q\) is a pair \((X_Q, \mathcal{A})\).
@@ -110,29 +111,48 @@ We want to mention at least some examples.
         \item Consider the flat plane \(\R^2\) with the action of a cyclic group \(\faktor{\Z}{n\Z}\) by rotation about the origin.
             The arising orbifold is a cone with singular point the origin and cone angle \(\frac{2\pi}{n}\).
         
-        \item Consider the round sphere \(S^2\) with the action of a cyclic group \(\faktor{\Z}{2\Z}\) by rotation about the north pole \(N\).
+        \item Consider the sphere \(S^2\) with the action of a cyclic group \(\faktor{\Z}{2\Z}\) by rotation about the north pole \(N\).
             The arising orbifold now is called a \emph{teardrop} with singular point, the north pole \(N\).
+            
+        % \item Cosider the torus \(\mathbb{T}^2 \cong \faktor{\R^2}{\Z^2}\) with the action of the group \(\faktor{\Z}{2\Z}\) acting by reflection in the midpoints of the y-axis of \(\Z^2\)-lattice in \(\R^2\).
     \end{enumerate}
 \end{example}
 
-Many orbifolds arise by passing to the quotient \(M/G\) of a properly discontinuous action of a group \(G\) on a topological space \(M\).
-This is also the case for the fundamental chamber \(C\), its natural orbifold structure arises by taking the quotient of the Tits cone of \(W\) by its action. % TODO: add picture
-From another point of view, the fundamental chamber can also be seen as a quotient of the manifold \(\faktor{WC}{\ker\alpha}\) by a finite group action.
-
-Another concept worth mentioning is the theory of orbifold coverings.
+By starting with a topological space \(X\), this is actually a more general way to construct orbifolds.
+Given a properly discontinuously action of a group \(G\) on \(X\), simply pass to the quotient space \(\faktor{X}{G}\) to obtain an orbifold.
+In contrast, to obtain a manifold, one has to demand the action to be free as well.
+This is not the only analogy between manifolds and orbifolds.
+% This is also the case for the fundamental chamber \(C\), its natural orbifold structure arises by taking the quotient of the Tits cone of \(W\) by its action. % TODO: add picture
+% From another point of view, the fundamental chamber can also be seen as a quotient of the manifold \(\faktor{WC}{\ker\alpha}\) by a finite group action.
+The concept of orbifold coverings translates almost one to one from the ordinary case.
 
 \begin{definition}
     An orbifold covering \(p: Q' \to Q\) is a continuous map on the underlying spaces \(X_{Q'} \to X_Q\), such that for each point \(x \in X_Q\) there is a local model \(U = \faktor{\widetilde{U}}{\Gamma}\) around \(x\) and each component \(V_i\) of \(p^{-1}(U)\) is homeomorphic to \(\faktor{\widetilde{U}}{\Gamma_i}\) for a subgroup \(\Gamma_i\) of \(\Gamma\).
     Furthermore, the restriction \(p\vert_{V_i} : V_i \to U\) corresponds to the natural projection \(\faktor{\widetilde{U}}{\Gamma_i} \to \faktor{\widetilde{U}}{\Gamma}\).
 \end{definition}
 
-As one might have noticed, there are many analogies between `ordinary' coverings, orbifold coverings as well as orbifolds and manifolds.
-Especially, there is a notion of orbifold fundamnetal groups as well.
-The analogy here happens to be that orbifold fundamental groups behave to orbifold coverings as `ordinary' fundamental groups do to `ordinary' coverings as in \Cref{def:covering}.
-In particular, there is again a correspondence between subgroups (of index \(n\)) of the orbifold fundamental group and (\(n\)-sheeted) orbifold coverings.
-In the case of the fundamental chamber \(C \cong \faktor{WC}{W}\) this implies that the manifold \(\faktor{WC}{\ker\alpha}\), constructed in the last section, is a manifold cover of \(C\).
-This is due to the fact that a manifold is an orbifold with trivial singular locus and \(\ker\alpha\) is a finite index subgroup of \(W\).
-
+\begin{remark}
+    We want to mention here, that the universal cover of an orbifold is exactly what we think of, i.e. the initial object in the category of orbifold coverings.
+    Moreover, there is a notion of orbifold fundamental groups as well and they behave to orbifold covers the same as fundamental groups to coverings in the ordinary case.
+    In particular, subgroups (of index \(n\)) of the orbifold fundamental group correspond to (\(n\)-sheeted) orbifold coverings.
+\end{remark}
+    
+Having all this in mind, we have two ways of approaching the fundamental chamber \(C\).
+One way, it obtains its natural orbifold structure as the quotient \(\faktor{WC}{W}\), where we observe that the orbifold fundamental group of \(C\) is precisely \(W\), as the Tits cone is simply connected, hence the universal cover of \(C\).
+On the other hand, the fundamental chamber is the quotient of the manifold \(\faktor{WC}{\ker\alpha}\) by a finite group action.
+\vspace*{\parskip}
+\begin{figure}[h!]
+    \begin{minipage}[c]{.66\textwidth}
+        Since \(\ker\alpha\) is a finite index subgroup of \(W\) and the discussion above, we get a covering map \(p\) so that the diagram on the right commutes.
+        Thus, both of our approaches to the fundamental chamber \(C\) agree in the sense that the projection \(WC \to \faktor{WC}{W}\) factors through the manifold cover, constructed earlier.
+    \end{minipage}\quad
+    \begin{minipage}{.3\textwidth}\vspace*{-2em}
+        \[\begin{tikzcd}
+            WC \arrow[r] \arrow[d] & \faktor{WC}{W} \\
+            \faktor{WC}{\ker\alpha} \arrow[ru, dashed] & {}
+        \end{tikzcd}\]
+    \end{minipage}
+\end{figure}
 
 % ***********************************************
 \section{The cofinal cover}
@@ -142,21 +162,23 @@ In this section, we want to at least \emph{sketch} the proof of the existence of
 Some more results from the theory of orbifolds are needed for the whole proof.
 We will state and use them without proof.
 
-The following proposition tells us, that for a right-angled Coxeter group, we are able to `double' the fundamental chamber in one of its faces and are still able to cover the whole Tits cone \(WC\) by reflecting in the faces of the resulting chamber.
-By doubling, pictorially, we mean to unfold the fundamental chamber (more generally a polytope) along one of its faces, by reflecting in this face.
-The chamber and its double will then be the new chamber of interest.
+In the following, doubling along a face means the construction of a sequence of polytopes \(P_k = P_{k-1} \cup g_{k-1}(P_{k-1})\), where \(g_{k-1}\) is the reflection in one of the faces of the previous polytope \(P_{k-1}\).
+The following proposition will tell us, that in the case of a right-angled Coxeter group, we are able to double the fundamental chamber \(C\) in one of its faces and are still able to cover the whole Tits cone \(WC\) by reflecting in the faces of the resulting chamber.
+% By doubling, pictorially, we mean to unfold the fundamental chamber (more generally a polytope) along one of its faces, by reflecting in this face.
+% The chamber and its double will then be the new chamber of interest.
 
 \begin{proposition}\label{prop:double}
-    Let \(C \subset \R^n\) be the fundamental chamber of a right-angled Coxeter group \(W\), acting on its Tits cone \(WC\).
-    The orbifold fundamental group \(\pi_1^{\text{orb}}(P)\) of the doubled chamber \(P\) is isomorphic to the reflection group generated by reflections in its faces.
-    Further, it has index \(2\) in the orbifold fundamental group \(\pi_1^{\text{orb}}(C)\) of \(C\). %, due to the covering theory of orbifolds.
-    This procedure can be iterated and the induced group action of \(\pi_1^{\text{orb}}(P)\) by reflections in the faces of the doubled polytope \(P\) on the Tits cone \(WC\) corresponding to \(W\) satisfies the following conditions
-    \[g\mathring{P} \cap \mathring{P} \neq \emptyset \implies g = 1 \qquad \text{ and } \qquad \underset{g \in \pi_1^{\text{orb}}(P)}{\bigcup} gP = WC.\]
-    % \begin{itemize}
-    %     \item \(g\mathring{P} \cap \mathring{P} \neq \emptyset \implies g = 1\),
-    %     \item \(\underset{g \in \pi_1^{\text{orb}}(P)}{\bigcup} gP = WC\).
-    % \end{itemize}
+    Let \(P_k \subset \R^n\) be a polytope with orbifold structure, orbifold fundamental group \(\pi_1^{\text{orb}}(P_k)\) and universal cover \(\widetilde{P}\).
+    Then, the fundamental group \(\pi_1^{\text{orb}}(P_{k+1})\) is isomorphic to the group generated by reflections in the faces of the double \(P_{k+1}\).
+    Furthermore, the fundamental group \(\pi_1^{\text{orb}}(P_{k+1})\) of the double is an index-\(2\) subgroup of \(\pi_1^{\text{orb}}(P_k)\) and the following two conditions are satisfied.
+    \begin{enumerate}
+        \item \(\forall k \in \N: \forall g \in \pi_1^{\text{orb}}(P_k): g(\mathring{P_k}) \cap \mathring{P_k} \neq \emptyset \implies g = 1\), and
+        \item \(\forall k \in \N: \bigcup_{g \in \pi_1^{\text{orb}}(P_k)} g(P_{k}) = \widetilde{P}\).
+    \end{enumerate}
 \end{proposition}
+\begin{proof}
+    We won't proof this here.
+\end{proof}
 
 To state the other helping lemma we will need, we first want to show that each chamber in the Tits cone can uniquely be labeled by elements of its corresponding group.
 
