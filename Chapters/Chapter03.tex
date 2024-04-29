@@ -16,6 +16,27 @@ Let us quickly recall the main theorem we want to prove.
 % This cover will be induced by a finite index subgroup in the right-angled Coxeter group \(W\).
 
 
+% % ***********************************************
+% \subsection{How to be RFRS}
+% % ***********************************************
+
+% In this subsection, we want to explain, what it means to be residually finite and rationally solvable for a group.
+
+% \begin{definition}
+%     Let \(G\) be a group.
+%     Then \(G\) is RFRS, if there exists a sequence \(G = G_0 > G_1 > \ldots\) of subgroups, such that each \(G_i\) is a normal subgroup of \(G\) with finite index, the intersection of all \(G_i\) is trivial and \((G_i)_r^{(1)} := \ker\{G \to \Q \otimes_\Z G_{\text{ab}}\}\) is a subgroup of \(G_{i+1}\).
+% \end{definition}
+
+% Thus, we want to show that a right-angled Coxeter group \(W\) has a finite index subgroup, which has such a sequence of subgroups.
+% Once we have found a candidate finite index subgroup, to prove the existence of such a sequence, we will construct a sequence of two-fold (orbifold) covers of the fundamental chamber \(C\) of \(W\).
+% We will then see that this sequence of covering spaces is cofinal, meaning that it will at some point cover the whole Tits cone, which is the universal cover of the fundamental chamber.
+
+% At this point we will already have much of the desired properties from the RFRS definition.
+% By the correspondence of coverings and subgroups of the fundamental group of a space, we see that the cofinal sequence of two-fold covers gives rise to a sequence of subgroups, each of whose has finite index in \(W'\).
+% Since the sequence of covering spaces is cofinal, the sequence of subgroups is cofinal as the fundamental group of the Tits cone is trivial.
+
+
+
 % ***********************************************
 \section{Construction of the manifold cover}
 % ***********************************************
@@ -45,7 +66,7 @@ We conclude the result of this section in the following proposition.
 \begin{proposition}
     Let \(W\) be a right-angled Coxeter group with corresponding Tits cone \(WC\). % and fundamental chamber \(C\).
     Then, there is a finite index subgroup \(W' \leq W\), acting by covering action on the interior of the Tits cone, implying that the quotient \(\faktor{int(WC)}{W'}\;\) is a manifold.
-    In particular, \(W' = \ker\{W \to W_{\text{ab}}\}\).
+    In particular, \(W' = \ker\{W \to W_{\text{ab}}\} = \ker\alpha\).
     % In particular, we can take \(W'\) to be the kernel of the abelianization homomorphism \(\alpha : W \to W_{\text{ab}}\).
 \end{proposition}
 
@@ -129,26 +150,27 @@ The concept of orbifold coverings translates almost one to one from the ordinary
     Furthermore, the restriction \(p\vert_{V_i} : V_i \to U\) corresponds to the natural projection \(\faktor{\widetilde{U}}{\Gamma_i} \to \faktor{\widetilde{U}}{\Gamma}\).
 \end{definition}
 
-\begin{remark}
+\begin{remark}\label{rmk:covers}
     We want to mention here, that the universal cover of an orbifold is exactly what we think of, i.e. the initial object in the category of orbifold coverings.
     Moreover, there is a notion of orbifold fundamental groups as well and they behave to orbifold covers the same as fundamental groups to coverings in the ordinary case.
     In particular, subgroups (of index \(n\)) of the orbifold fundamental group correspond to (\(n\)-sheeted) orbifold coverings.
 \end{remark}
     
 Having all this in mind, we have two ways of approaching the fundamental chamber \(C\).
-One way, it obtains its natural orbifold structure as the quotient \(\faktor{WC}{W}\), where we observe that the orbifold fundamental group of \(C\) is precisely \(W\), as the Tits cone is simply connected, hence the universal cover of \(C\).
-On the other hand, the fundamental chamber is the quotient of the manifold \(\faktor{WC}{\ker\alpha}\) by a finite group action.
+One way, it obtains its natural orbifold structure as the quotient \(\faktor{int(WC)}{W}\), where we observe that the orbifold fundamental group of \(C\) is precisely \(W\).
+As the Tits cone is simply connected, it is the universal cover of \(C\).
+On the other hand, the fundamental chamber is the quotient of the manifold \(\faktor{int(WC)}{\ker\alpha}\) by a finite group action.
 \vspace*{\parskip}
 
 \begin{figure}[h!]
-    \begin{minipage}[c]{.66\textwidth}
-        Since \(\ker\alpha\) is a finite index subgroup of \(W\) and the discussion above, we get a covering map \(p\) so that the diagram on the right commutes.
-        Thus, both of our approaches to the fundamental chamber \(C\) agree in the sense that the projection \(WC \to \faktor{WC}{W}\) factors through the manifold cover, constructed earlier.
+    \begin{minipage}[c]{.58\textwidth}
+        Since \(\ker\alpha\) is a finite index subgroup of \(W\), \Cref{rmk:covers} implies that we get a covering map \(p\) so that the diagram on the right commutes.
+        Thus, both of the approaches to the fundamental chamber \(C\) agree in the sense that the projection map \(int(WC) \to \faktor{int(WC)}{W}\) factors through the manifold cover, constructed earlier.
     \end{minipage}\quad
-    \begin{minipage}{.3\textwidth}\vspace*{-2em}
+    \begin{minipage}{.4\textwidth}\vspace*{-1em}
         \begin{tikzcd}
-            WC \arrow[r] \arrow[d] & \faktor{WC}{W} \\
-            \faktor{WC}{\ker\alpha} \arrow[ru, "p"', dashed]
+            int(WC) \arrow[r] \arrow[d] & \faktor{int(WC)}{W} \\
+            \faktor{int(WC)}{\ker\alpha} \arrow[ru, "p"', dashed]
         \end{tikzcd}
     \end{minipage}
 \end{figure}
@@ -180,7 +202,7 @@ The following proposition will tell us, that in the case of a right-angled Coxet
 
 To state the other helping lemma we will need, we first want to show that each chamber in the Tits cone can uniquely be labeled by elements of its corresponding group.
 
-\begin{lemma}
+\begin{lemma}\label{lem:labels}
     Let \(W\) be a Coxeter group and \(WC\) its Tits cone.
     The chambers of the form \(w(C)\) in the Tits cone can be labeled uniquely by elements in \(W\).
 \end{lemma}
@@ -191,16 +213,17 @@ To state the other helping lemma we will need, we first want to show that each c
     Thus, the chambers can be labeled in a unique way.
 \end{proof}
 
-We proceed with a helpful result, whose proof will be sketched.
+We proceed with another helpful result, whose proof relies on the aforementioned results.
 
 \begin{lemma}
     Let \(C \subset \R^n\) be the fundamental chamber of a Coxeter group \(W\).
-    The non-trivial labels \(w_i \neq 1_W\) of the chambers, defining the polytope \(P = \bigcup_{i=1}^n w_i C\), are \emph{not} contained in the reflection group, generated by reflecting in its faces.
+    The non-trivial labels \(w_i \neq 1_W\) of the chambers, defining the polytope \(P = \bigcup_{i=1}^n w_i(C)\), are \emph{not} contained in the reflection group, generated by reflecting in its faces.
 \end{lemma}
 \begin{proof}
-    The idea is to produce a contradiction to \Cref{prop:double}. \newline
-    Let \(w_i \neq 1_W\) be one of those labels.
-    But then, \(w_i(\mathring{P}) \cap \mathring{P} \neq \emptyset\), contradicting said proposition.
+    Note that by \Cref{lem:labels}, the chambers of the form \(w(C)\) are uniquely labeled by \(w \in W\).
+    Thus, let \(P := \bigcup_{i = 1}^n w_i(C)\) be as in the lemma and \(w_i\) one of its defining labels.
+    Assume, \(w_i \neq 1_W\) is contained in the reflection group generated by reflecting in the faces of \(P\).
+    But then we have that \(w_i(\mathring{P}) \cap \mathring{P} \neq \emptyset\), contradicting \Cref{prop:double}.
 \end{proof}
 
 Using this insight, we define a graph \(G\) with vertices \(V(G) := \{w(C) \;\vert\; w \in W\}\) and edges \(E(G) := W \times S\).
@@ -214,7 +237,7 @@ We will call the combinatorial graph of \(G\) (meaning that every double edge ge
 It is obvious, that this graph is isomorphic to the combinatorial Cayley graph of the group \(W\) and we see that the Cayley graph `embeds' into the Tits cone \(WC\).
 This will be useful to prove the next theorem.
 
-\begin{theorem}
+\begin{theorem}\label{thm:cofinal}
     By doubling in a face of the fundamental chamber and iteratively doubling the resulting chamber, we will at some point cover every chamber in the Tits cone \(WC\).
 \end{theorem}
 \begin{proof}
@@ -230,9 +253,32 @@ This will be useful to prove the next theorem.
     This iterative doubling process is valid by \Cref{prop:double} and by induction every chamber \(g(C)\) for \(g \in W\) can be covered.
 \end{proof}
 
+Thus, we conclude that the doubling sequence starting in the fundamental chamber \(C\) is a cofinal sequence of two-fold covers.
+
+\begin{remark}\label{rmk:groupseries}
+    Using \Cref{prop:double}, we see that the cofinality of this sequence translates to the group side.
+    More precisely, this sequence of two-fold covers induces a sequence of index-\(2\) subgroups via the fundamental groups of the covering spaces.
+    As we will at some point cover the whole Tits cone, whose fundamental group is trivial, the intersection of all these groups is trivial.
+    Furthermore, as index-\(2\) subgroups are normal, at this point we have constructed a descending normal series of groups.
+\end{remark}
+
 \begin{figure}[ht!]
     \centering
-    \subfloat[The fundamnetal chamber \(C\).]{{\includegraphics[width=7cm]{gfx/chamber graph - 1.png}}}\qquad
-    \subfloat[The double polytope \(P = C \cup s_1(C)\)]{{\includegraphics[width=7cm]{gfx/chamber graph - 2.png}}}\newline
-    \subfloat[The double polytope \(P' = P \cup s_1s_2s_1(P)\)]{{\includegraphics[width=7cm]{gfx/chamber graph - 3.png}}}
+    \subfloat[The fundamnetal chamber \(C\).]{{\includegraphics[width=6cm]{gfx/chamber graph - 1.png}}}\qquad
+    \subfloat[The double polytope \(P = C \cup s_1(C)\)]{{\includegraphics[width=6cm]{gfx/chamber graph - 2.png}}}\newline
+    \subfloat[The double polytope \(P' = P \cup s_1s_2s_1(P)\)]{{\includegraphics[width=6cm]{gfx/chamber graph - 3.png}}}
+    \caption{An example doubling sequence in \(D_\infty\)}
 \end{figure}
+
+\newpage
+% ***********************************************
+\section{The manifold sequence}
+% ***********************************************
+
+% The goal of this section is to construct a descending series of groups \(W = G_0 \geq G_1 \geq G_2 \geq \ldots\), where \(G_i \mathrel{\unlhd} W\), \(\bigcap_{i} G_i = \{1\}\) and \([G : G_i] < \infty\).
+% Recall that \(\ker\alpha = \ker\{W \to W_{\text{ab}}\}\) induces a manifold cover of the fundamental chamber \(C\).
+% Moreover, \(\ker\alpha\) is a normal subgroup of \(W\), suggesting the following construction.
+
+% Following \Cref{rmk:groupseries}, take the descending normal series of fundamental groups \(\pi_1^{\text{orb}}(P_k)\) induced by the doubling sequence \(P_k\).
+% The intersection of \(\ker\alpha\) with \(\pi_1^{\text{orb}}(P_k)\) is a subgroup of \(\ker\alpha\), in particular normal in \(W\).
+
