@@ -36,7 +36,6 @@ Let us quickly recall the main theorem we want to prove.
 % Since the sequence of covering spaces is cofinal, the sequence of subgroups is cofinal as the fundamental group of the Tits cone is trivial.
 
 
-
 % ***********************************************
 \section{Construction of the manifold cover}
 % ***********************************************
@@ -157,20 +156,20 @@ The concept of orbifold coverings translates almost one to one from the ordinary
 \end{remark}
     
 Having all this in mind, we have two ways of approaching the fundamental chamber \(C\).
-One way, it obtains its natural orbifold structure as the quotient \(\faktor{int(WC)}{W}\), where we observe that the orbifold fundamental group of \(C\) is precisely \(W\).
-As the Tits cone is simply connected, it is the universal cover of \(C\).
-On the other hand, the fundamental chamber is the quotient of the manifold \(\faktor{int(WC)}{\ker\alpha}\) by a finite group action.
+One way, it obtains its natural orbifold structure as the quotient \(\faktor{int(WC)}{W}\).
+As the Tits cone is simply connected, it is the universal cover of \(C\) and we observe that the orbifold fundamental group of \(C\) is precisely \(W\).
+On the other hand, the fundamental chamber is the quotient of the manifold \(\faktor{int(WC)}{W'}\) by a finite group action.
 \vspace*{\parskip}
 
 \begin{figure}[h!]
-    \begin{minipage}[c]{.58\textwidth}
-        Since \(\ker\alpha\) is a finite index subgroup of \(W\), \Cref{rmk:covers} implies that we get a covering map \(p\) so that the diagram on the right commutes.
-        Thus, both of the approaches to the fundamental chamber \(C\) agree in the sense that the projection map \(int(WC) \to \faktor{int(WC)}{W}\) factors through the manifold cover, constructed earlier.
+    \begin{minipage}[c]{.6\textwidth}
+        Since \(W'\) is a finite index subgroup of \(W\), \Cref{rmk:covers} implies that we get a covering map \(p\) so that the diagram on the right commutes.
+        Thus, both of the approaches to the fundamental chamber \(C\) agree in the sense that the projection map \(int(WC) \to \faktor{int(WC)}{W}\) factors through the manifold cover, constructed in Section \(3.1\).
     \end{minipage}\quad
-    \begin{minipage}{.4\textwidth}\vspace*{-1em}
+    \begin{minipage}{.35\textwidth}\vspace*{-1em}
         \begin{tikzcd}
             int(WC) \arrow[r] \arrow[d] & \faktor{int(WC)}{W} \\
-            \faktor{int(WC)}{\ker\alpha} \arrow[ru, "p"', dashed]
+            \faktor{int(WC)}{W'} \arrow[ru, "p"', dashed]
         \end{tikzcd}
     \end{minipage}
 \end{figure}
@@ -275,10 +274,46 @@ Thus, we conclude that the doubling sequence starting in the fundamental chamber
 \section{The manifold sequence}
 % ***********************************************
 
-% The goal of this section is to construct a descending series of groups \(W = G_0 \geq G_1 \geq G_2 \geq \ldots\), where \(G_i \mathrel{\unlhd} W\), \(\bigcap_{i} G_i = \{1\}\) and \([G : G_i] < \infty\).
-% Recall that \(\ker\alpha = \ker\{W \to W_{\text{ab}}\}\) induces a manifold cover of the fundamental chamber \(C\).
-% Moreover, \(\ker\alpha\) is a normal subgroup of \(W\), suggesting the following construction.
+The goal of this section is to construct a descending series of groups \(W' = G_0 \geq G_1 \geq G_2 \geq \ldots\), where \(G_i \mathrel{\unlhd} W'\), \(\bigcap_{i} G_i = \{1\}\) and \([W' : G_i] < \infty\).
+Recall that \(W' = \ker\alpha = \ker\{W \to W_{\text{ab}}\}\) induces a manifold cover of the fundamental chamber \(C\) and fix the cofinal doubling sequence \(P_k\), starting in \(C\).
+Consider the subgroups of \(W'\), defined by \(G_i := \pi_1^{\text{orb}}(P_i) \cap W'\).
+Each of these subgroups, by construction, induces a manifold cover of \(P_i\) via the quotient \(\faktor{WC}{G_i}\).
 
-% Following \Cref{rmk:groupseries}, take the descending normal series of fundamental groups \(\pi_1^{\text{orb}}(P_k)\) induced by the doubling sequence \(P_k\).
-% The intersection of \(\ker\alpha\) with \(\pi_1^{\text{orb}}(P_k)\) is a subgroup of \(\ker\alpha\), in particular normal in \(W\).
+Note that we also have that the quotient \(\faktor{G_i}{G_{i+1}}\) is either isomorphic to \(\faktor{\Z}{2\Z}\) or the trivial group.
+Since a subgroup of index \(2\) is always normal and the trivial group is trivially normal, we have that the 
+
+\newpage
+% ***********************************************
+\section{Loops bouncing off faces}
+% ***********************************************
+
+We still have to show that the rational derived group \((G_i)_r^{(1)}\), given by \(\ker\left\{G_i \to \Q \otimes_\Z \faktor{G_i}{G_{i+1}}\right\}\) is a subgroup of the group \(G_{i+1}\).
+Recall that a quotient group \(\faktor{H}{N}\) is abelian, if and only if the derived subgroup \(H^{(1)} := [H, H]\) is contained in the normal subgroup \(N\).
+As we are in the situation that we have either \(\faktor{G_i}{G_{i+1}} \cong \faktor{\Z}{2\Z}\) or \(\faktor{G_i}{G_{i+1}} \cong \{1\}\), we conclude that the derived subgroup \(G_i^{(1)}\) is a subgroup of \(G_{i+1}\). %, due to the fact that \(G_i^{(1)}\) is a subgroup of the kernel of the isomorphism.
+Thus, to show that \((G_i)_r^{(1)}\) is a subgroup of \(G_{i+1}\), it suffices to show that each element \(g \in G_i\) with non-trivial image in the quotient \(\faktor{G_i}{G_{i+1}}\) is not torsion.
+These elements will then admit a factorization through the torsion-free abelianization. 
+\begin{figure}[h!]
+    \centering
+    \begin{tikzcd}
+        G_i \arrow[rr] \arrow[dr] & {} & \faktor{G_i}{G_{i+1}} \cong \faktor{\Z}{2\Z} \\
+        {} & \faktor{(G_i)_{\text{ab}}}{\text{Torsion}} \arrow[ru, dashed]
+    \end{tikzcd}
+\end{figure}
+
+Now, take an element \(g\) in \(G_i\) that is not contained in \(G_{i+1}\) and a representative loop \(\gamma\) of \(g\) in the manifold \(D_i'\).
+As discussed above, we have a projection map from \(D_i'\) to \(P_i\).
+Watching the projection of \(\gamma\) bouncing off the faces inside the polytope \(P_i\), we observe it hitting the face \(F_i\) an odd number of times.
+If it would hit \(F_i\) an even number of times, \(\gamma\) would lift to \(P_{i+1}\) and \(g\) would be contained in \(G_{i+1}\), a contradiction.
+Thus, in the manifold cover \(D_i'\) of \(P_i\), we see \(\gamma\) intersecting the face \(F_i\) an odd number of times.
+
+To see that the loop \(\gamma\) represents an element of infinite order, we will construct a morphism of fundamental groups.
+Namely, from the fundamental group \(\pi_1(D_i')\) of the manifold \(D_i'\) to the fundamental group of the circle \(\pi_1(S^1)\).
+If \(\gamma\) maps non-trivially to \(\pi_1(S^1)\), it has to represent an element of infinite order, as \(\pi_1(S^1) \cong \Z\).
+Before proceeding with the morphism, we point out the two-sidedness of the face \(F_i\) in \(D_i'\).
+
+\begin{definition}
+    Let \(M\) be a manifold and \(F \subset M\) be a submanifold.
+    Then, \(F\) is called \emph{two-sided} in \(M\), if locally it looks like the product with an intervall.
+    More precisely, there is a neighborhood \(N\) with \(N \cong F \times (-\varepsilon, \varepsilon)\) for suitable \(\varepsilon > 0\), where \(F\) is identified with \(F \times \{0\}\).
+\end{definition}
 
