@@ -5,35 +5,55 @@
 Let us quickly recall the main theorem we want to prove.
 
 \begin{theorem*}
-    A finitely generated right-angled Coxeter group \(W\) has a finite index subgroup \(W'\) such that \(W'\) is residually finite and rationally solvable (RFRS).
+    A finitely generated right-angled Coxeter group \(W\) has a finite index subgroup \(W'\), such that \(W'\) is residually finite and rationally solvable (RFRS).
 \end{theorem*}
 
-% For the following, we consider the Tits cone \(WC\) corresponding to \(W\), living in \(\R^n\) for \(n = \abs{I}\).
-% Before continuing, we want to shortly mention that the fundamental chamber \(C\) has a natural orbifold structure as the quotient \(\faktor{WC}{W}\). % \(WC/W\).
-% This will be covered later on in slightly greater detail.
-% % By the discussion of last chapter, we know that by taking the quotient \(WC/W\), we are left with the fundamental chamber \(C\).
-% In the first section, our goal is to produce a manifold cover \(C' \to C\) of the fundamental chamber.
-% This cover will be induced by a finite index subgroup in the right-angled Coxeter group \(W\).
+Before proceeding with the proof, we should make clear what we have to show.
+This is essentially the existence of a cofinal sequence of subgroups, satisfying the RFRS condition.
+But what does it mean to be RFRS?
+We shall give the definition, to shed some light onto our goal.
 
 
 % % ***********************************************
-% \subsection{How to be RFRS}
+% \section{How to be RFRS}
 % % ***********************************************
 
-% In this subsection, we want to explain, what it means to be residually finite and rationally solvable for a group.
+% In this subsection, we introduce the RFRS condition and discuss how to verify it for a group \(G\).
 
-% \begin{definition}
-%     Let \(G\) be a group.
-%     Then \(G\) is RFRS, if there exists a sequence \(G = G_0 > G_1 > \ldots\) of subgroups, such that each \(G_i\) is a normal subgroup of \(G\) with finite index, the intersection of all \(G_i\) is trivial and \((G_i)_r^{(1)} := \ker\{G \to \Q \otimes_\Z G_{\text{ab}}\}\) is a subgroup of \(G_{i+1}\).
-% \end{definition}
+\begin{definition}
+    Let \(G\) be a group.
+    Then, \(G\) satisfies the RFRS condition, if there is a sequence of subgroups \(G = G_0 > G_1 > \ldots\), satisfying the following conditions.
+    \begin{enumerate}
+        \item for each \(i\), \(G_i \triangleleft G\) is a normal subgroup of \(G\),
+        \item for each \(i\), the index \([G : G_i]\) is finite,
+        \item the intersection \(\bigcap_i G_i\) is the trivial group and
+        \item for each \(i\), \((G_i)_r^{(1)} := \ker\{G_i \to \Q \otimes_\Z (G_i)_{\text{ab}}\}\) is a subgroup of \(G_{i+1}\).
+    \end{enumerate}
+\end{definition}
 
-% Thus, we want to show that a right-angled Coxeter group \(W\) has a finite index subgroup, which has such a sequence of subgroups.
-% Once we have found a candidate finite index subgroup, to prove the existence of such a sequence, we will construct a sequence of two-fold (orbifold) covers of the fundamental chamber \(C\) of \(W\).
-% We will then see that this sequence of covering spaces is cofinal, meaning that it will at some point cover the whole Tits cone, which is the universal cover of the fundamental chamber.
+Observe that in praxis, it suffices to show that conditions \(2\) to \(4\) hold. % as once they are satisfied we can simply pass to the Core of each \(G_i\) in \(G\) and this new sequence will.
+To see this, let \(G = G_0 > G_1 > \ldots\) be a cofinal sequence of finite index subgroups \(G > G_i\) with \((G_i)_r^{(1)} \leq G_{i+1}\).
+Then, for each \(i\) we pass to the core of \(G_i\), given by Core\((G_i) := \bigcap_{g \in G} g G_i g^{-1}\).
+By construction the core of a subgroup \(G_i\) is normal in \(G\) and furthermore, we claim the following.
+\Claimm{If \(G_i\) has finite index in \(G\), its core will also have finite index in \(G\).}
+\Claimmproof{
+    Let \(G_i\) be a subgroup in \(G\) with \([G : G_i] < \infty\).
+    Then, \(G\) acts (by left multiplication) on the left cosets of \(G_i\) in \(G\) and the kernel of this action consists of the \(h \in G\) with
+    \[hgG_i = gG_i \iff g^{-1}hgG_i = G_i \iff g^{-1}hg \in G_i \iff h \in gG_ig^{-1} \quad \forall g \in G.\]
+    We note that the kernel is exactly the core of \(G_i\).
+    Moreover, the quotient \(\faktor{G}{\text{Core}(G_i)}\) embeds into the symmetric group Sym\((\faktor{G}{G_i})\), whose order is \([G : G_i]!\).
+    Thus, we see that if \(G_i\) has finite index in \(G\), the core has finite index as well.
+}
+So, it remains to check that \((\text{Core}(G_i))_r^{(1)}\) is a subgroup of Core\((G_{i+1})\).
+Clearly,  for \(g \in G\) we have the equality \(g((G_i)_r^{(1)})g^{-1} = (gG_ig^{-1})_r^{(1)}\), from which we obtain
+\[(\text{Core}(G_i))_r^{(1)} \leq \bigcap_{g \in G} (gG_ig^{-1})_r^{(1)} = \bigcap_{g \in G} g(G_i)_r^{(1)}g^{-1} \leq \bigcap_{g \in G} gG_{i+1}g^{-1} = \text{Core}(G_{i+1}).\]
+% We conclude that we can omit the first condition in the RFRS condition if we accept to pass to the core of each subgroup \(G_i\) and obtain the sequence \(G \triangleright \text{Core}(G_0) \triangleright \text{Core}(G_1) \triangleright \ldots\;\).
+We see that if we are willing to pass to the sequence of core subgroups, we can drop the first condition in the definition of the RFRS condition.
 
-% At this point we will already have much of the desired properties from the RFRS definition.
-% By the correspondence of coverings and subgroups of the fundamental group of a space, we see that the cofinal sequence of two-fold covers gives rise to a sequence of subgroups, each of whose has finite index in \(W'\).
-% Since the sequence of covering spaces is cofinal, the sequence of subgroups is cofinal as the fundamental group of the Tits cone is trivial.
+\begin{remark}
+    Note that tensoring an abelian group \(A\) (as \(\Z\)-module) with the rationals, `kills' the torsion part of \(A\), whence \(\Q \otimes_\Z A \cong \faktor{A}{\text{Torsion}}\).
+    In particular, for the abelianization \(G_{\text{ab}}\), the group \(\Q \otimes_\Z G_{\text{ab}}\) is isomorphic to the torsion free abelianization \(\faktor{G_{\text{ab}}}{\text{Torsion}}\).
+\end{remark}
 
 
 % ***********************************************
@@ -60,7 +80,7 @@ By \Cref{thm:convexity} the Tits cone is also a convex cone, implying that it ha
 Having all this information, we are able to apply \Cref{lem:covering} to obtain the covering
 \[int(WC) \;\longrightarrow\; \faktor{int(WC)}{\ker\alpha} \qquad x \mapsto \text{Orb}_{\ker\alpha}(x).\]
 % Using the local homeomorphism property of a covering map and the fact that the Tits cone \(WC\) is a subspace of \(\R^n\), we conclude that the quotient \(\faktor{int(WC)}{\ker\alpha}\) is indeed a manifold.
-We conclude the result of this section in the following proposition.
+We conclude the results of this section in the following proposition.
 
 \begin{proposition}
     Let \(W\) be a right-angled Coxeter group with corresponding Tits cone \(WC\). % and fundamental chamber \(C\).
@@ -234,10 +254,12 @@ Thus, the map \(W \times S \to W, \; (w, s) \mapsto wsw^{-1}\) defines a labelin
 We will call the combinatorial graph of \(G\) (meaning that every double edge gets collapsed) the \emph{chamber graph} Cham\((W, S)\) of \(W\).
 
 It is obvious, that this graph is isomorphic to the combinatorial Cayley graph of the group \(W\) and we see that the Cayley graph `embeds' into the Tits cone \(WC\).
-This will be useful to prove the next theorem.
+This will be useful to prove the main theorem of this section next.
 
 \begin{theorem}\label{thm:cofinal}
-    By doubling in a face of the fundamental chamber and iteratively doubling the resulting chamber, we will at some point cover every chamber in the Tits cone \(WC\).
+    % By doubling in a face of the fundamental chamber and iteratively doubling the resulting chamber, we will at some point cover every chamber in the Tits cone \(WC\).
+    The doubling sequence \(P_k\), starting in the fundamental chamber \(P_0 = C\), is cofinal.
+    This means, the chamber \(P_n\) for some \(n\), covers the whole Tits cone.
 \end{theorem}
 \begin{proof}
     The proof is by induction on the word length \(\ell(w)\).
@@ -252,13 +274,13 @@ This will be useful to prove the next theorem.
     This iterative doubling process is valid by \Cref{prop:double} and by induction every chamber \(g(C)\) for \(g \in W\) can be covered.
 \end{proof}
 
-Thus, we conclude that the doubling sequence starting in the fundamental chamber \(C\) is a cofinal sequence of two-fold covers.
+% The conclusion of this section is that the doubling sequence starting in the fundamental chamber \(C\) of the right-angled Coxeter group \(W\) is a cofinal sequence of two-fold (orbifold) covers.
+% Thus, we conclude that the doubling sequence starting in the fundamental chamber \(C\) is a cofinal sequence of two-fold covers.
 
 \begin{remark}\label{rmk:groupseries}
     Using \Cref{prop:double}, we see that the cofinality of this sequence translates to the group side.
     More precisely, this sequence of two-fold covers induces a sequence of index-\(2\) subgroups via the fundamental groups of the covering spaces.
     As we will at some point cover the whole Tits cone, whose fundamental group is trivial, the intersection of all these groups is trivial.
-    Furthermore, as index-\(2\) subgroups are normal, at this point we have constructed a descending normal series of groups.
 \end{remark}
 
 \begin{figure}[ht!]
@@ -274,15 +296,39 @@ Thus, we conclude that the doubling sequence starting in the fundamental chamber
 \section{The manifold sequence}
 % ***********************************************
 
-The goal of this section is to construct a descending series of groups \(W' = G_0 \geq G_1 \geq G_2 \geq \ldots\), where \(G_i \mathrel{\unlhd} W'\), \(\bigcap_{i} G_i = \{1\}\) and \([W' : G_i] < \infty\).
-Recall that \(W' = \ker\alpha = \ker\{W \to W_{\text{ab}}\}\) induces a manifold cover of the fundamental chamber \(C\) and fix the cofinal doubling sequence \(P_k\), starting in \(C\).
-Consider the subgroups of \(W'\), defined by \(G_i := \pi_1^{\text{orb}}(P_i) \cap W'\).
-Each of these subgroups, by construction, induces a manifold cover of \(P_i\) via the quotient \(\faktor{WC}{G_i}\).
+We finally have developed enough tools, to construct the desired sequence of subgroups in \(W'\).
+Following \Cref{thm:cofinal}, we fix a cofinal doubling sequence \(P_k\), starting in the fundamental chamber \(P_0 = C\), i.e. a cofinal sequence of two-fold orbifold covers \(C \leftarrow P_1 \leftarrow P_2 \leftarrow \cdots\).
+Then, we define the groups \(W_i := \pi_1^{\text{orb}}(P_i) \cap W'\) for \(i \in \{0\} \cup \N\), each inducing a manifold \(\faktor{WC}{W_i}\).
+Using the theory of orbifold coverings, we mention that these manifolds cover the orbifolds \(\faktor{WC}{\pi_1^{\text{orb}}(P_i)}\).
+By \Cref{rmk:groupseries}, the groups \(W_i\) form a cofinal descending series of subgroups.
 
-Note that we also have that the quotient \(\faktor{G_i}{G_{i+1}}\) is either isomorphic to \(\faktor{\Z}{2\Z}\) or the trivial group.
-Since a subgroup of index \(2\) is always normal and the trivial group is trivially normal, we have that the 
+\noindent
+Thus, to show that \(W'\) is RFRS, it remains to show the following two conditions:
+\begin{enumerate}
+    \item each \(W_i\) has finite index in \(W'\) and
+    \item \((W_i)_r^{(1)} := \ker\{W_i \to \Q \otimes_\Z (W_i)_{\text{ab}}\}\) is a subgroup of \(W_{i+1}\).
+\end{enumerate}
+We will start with the first condition.
 
-\newpage
+\begin{lemma}
+    The homomorphism \(\phi : \faktor{W_i}{W_{i+1}} \to \faktor{\pi_1^{\text{orb}}(P_i)}{\pi_1^{\text{orb}}(P_{i+1})}\) is injective.
+\end{lemma}
+\begin{proof}    
+\end{proof}
+
+\begin{corollary}
+    The index of \(W_{i+1}\) in \(W_i\) is less than or equal to \(2\).
+\end{corollary}
+\begin{proof}
+\end{proof}
+
+\begin{corollary}
+    The index of \(W_i\) in \(W'\) is finite.
+\end{corollary}
+\begin{proof}
+\end{proof}
+
+
 % ***********************************************
 \section{Loops bouncing off faces}
 % ***********************************************
