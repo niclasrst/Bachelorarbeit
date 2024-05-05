@@ -2,6 +2,7 @@
 \chapter{Preliminaries}\label{ch:preliminaries}
 % ***********************************************
 
+
 % ***********************************************
 \section{Coxeter Groups}
 % ***********************************************
@@ -306,7 +307,7 @@ Each of the above matrices corresponds to one of the generators \(r, s\) and \(t
     \label{fig:titsconeex}
     \centering
     \includegraphics[width=5cm]{gfx/Tits cone example poincare.png}
-    \caption{The Tits cone in the poincaré disc.}
+    \caption{The fundamental chamber in the poincaré disc.}
 \end{figure}\vspace*{-\parskip}
 
 
@@ -646,10 +647,10 @@ This decomposition (altough not into chambers) is a key component in the followi
 
 \begin{figure}[ht]
     \centering
-    \subfloat[\centering A path through the Tits cone.]{{\includegraphics[width=5cm]{gfx/pfad durch kegel.png}}\label{img:path}}
+    \subfloat[\centering A path through the Tits cone.]{{\includegraphics[width=6cm]{gfx/A path through WC.png}}\label{img:path}}
     \qquad
-    \subfloat[\centering A neighborhood of \(\xi\).]{{\includegraphics[width=5.35cm]{gfx/the neighborhood.png}}}
-    % \caption{The picture to the proof.}
+    \subfloat[\centering A neighborhood of \(\xi\).]{{\includegraphics[width=6cm]{gfx/A neighborhood.png}}}
+    \caption{A schematic picture to the proof.}
 \end{figure}
 
 To summarize, the essence of this section is that first of all the fundamental chamber is indeed a fundamental domain of the action of a Coxeter group on its Tits cone.
@@ -742,7 +743,4 @@ To finally construct coverings from group actions and connect them in some sense
     Now all conditions in \Cref{def:covering} are satisfied, so \(p_G\) is a covering map.
     For the last part of the statement, note that \(X\) is simply connected, implying that it is the universal cover of \(G \backslash X\). %\(\faktor{X}{G}\).
     By definition, \(G\) is the group of Deck transformations, thus \(\pi_1(G \backslash X, Orb(x_0)) \cong G\).
-    % For the last part of the statement, take a homotopy class of loops \([\gamma] \in \pi_1(G \backslash X, Gx_0)\) with representative \(\gamma\).
-    % Define a map \(\varphi : \pi_1(G, x_0) \to G\) on homotopy classes \([\gamma]\), such that \(\varphi([\gamma])\) takes \(\widetilde{\gamma}(0) = x_0\) to \(\widetilde{\gamma}(1)\), where \(\widetilde{\gamma}: [0,1] \to X\) is a lift of \(\gamma\).
-    % Now if \(\gamma'\) is another representative of \([\gamma]\) then, \(\widetilde{\overline{\gamma}'\cdot \gamma}\) is the lift of a contractible curve in \(G \backslash X\).
 \end{proof}
