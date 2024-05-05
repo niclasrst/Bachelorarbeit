@@ -400,50 +400,61 @@ With our goal in mind, we take an arbitrary element \(g\) in the group \(W_i\) t
 Note that \(\gamma\) is a loop living in the manifold \(\faktor{WC}{W_i}\), covering the polytope \(P_i\).
 To keep the notation more readable, we will denote these manifolds by \(M_i\) in the following.
 
-To see what is going on, we project \(\gamma\) down to \(P_i\) generically, using the covering map from \(M_i\) to \(P_i\).
+\begin{remark}
+    As we have to deal with quite a few objects in the following, we fix some notation.
+    \begin{enumerate}
+        \item The manifolds arising from the quotients \(\faktor{WC}{W_i}\) will be denoted \(M_i\),
+        \item covering map \(p_i: M_i \to P_i\), will be shortly denoted by \(\pi_i\),
+        \item the face of \(P_i\), in which gets doubled to obtain \(P_{i+1}\), will be denoted \(F_i\),
+        \item in particular, the preimage of \(F_i\) is denoted \(p_i^{-1}(F_i)\).
+    \end{enumerate}
+\end{remark}
+
+To see what is going on, we project \(\gamma\) down to \(P_i\) generically, using the covering map \(p_i\). %from \(M_i\) to \(P_i\).
 As the polytope \(P_i\) has cyclic local group of order two everywhere on its codimension-\(1\) faces, what we see is a ray bouncing around the orbifold. % TODO: corner points!
-One could think of a polytope with mirrors as faces, where we watch a ray of light getting reflected in the mirrors.
+One could think of a polytope with mirrors as faces and we are watching a ray of light getting reflected in the mirrors.
 Now, fix the face \(F_i\) in which \(P_i\) is doubled to produce \(P_{i+1}\).
 By our choice of \(g\), what we are seeing is that \(\gamma\) hits \(F_i\) an odd number of times.
 If it would hit \(F_i\) an even number of times, \(\gamma\) would lift to a loop in \(P_{i+1}\) and therefore \(g\) would lift to \(W_{i+1}\), a contradiction.
-In particular, observing the loop \(\gamma\) in the manifold cover \(M_i\), we must have \(\gamma\) intersecting the preimage of \(F_i\) in \(M_i\) an odd number of times as well.
+In particular, observing the loop \(\gamma\) in the manifold \(M_i\), we see \(\gamma\) intersecting the preimage of \(F_i\) in \(M_i\) an odd number of times as well.
 
 \begin{remark}
     We want to explain what is happening here in a more explicit way.
     To do so, we look at the following picture, which one should think of in a schematic way.
-    We see a loop \(\gamma\) in the polytope \(P_i\), being reflected in faces.
+    We see a loop \(\gamma\) (which formally is the projection of a loop in \(M_i\)) in the polytope \(P_i\), being reflected in faces.
     The face of interest \(F_i\) is colored in blue and we assume \(\gamma\) to be the orange path, walked around exactly once, starting in the basepoint \(x_0\).
     \begin{figure}[h!]
         \label{fig:ray}
         \centering
-        \includegraphics[width=.75\textwidth]{gfx/Ray bouncing in P.png}
-    \end{figure}
+        \includegraphics[width=.8\textwidth]{gfx/Ray bouncing in P.png}
+    \end{figure}\vspace*{-\parskip}
 
     \noindent
     By doubling this polytope \(P_i\) along the face \(F_i\), we land on the right side of this picture.
     Observe that the basepoint \(x_0\) now has a corresponding double \(\widetilde{x}_0\).
     The more interesting part is, that now the loop \(\gamma\) gets unwound to a path going from \(x_0\) to \(\widetilde{x}_0\).
-    On the other hand, if we consider the loop \(\gamma^2\), i.e. the loop \(\gamma\) gets run through twice, then \(\gamma^2\) hits the face \(F_i\) twice.
-    By our reasoning above, we should see a loop coming from \(\gamma\) in the two-fold cover \(P_{i+1}\).
+    On the other hand, if we consider the loop \(\gamma^2\), i.e. the loop \(\gamma\) gets run through twice, consequently hitting the face \(F_i\) twice.
+    By our reasoning above, we should see a loop coming from \(\gamma^2\) in the two-fold cover \(P_{i+1}\).
     Indeed, the loop \(\gamma^2\) lifts to \(P_{i+1}\) and is pictured by the concatenated loop \(\widetilde{\gamma} \cdot \gamma\) in \(P_{i+1}\) on the right.
 \end{remark}
 
 Now that we have a more intuitive view on our reasoning, we have to deal with one more minor issue.
-We will mentioned it in the following remark, without giving details.
+We will mention it in the following remark, but will omit the details.
 
+\newpage
 \begin{remark}
     Note that we could also have a loop \(\gamma\) like in the left of the following image.
     \begin{figure}[h!]
         \label{fig:badray}
         \centering
-        \includegraphics[height=3.3cm]{gfx/Equivalent loops.png}
-    \end{figure}
+        \includegraphics[height=3.2cm]{gfx/Equivalent loops.png}
+    \end{figure}\vspace*{-\parskip}
 
     \noindent
     The difficulty with such loops is that the codimension-\(2\) faces of a polytope also consist of singular points.
     Their local group may very well be different from the local groups of the points in codimension-\(1\) faces.
     Nevertheless, we fortunately do not have to deal with them.
-    In fact, we can always find a loop \(\gamma'\), homotopy equivalent to \(\gamma\), that is only hitting codimension-\(1\) faces.
+    In fact, we can always find a loop \(\gamma'\), homotopy equivalent to \(\gamma\) and that is only hitting codimension-\(1\) faces.
 \end{remark}
 
 % Up to this point we have set up the stage for the next argument to fulfill the proof.
@@ -451,24 +462,43 @@ We will mentioned it in the following remark, without giving details.
 To see that the loop \(\gamma\) represents an element of infinite order in \(W_i\), we will construct a morphism of fundamental groups.
 Namely, from the fundamental group \(\pi_1(M_i)\) of the manifold \(M_i\) to the fundamental group of the circle \(\pi_1(S^1)\).
 If \(\gamma\) maps non-trivially to \(\pi_1(S^1)\), it has to represent an element of infinite order, as \(\pi_1(S^1) \cong \Z\).
-As the two-sidedness of the faces \(F_i\) will be important, we want to mention it here.
-Altough, we won't dive into much details as it is a pretty technical condition on the faces.
+
+A fact we have not mentioned yet is that the preimage of a face \(F_i\) in the manifold \(M_i\) is two-sided.
+This is a technical condition on the preimage \(p_i^{-1}(F_i)\), but it will be important in the following.
+We give the definition.
 
 \begin{definition}
     Let \(M\) be a manifold and \(F \subset M\) be a submanifold.
     Then, \(F\) is called \emph{two-sided} in \(M\), if it locally looks like the product with an intervall.
-    More precisely, there is a neighborhood \(N\) with \(N \cong F \times (-\varepsilon, \varepsilon)\) for suitable \(\varepsilon > 0\), where \(F\) is identified with \(F \times \{0\}\).
+    More precisely, there is a neighborhood \(N_F\) with \(N_F \cong F \times (-\varepsilon, \varepsilon)\) for suitable \(\varepsilon > 0\), where \(F\) is identified with \(F \times \{0\}\).
 \end{definition}
 
-For us it will be important that the generic projection of \(\gamma\) down to the orbifold \(P_i\) implies that in the neighborhood \(N\), coming from the two-sidedness the ray \(\gamma\) is injective, i.e. we don't just walk to the face and go back without getting reflected. % TODO: check this!
-Proceed by defining an equivalence relation on the manifold \(M_i\) as follows
+The generic projection of \(\gamma\) down to the orbifold \(P_i\) implies that in the projection of the neighborhood \(N_{F_i}\), coming from the two-sidedness, the ray \(\gamma\) is injective, i.e. we don't just walk up to the face and go back without getting reflected. % TODO: check this!
+As a consequence, in the manifold \(M_i\), the ray \(\gamma\) has to really intersect the preimage of \(F_i\).
+We will now proceed by defining an equivalence relation on points in \(M_i\) as follows.
 \begin{equation*}
-    x \sim y  \qquad :\iff \qquad x, y \in M_i \backslash N \quad\text{or}\quad x = y.
+    x \sim y  \qquad :\iff \qquad x, y \in M_i \backslash N_{F_i} \quad\text{or}\quad x = y.
 \end{equation*}
-By passing to the quotient \(\faktor{M_i}{\sim}\), we collapse the endpoints of the closure \(\overline{N} \cong F_i \times [-\varepsilon, \varepsilon]\).
-Now, further collapse the single fibers \(F_i \times \{z\}\) for all \(z\) in the open interval \((-\varepsilon, \varepsilon)\).
-What we visually see, already is the one-dimensional sphere \(S^1\).
-We already mentioned that the generic projection implies that \(\gamma\) is injective in this neighborhood \(N\).
-This implies that \(\gamma\) actually intersects the face \(F_i\).
+% By passing to the quotient \(\faktor{M_i}{\sim}\), we collapse the endpoints of the closure \(\overline{N} \cong F_i \times [-\varepsilon, \varepsilon]\).
+% Now, further collapse the single fibers \(F_i \times \{z\}\) for all \(z\) in the open interval \((-\varepsilon, \varepsilon)\).
+% What we visually see, already is the one-dimensional sphere \(S^1\).
+% We already mentioned that the generic projection implies that \(\gamma\) is injective in this neighborhood \(N\).
+% This implies that \(\gamma\) actually intersects the face \(F_i\).
+We now want to describe the space, arising by collapsing the manifold \(M_i\) relative to this equivalence relation, i.e. the quotient space \(\faktor{M_i}{\sim}\).
+As all the points outside the neighborhood \(N_{F_i}\) get identified, we see a double cone with identified cone points.
+\begin{figure}[h!]
+    \label{fig:doublecone}
+    \centering
+    \includegraphics[width=.8\textwidth]{gfx/Quotient 1.png}
+\end{figure}
 
-We conclude that 
+This does not yet yield the desired morphism of fundamental groups.
+We have to pass to another quotient by collapsing the `fibers' \(p_i^{-1}(F_i) \times \{z\}\) at every point \(z\) in the open interval \((-\varepsilon, \varepsilon)\), to a single point.
+We receive the following picture.
+\begin{figure}[h!]
+    \label{fig:circle}
+    \centering
+    \includegraphics[width=.9\textwidth]{gfx/Quotient 2.png}
+\end{figure}
+
+By the way we think about quotient spaces, we already see that this results in \(S^1\).
