@@ -91,7 +91,7 @@ Using this bilinear form, we define hyperplanes with corresponding reflections f
     The map given by:
     \[\rho : W \to GL_n(V) \cong GL_n(\R), \quad s_i \mapsto \sigma_i\]
     is an injective homomorphism and therefore a faithful representation of \(W\).
-\end{theorem}
+\end{theorem}\noindent
 Before we prove the homomorphism property, we recall:
 A map \(\varphi: S\to G\) from a set \(S\) to a group \(G\) extends to a homomorphism \(\Hat{\varphi}:\groupp{S}{R}\to G\), if and only if the induced homomorphism \(\overline{\varphi}:F_S \to G\) from the free group over \(S\) satisfies \(\overline{\varphi}(r) = 1_G\) for every \(r\in R\).
 \begin{proof}
@@ -136,9 +136,9 @@ A map \(\varphi: S\to G\) from a set \(S\) to a group \(G\) extends to a homomor
     %           together with an induction argument, we get that \((\sigma_i\sigma_j)^n(e_i) = e_i + 2n(e_i + e_j)\).
     %           Therefore, the concatenation has infinite order on \(V_{ij}\) and in particular on the whole of \(V\).
     % \end{itemize}
+    \noindent
     This proves that \(\rho\) extends to a homomorphism.
-    It remains to show the injectivity of \(\rho\).
-    This will be a consequence of a bigger result in section \(2.4\), see \Cref{cor:faithful}.
+    It remains to show the injectivity of \(\rho\), which will be a consequence of a bigger result in section \(2.4\), see \Cref{cor:faithful}.
 \end{proof}
 
 In contrast to the above proof, in the case of \(m_{ij} = \infty\), we cannot expect our bilinear form to be positive definite.
@@ -222,15 +222,15 @@ Before doing so, we end this section with the following remark.
     \[\sigma_i^*(B_W(e_j,\cdot)) = B_W(e_j,\cdot) - 2B_W(e_i,\cdot)B_W(e_j,e_i) = - B_W(e_j,\cdot),\]
     using that \(B_W(e_j,\cdot) = -B_W(e_i,\cdot)\).
     This shows that both dual reflections have the same \((-1)\)-Eigenspace, but fix different hyperplanes (\ie, have different \((+1)\)-Eigenspaces), resulting in a chamber as wished.
+    We conclude with the following picture.\vspace*{1cm}
+    \begin{figure}[h!]
+        \label{fig:firstchamber}
+        \centering
+        \includegraphics[width=.75\textwidth]{gfx/Chamber of Dinfty.png}
+        \caption{The chamber of \(D_\infty\)}
+    \end{figure}
 \end{remark}
-
-% \begin{figure}[h!]
-%     \label{fig:firstchamber}
-%     \centering
-%     \includegraphics[width=.75\textwidth]{gfx/Chamber of Dinfty.png}
-%     \caption{The chamber of \(D_\infty\)}
-% \end{figure}
-
+    
 
 % ***********************************************
 \section{The Tits cone - An example} % TODO: add picture
@@ -307,7 +307,8 @@ Each of the above matrices corresponds to one of the generators \(r, s\) and \(t
     \centering
     \includegraphics[width=5cm]{gfx/Tits cone example poincare.png}
     \caption{The Tits cone in the poincaré disc.}
-\end{figure}
+\end{figure}\vspace*{-\parskip}
+
 
 % ***********************************************
 \section{The word metric and the faithful representation}
