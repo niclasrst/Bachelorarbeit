@@ -448,7 +448,7 @@ An element \(w(e_i)\) is said to be
                 %   Thus, any element is of length \(\leq m_{ij}\) and has a unique word corresponding to the edge labels in the Cayley graph.
                   Note that the maximum length of \(w \in W_J\) is precisely \(m_{ij}\) (as the Cayley graph is a cycle of length \(2m_{ij}\)) and the element of maximal length is represented by the reduced expressions \(s_is_j\cdots s_is_j\) and \(s_js_i\cdots s_js_i\).
                   This implies that \(v_J\) has to have length strictly smaller \(m_{ij}\), else it would have a reduced expression ending in \(s_i\), contradicting the above.
-                  Then \(v_J\) is a product of less than \(\left\lfloor\frac{m_{ij}}{2}\right\rfloor\) terms \(s_is_j\), and each of the products \(s_is_j\) is a rotation about \(\frac{2\pi}{m_{ij}}\) towards \(e_j\).\newline
+                  Then \(v_J\) is a product of less than \(\frac{m_{ij}}{2}\) terms \(s_is_j\), and each of the products \(s_is_j\) is a rotation about \(\frac{2\pi}{m_{ij}}\) towards \(e_j\).\newline
                   Using that \(e_i\) and \(e_j\) are at angle \(\pi - \frac{\pi}{m_{ij}}\), we see that \(v_J\) rotates \(e_i\) at most about \(\pi - \frac{2\pi}{m_{ij}}\) towards \(e_j\).
                   Thus, \(v_J(e_i)\) still lies inside the cone spanned by \(e_i\) and \(e_j\).
                   It could very likely be that we have another reflection \(s_j\), but as the angle between \(e_i\) and the reflecting line is \(\frac{\pi}{2} - \frac{\pi}{m_{ij}}\), the resulting vector still lies in the cone.
@@ -500,7 +500,7 @@ With \Cref{cor:lengthsmall} and \Cref{thm:action} in hand, we will finally be ab
 In this section, we will prove that the fundamental chamber \(C\subset V^*\) is indeed a fundamental domain for the action of \(W\) on its Tits cone \(WC\).
 Moreover, we will work out how stabilizers of points look like and then show that the Tits cone is really a convex cone in the dual space \(V^*\).
 
-We start by translating the results of the previous section to the language of chambers and halfspaces.
+We start by translating some results of the previous section to the language of chambers and halfspaces.
 The following two lemmas capture this essence.
 
 \begin{lemma}\label{lem:translation}
@@ -542,7 +542,7 @@ To do so, decompose the fundamental chamber into subsets corresponding to the pa
 \begin{definition}
     Given a parabolic subgroup \(W_J\) corresponding to \(J\subset I\), set
     \[C_J := \bigcap_{j\in J} H_j^* \cap \bigcap_{k\notin J} A_k^*.\]
-    We call these the corresponding parabolic subsets (of the fundamental chamber).
+    We call these the corresponding \emph{parabolic subsets} (of the fundamental chamber).
 \end{definition}
 
 \begin{example}\label{ex:parabolicset} % TODO: add picture
@@ -588,6 +588,7 @@ Before proceeding with proving that the fundamental chamber lives up to its name
     We call a closed subset \(F\subset X\) a \emph{fundamental domain}, if for each \(x\in F\) its orbit \(Orb(x)\) intersects \(F\) in exactly one point.
 \end{definition}
 
+\noindent
 Note that, by definition of the Tits cone \(WC\), every \(W\)-orbit of a point \(\varphi\in C\) meets the fundamental chamber \(C\) in at least one point, namely \(\varphi\).
 Thus, it suffices to proof that each \(W\)-orbit meets \(C\) in at most one point, to prove the following theorem.
 
@@ -618,7 +619,7 @@ This decomposition (altough not into chambers) is a key component in the followi
     We will prove the convexity by showing that every closed segment between any two points in the Tits cone is contained in it.
     Furthermore, we will prove that these segments can be covered by finitely many of the sets in the above defined union \(\mathcal{C}\), implying latter statement.
 
-    Consider the closed segment \([\varphi, \psi]\) with \(\varphi, \psi \in WC\) and assume the endpoints lie in different chambers. % \(\varphi\in C\) and \(\psi\in w(C)\) for some \(w\in W\), i.e. the endpoints lie in different chambers.
+    Consider the closed segment \([\varphi, \psi]\) with \(\varphi, \psi \in WC\) and without loss of generality, assume the endpoints lie in different chambers \(C\) and \(w(C)\) for \(w \in W\). % \(\varphi\in C\) and \(\psi\in w(C)\) for some \(w\in W\), i.e. the endpoints lie in different chambers.
     Proceed by induction on the word length \(\ell(w)\). %with the base case \(\ell(w) = 0\) implying \(\varphi,\psi\in C\).
     The base case \(\ell(w) = 0\) reduces to \(\varphi, \psi \in C\).
     Since \(C\) is convex and can trivially be covered by finitely many of the \(C_J\), this case has been dealt with.
@@ -630,8 +631,8 @@ This decomposition (altough not into chambers) is a key component in the followi
     Thus, we need to show that we can cover the second segment \([\xi, \psi]\) by finitely many of these sets.
     Assume further, we have a \(J \subset I\), such that \(\psi\in s_i(A_i^*)\) for an \(i\in J\) and \(\psi\in\overline{A_i^*}\) for all \(i\notin J\).
     Then we have that \(\psi\notin C\).
-    \Claim{1}{\(\xi\) has to lie in one of the codimension-one faces \(H_i^*\), \(i\in J\).}
-    \Claimproof{1}{
+    \Claimm{\(\xi\) has to lie in one of the codimension-one faces \(H_i^*\), \(i\in J\).}
+    \Claimmproof{
         Assume that \(\xi\) lies in the open halfspace \(A_i^*\) for some \(i\in J\).
         Then every point \(\zeta\) in the intersection of a neighborhood of \(\xi\), contained in \(A_i^*\), with the segment \([\xi,\psi]\) has to also lie in \(A_i^*\). % for \(i\in J\). % and \(\zeta\in \overline{A_i^*}\) for \(i\notin J\).
         Clearly, \(\zeta\in\overline{A_i^*}\) for \(i\notin J\) holds as well, implying that \(\zeta\in C\).
