@@ -453,7 +453,7 @@ An element \(w(e_i)\) is said to be
                   Thus, \(v_J(e_i)\) still lies inside the cone spanned by \(e_i\) and \(e_j\).
                   It could very likely be that we have another reflection \(s_j\), but as the angle between \(e_i\) and the reflecting line is \(\frac{\pi}{2} - \frac{\pi}{m_{ij}}\), the resulting vector still lies in the cone.
                 
-            \item[2)] \(m_{ij} = \infty\): In the case of the infinite dihedral group, we already have seen in the proof of \Cref{thm:repr} that \((s_is_j)^n(e_i) = e_i + 2n(e_i + e_j)\).
+            \item[2)] \(m_{ij} = \infty\): In the case of the infinite dihedral group, we have previously seen that \((s_is_j)^n(e_i) = e_i + 2n(e_i + e_j) = (2n + 1) e_i + 2n e_j\).
                   Thus, \(\lambda_i, \lambda_j \geq 0\) with \(\abs{\lambda_i - \lambda_j} = 1\).
             %   This is again a non-negative linear combination of \(e_i\) and \(e_j\).
         \end{itemize}
@@ -574,7 +574,7 @@ To do so, decompose the fundamental chamber into subsets corresponding to the pa
     Note that the sets \(C_J\) and \(C_K\) are subsets of the fundamental chamber \(C\) and therefore, \(s_i\) fixes every point in the non-empty set \(w(C_J)\cap C_K\).
     But if \(s_i\) fixes some point \(\varphi\) in \(C_K\), we calculate
     \[\varphi(e_i) = s_i(\varphi)(e_i) = \varphi(s_i(e_i)) = -\varphi(e_i) \implies \varphi(e_i) = 0 \iff \varphi\in H_i^*.\]
-    We deduce \(i\in K\), respectively \(s_i\in W_K\).
+    From what we can deduce that \(i\in K\), respectively \(s_i\in W_K\).
     Using this together with the assumption, we get that \(s_iw(C_J)\cap C_K = s_i(w(C_J)\cap C_K)\) is non-empty.
     We apply the induction hypothesis to the element \(s_iw\), to see that \(J = K\) and \(s_iw\in W_J\).
     Finally, since \(s_i\in W_J = W_K\), we have that \(s_iw \in W_J\) implies \(w\in W_J\), proving the theorem.
@@ -585,7 +585,7 @@ Before proceeding with proving that the fundamental chamber lives up to its name
 
 \begin{definition}
     Let \(G\) be a group, acting on a topological space \(X\).
-    We call a closed subset \(F\subset X\) a \emph{(strict) fundamental domain}, if for each \(x\in F\) its orbit \(Orb(x)\) intersects \(F\) in exactly one point.
+    We call a closed subset \(F\subset X\) a \emph{fundamental domain}, if for each \(x\in F\) its orbit \(Orb(x)\) intersects \(F\) in exactly one point.
 \end{definition}
 
 Note that, by definition of the Tits cone \(WC\), every \(W\)-orbit of a point \(\varphi\in C\) meets the fundamental chamber \(C\) in at least one point, namely \(\varphi\).
