@@ -204,7 +204,7 @@ While the formal defintion of the Tits cone provides a rigorous foundation, it i
 As one can think about the Tits cone quite geometrically, especially in low dimensions, we will take a closer look at an explicit example in the following section.
 Before doing so, we end this section with the following remark.
 
-\begin{remark} % TODO: add picture
+\begin{remark}
     One may ask why we transport everything to the dual space, instead of working in the standard representation \(\rho\).
     For this, consider the infinite dihedral group \(D_\infty \cong \groupp{s, t}{s^2 = t^2 = 1}\).
     We fix a basis \(\{e_1, e_2\}\) of \(V\) and obtain that the bilinear form in this basis is given by the matrix
@@ -234,7 +234,7 @@ Before doing so, we end this section with the following remark.
     
 
 % ***********************************************
-\section{The Tits cone - An example} % TODO: add picture
+\section{The Tits cone - An example}
 % ***********************************************
 
 As an example we take a closer look at the free product \(W \cong\groupp{r,s,t}{r^2=s^2=t^2=1}\), a right-angled Coxeter group from \Cref{ex:freeprod}.
@@ -355,7 +355,7 @@ In the following we will make use of the general fact that we have \(\ell(w) \le
 
 The length function turns out to be an important and powerful tool in studying Coxeter groups.
 Indeed, its role will be demonstrated in several of the forthcoming proofs, beginning with the following theorem which is a key step in proving faithfulness of our previously defined representation.
-But before doing so, we want to motivate the next theorem. % [ ]: nötig?
+But before doing so, we want to motivate the next theorem.
 We consider the set \(\{w(e_i) \;\vert\; i \in I, w \in W\}\).
 Note that we fixed a basis in our representation vector space and therefore each of these elements can be written as a linear combination of the basis vectors.
 We will use this to define `positive' and `negative' elements.
@@ -617,7 +617,7 @@ This decomposition (altough not into chambers) is a key component in the followi
     First note that the fundamental chamber is a convex cone as the intersection of the finitely many closed halfspaces \(\overline{A_i^*}\).
     This implies that the Tits cone is a cone as well.
     We will prove the convexity by showing that every closed segment between any two points in the Tits cone is contained in it.
-    Furthermore, we will prove that these segments can be covered by finitely many of the sets in the above defined union \(\mathcal{C}\), implying latter statement.
+    Furthermore, we will prove that these segments can be covered by finitely many of the sets in the above defined union \(\mathcal{C}\), implying the latter statement.
 
     Consider the closed segment \([\varphi, \psi]\) with \(\varphi, \psi \in WC\) and without loss of generality, assume the endpoints lie in different chambers \(C\) and \(w(C)\) for \(w \in W\). % \(\varphi\in C\) and \(\psi\in w(C)\) for some \(w\in W\), i.e. the endpoints lie in different chambers.
     Proceed by induction on the word length \(\ell(w)\). %with the base case \(\ell(w) = 0\) implying \(\varphi,\psi\in C\).
@@ -712,6 +712,8 @@ To finally construct coverings from group actions and connect them in some sense
 \begin{definition}
     A path-connected topological space \(X\) is called \emph{simply connected}, if \(\pi_1(X)\cong \{1\}\).
 \end{definition}
+
+Given a group \(G\) acting on a space \(X\), we will denote by \(Orb_G(x)\) the orbit of a point \(x \in X\) under the action of the group \(G\), i.e. \(Orb_G(x) := \{gx \;\vert\; g \in G\} \subset X\).
 
 \begin{lemma}\label{lem:covering}
     Let \(G\) be a group, acting by a covering action on a simply connected topological space \(X\).

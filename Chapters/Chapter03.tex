@@ -8,19 +8,18 @@ Let us state and recall the main theorem we want to prove.
     A finitely generated right-angled Coxeter group \(W\) has a finite index subgroup \(W'\), such that \(W'\) is residually finite and rationally solvable (RFRS).
 \end{theorem*}
 
-The goal of the whole chapter is to explain Agol's proof of this theorem, using the preliminaries and tools we have developed.
+The goal of this whole chapter is to explain Agol's proof of this theorem, using the preliminaries and tools we have developed.
 We will break the proof down into smaller pieces and will discuss in each section a specific aspect of the proof.
 
 
 % ***********************************************
-\section{How to be RFRS}
+\section{The RFRS property}
 % ***********************************************
 
 We should state clearly what we have to show.
 This is essentially the construction of a finite index subgroup, that is RFRS.
 But what does it mean for a group \(G\) to be RFRS?
 We shall start by giving the definition of the RFRS condition to shed some light onto our goal.
-% In this subsection, we introduce the RFRS condition and discuss how to verify it for a group \(G\).
 
 \begin{definition}
     Let \(G\) be a group.
@@ -34,36 +33,56 @@ We shall start by giving the definition of the RFRS condition to shed some light
 \end{definition}
 
 Observe that in practice, it suffices to show that conditions \(2\) to \(4\) hold. % as once they are satisfied we can simply pass to the Core of each \(G_i\) in \(G\) and this new sequence will.
-To justify this, let \(G = G_0 > G_1 > \ldots\) be a cofinal sequence of finite index subgroups \(G_i < G\) with \((G_i)_r^{(1)} \leq G_{i+1}\).
+To justify this, let \(G = G_0 > G_1 > \cdots\) be a cofinal sequence of finite index subgroups \(G_i < G\) with \((G_i)_r^{(1)} \leq G_{i+1}\).
 Then, for each \(i\), we pass to the core of \(G_i\) in \(G\), which is defined by Core\((G_i) := \bigcap_{g \in G} g G_i g^{-1}\).
-By construction, the core of a subgroup \(G_i\) is normal in \(G\) and furthermore, we claim the following.
+By construction, the core of a subgroup \(G_i\) is normal in \(G\) and furthermore, we claim: %the following.
 \Claimm{If \(G_i\) has finite index in \(G\), its core will also have finite index in \(G\).}
 \Claimmproof{
     Let \(G_i\) be a subgroup in \(G\) with \([G : G_i] < \infty\).
     Then, \(G\) acts (by left multiplication) on the left cosets of \(G_i\) in \(G\) and the kernel of this action consists of the elements \(h \in G\) with
     \[hgG_i = gG_i \iff g^{-1}hgG_i = G_i \iff g^{-1}hg \in G_i \iff h \in gG_ig^{-1} \quad \forall g \in G.\]
     We note that the kernel is exactly the core of \(G_i\).
-    Moreover, the quotient \(\faktor{G}{\text{Core}(G_i)}\) embeds into the symmetric group Sym\((\faktor{G}{G_i})\), whose order is \([G : G_i]!\).
-    Thus, we see that if \(G_i\) has finite index in \(G\), the core has finite index as well.
+    Moreover, the quotient \(\faktor{G}{\text{Core}(G_i)}\) embeds into the symmetric group Sym\((\faktor{G}{G_i})\), as the left action on the cosets permutes them.
+    As the order of this symmetric group is \([G : G_i]!\), we see that if \(G_i\) has finite index in \(G\), the core has finite index as well.
 }
-Thus, it remains to check that the rational derived subgroup \((\text{Core}(G_i))_r^{(1)}\) is a subgroup of the group Core\((G_{i+1})\).
-Clearly, for \(g \in G\) we have the equality \(g((G_i)_r^{(1)})g^{-1} = (gG_ig^{-1})_r^{(1)}\), from which we obtain
-\[(\text{Core}(G_i))_r^{(1)} \leq \bigcap_{g \in G} (gG_ig^{-1})_r^{(1)} = \bigcap_{g \in G} g(G_i)_r^{(1)}g^{-1} \leq \bigcap_{g \in G} gG_{i+1}g^{-1} = \text{Core}(G_{i+1}).\]
-% We conclude that we can omit the first condition in the RFRS condition if we accept to pass to the core of each subgroup \(G_i\) and obtain the sequence \(G \triangleright \text{Core}(G_0) \triangleright \text{Core}(G_1) \triangleright \ldots\;\).
-To summarize, by accepting to pass to the sequence of core subgroups in \(G\), we can drop the first condition on the sequence of subgroups in the RFRS condition.
+Thus, to see that this new sequence satisfies the RFRS condition, it remains to check that the rational derived subgroup \((\text{Core}(G_i))_r^{(1)}\) is a subgroup of the group Core\((G_{i+1})\).
 
-% Let us also give a small motivation of the kernel in the 4-th condition of the RFRS condition.
+\noindent
+Clearly, for \(g \in G\) we have the equality \(g(G_i)_r^{(1)}g^{-1} = (gG_ig^{-1})_r^{(1)}\), from which we obtain
+\[(\text{Core}(G_i))_r^{(1)} \leq \bigcap_{g \in G} (gG_ig^{-1})_r^{(1)} = \bigcap_{g \in G} g(G_i)_r^{(1)}g^{-1} \leq \bigcap_{g \in G} gG_{i+1}g^{-1} = \text{Core}(G_{i+1}).\]
+To summarize, by accepting to pass to the sequence of core subgroups in \(G\), we can drop the first condition on the sequence of subgroups in the RFRS condition.
 
 \begin{remark}\label{rmk:tensoring}
     Note that an abelian group \(A\) has a natural structure as a \(\Z\)-module.
     Thus, the tensor product with the rationals is well-defined and tensoring \(A\) with \(\Q\) kills the torsion part of the abelian group \(A\).
     % Note that tensoring an abelian group \(A\) (as \(\Z\)-module) with the rationals, `kills' the torsion part of \(A\), whence \(\Q \otimes_\Z A \cong \faktor{A}{\text{Torsion}}\).
-    Whence, we have that \(\Q \otimes_\Z A \cong \faktor{A}{\text{Torsion}}\).
+    Whence, we have that \(\Q \otimes_\Z A \cong \Q \otimes_\Z \faktor{A}{\text{Torsion}}\).
     To see this, take an elementary tensor \(r \otimes a\) in \(\Q \otimes_\Z A\) so that \(a\) is a torsion-element of order \(n\).
     Then we get the following equalities,
-    \[r \otimes a  = r \cdot \frac{n}{n} \otimes a = r \cdot \frac{1}{n} \otimes n\cdot a = \frac{r}{n} \otimes a^n = 0.\]
-    In particular, for the abelianization \(G_{\text{ab}}\), the group \(\Q \otimes_\Z G_{\text{ab}}\) is isomorphic to the torsion free abelianization \(\faktor{G_{\text{ab}}}{\text{Torsion}}\) and the so called rational derived subgroup \((G)_r^{(1)}\) is the kernel of the homomorphism from \(G\) to its torsion-free abelianization.
+    \[r \otimes a  = r \cdot \frac{n}{n} \otimes a = r \cdot \frac{1}{n} \otimes n\cdot a = 0.\]
+    In particular, for the abelianization \(G_{\text{ab}}\), the group \(\Q \otimes_\Z G_{\text{ab}}\) is isomorphic to \(\Q \otimes_\Z \faktor{G_{\text{ab}}}{\text{Torsion}}\) and the so called rational derived subgroup \((G)_r^{(1)}\) is the kernel of the homomorphism from \(G\) to its torsion-free abelianization tensored with the rationals.
 \end{remark}
+
+% As some sort of guidance for the reader, we want to outline the ideas of the next sections in the following.
+% Clearly, we want to start by finding a candidate for the finite index subgroup \(W'\) of \(W\) that will satisfy the RFRS condition.
+% This candidate will induce a manifold cover of the fundamental chamber \(C\), corresponding to \(W\) and will be introduced in Section \(3.2\).
+
+% \noindent
+% Continuing from there on, the general goal is to translate from a cofinal sequence of manifold covers of the fundamental chamber \(C\), to a sequence of groups.
+% To achieve this, there is no way around some orbifold theory, as the fundamental chamber \(C\) carries a natural orbifold structure.
+% Thus, Section \(3.3\) will cover some aspects of the theory of orbifolds.
+
+% \noindent
+% In Section \(3.4\) we will use the developed tools of the theory of orbifolds, to construct a cofinal sequence of orbifold covers, beginning in the fundamental chamber \(C\).
+% This sequence will in particular induce a cofinal sequence of subgroups, which we want to be a sequence of subgroups of the finite index subgroup \(W'\).
+
+% \noindent
+% This will be dealt with in Section \(3.5\), where the aforementioned sequence will somewhat be forced to be a sequence of subgroups in \(W'\).
+% We will see that this new cofinal sequence of groups induces a sequence of manifold covers, starting in the cover established in Section \(3.2\).
+
+% \noindent
+% Up to then, we will have produced a cofinal sequence of subgroups living in \(W'\) and it remains to show that the rationally derived subgroup at step \(i\), is a subgroup of the following subgroup at step \(i+1\).
+% This will be the content of the last Section \(3.6\), where we will watch loops bouncing off the faces in an orbifold.
 
 
 % ***********************************************
@@ -71,11 +90,13 @@ To summarize, by accepting to pass to the sequence of core subgroups in \(G\), w
 % ***********************************************
 
 Consider the abelianization \(W_{\text{ab}}\) of \(W\), which is isomorphic to \((\Z/2\Z)^{n}\).
-Now, the abelianization yields a homomorphism \(\alpha : W \to W_{\text{ab}}\) to whose kernel \(\ker\alpha\), we will turn our attention to in the following.
+Now, the abelianization yields a homomorphism \(\alpha : W \to W_{\text{ab}}\).
+In the following we will focus on its kernel \(\ker\alpha\). %, we will turn our attention to in the following.
 Note that by the first homomorphism theorem, \(\ker\alpha\) has finite index in \(W\), since
 \[\abs{\faktor{W}{\ker\alpha}} = \abs{\faktor{\Z}{2\Z}}^{n} = 2^{n} < \infty.\]
 Here we used the fact that \(W\) is finitely generated, whence \(n = \abs{I} = \abs{S} < \infty\).
 
+\noindent
 Furthermore, note that for each \(J \subset I\) with \(W_J\) finite, we have an isomorphism between \(W_J\) and \((\faktor{\Z}{2\Z})^{\abs{J}}\).
 Thus, the restriction of \(\alpha\) to each such subgroup \(\alpha\vert_{W_J}\) is an injective homomorphism.
 We now use that in the right-angled case, the isotropy subgroups of codimension-\(k\) faces are all of this form.
@@ -85,18 +106,17 @@ Therefore, all isotropy subgroups inject into the abelianization of \(W\).
 This implies that the intersection of an isotropy subgroup with the kernel of \(\alpha\) is trivial and consequently no isotropy group is contained in the kernel \(\ker\alpha\).
 Since finite subgroups are contained in isotropy subgroups, the kernel \(\ker\alpha\) acts freely on the Tits cone \(WC\) corresponding to \(W\).
 
-In particular, by \Cref{thm:stabilizer} the action of \(W\) on the interior of its Tits cone \(int(WC)\) is properly discontinuously.
+In particular, by \Cref{thm:stabilizer} the action of \(W\) on the interior of its Tits cone \(int(WC)\) is properly discontinuous.
 By \Cref{thm:convexity} the Tits cone is also a convex cone, implying that it has trivial fundamental group, whence is simply-connected.
-Having all this information, we are able to apply \Cref{lem:covering} to obtain the covering
+Having all this information, we are able to apply \Cref{lem:covering} to obtain that the following map is a covering
 \[int(WC) \;\longrightarrow\; \faktor{int(WC)}{\ker\alpha} \qquad x \mapsto \text{Orb}_{\ker\alpha}(x).\]
 % Using the local homeomorphism property of a covering map and the fact that the Tits cone \(WC\) is a subspace of \(\R^n\), we conclude that the quotient \(\faktor{int(WC)}{\ker\alpha}\) is indeed a manifold.
 We conclude the results of this section in the following proposition.
 
 \begin{proposition}
-    Let \(W\) be a right-angled Coxeter group with corresponding Tits cone \(WC\). % and fundamental chamber \(C\).
+    Let \(W\) be a right-angled Coxeter group with corresponding Tits cone \(WC\).
     Then, there is a finite index subgroup \(W' \leq W\), acting by covering action on the interior of the Tits cone, implying that the quotient \(\faktor{int(WC)}{W'}\;\) is a manifold.
-    In particular, \(W' = \ker\{W \to W_{\text{ab}}\} = \ker\alpha\).
-    % In particular, we can take \(W'\) to be the kernel of the abelianization homomorphism \(\alpha : W \to W_{\text{ab}}\).
+    It is given by \(W' = \ker\{W \to W_{\text{ab}}\} = \ker\alpha\).
 \end{proposition}
 
 
@@ -127,8 +147,9 @@ This is being made precise by orbifold maps.
 Now that we have these local definitions, we `glue' them together, to obtain an orbifold.
 Before we do so, we recall some notions from topology.
 
+\noindent
 Suppose, we are given an open cover \(\{U_i\}\) of a topological space \(X\).
-It is said to be \emph{locally finite}, if every \(x \in X\) admits a neighborhood \(N\) such that \(N \cap U_i\) is empty for all but finitely many \(i\).
+It is said to be \emph{locally finite}, if every \(x \in X\) admits a neighborhood \(N\) such that \(N \cap U_i\) is empty for all but finitely many of the indices \(i\).
 The open cover \(\{U_i\}\) is a \emph{refinement} of an open cover \(\{V_j\}\) of \(X\), if for every \(V_j\) there is a \(U_i\) with \(U_i \subseteq V_j\).
 Now, the topological space \(X\) is said to be \emph{paracompact}, if every open cover of \(X\) admits such a locally finite refinement.
 
@@ -146,28 +167,27 @@ Now, the topological space \(X\) is said to be \emph{paracompact}, if every open
 To sketch the connection between manifolds and orbifolds, let us mention one more thing.
 
 \begin{definition}
-    The \emph{local group} \(loc(x)\) of some \(x\) in a local model \(\faktor{\widetilde{U}}{\Gamma}\;\) is the isotropy group of any \(\widetilde{x}\) in \(\widetilde{U}\), getting projected onto \(x\).
+    The \emph{local group} \(loc(x)\) of some \(x\) in a local model \(\faktor{\widetilde{U}}{\Gamma}\;\) is the isotropy group of any \(\widetilde{x}\) living in \(\widetilde{U}\), getting projected onto \(x\).
     The \emph{singular locus} \(\Sigma (Q)\) of an orbifold \(Q\) consists of all points in the underlying space \(X_Q\) with non-trivial local group, i.e. \(\Sigma(Q) = \{x \in X_Q \;\vert\; loc(x) \neq \{1\}\}\).
 \end{definition}
 
 By this definition, we see that an orbifold with empty singular locus is just a manifold.
 Furthermore, when thinking about an orbifold, we can just think about the underlying space and label each element in the singular locus by its local group.
 
+\noindent
 Many basic examples arise by taking the quotient relative to a properly discontinuous group action on \(\R^n\).
 We want to mention at least some examples.
 
-\begin{example} % TODO: add pictures
+\begin{example}
     \begin{enumerate}
         \item Consider the flat plane \(\R^2\) with the action of a cyclic group \(\faktor{\Z}{n\Z}\) by rotation about the origin.
             The arising orbifold is a cone with singular point the origin and cone angle \(\frac{2\pi}{n}\).
         
-        \item Consider the sphere \(S^2\) with the action of a cyclic group \(\faktor{\Z}{2\Z}\) by rotation about the north pole \(N\).
+        \item Consider the sphere \(S^2\) with the action of a cyclic group \(\faktor{\Z}{n\Z}\) by rotation about the north pole \(N\).
             The arising orbifold now is called a \emph{teardrop} with singular point, the north pole \(N\).
-            
-        % \item Cosider the torus \(\mathbb{T}^2 \cong \faktor{\R^2}{\Z^2}\) with the action of the group \(\faktor{\Z}{2\Z}\) acting by reflection in the midpoints of the y-axis of \(\Z^2\)-lattice in \(\R^2\).
     \end{enumerate}
 
-    \begin{figure}[h!]
+    \begin{figure}[ht!]
         \label{fig:orbifolds}
         \centering
         \subfloat[\centering The cone orbifold.]{{\includegraphics[height=4cm]{gfx/Cone.png}}}\hspace*{3cm}
@@ -175,10 +195,10 @@ We want to mention at least some examples.
     \end{figure}
 \end{example}
 
-By starting with a topological space \(X\), this is actually a more general way to construct orbifolds.
-Given a properly discontinuously action of a group \(G\) on \(X\), simply pass to the quotient space \(\faktor{X}{G}\) to obtain an orbifold.
-In contrast, to obtain a manifold, one has to demand the action to be free as well.
-This is not the only analogy between manifolds and orbifolds.
+% By starting with a topological space \(X\), this is actually a more general way to construct orbifolds.
+% Given a properly discontinuously action of a group \(G\) on \(X\), simply pass to the quotient space \(\faktor{X}{G}\) to obtain an orbifold.
+% In contrast, to obtain a manifold, one has to demand the action to be free as well.
+% This is not the only analogy between manifolds and orbifolds.
 The concept of orbifold coverings translates almost one to one from the ordinary case.
 
 \begin{definition}
@@ -188,8 +208,10 @@ The concept of orbifold coverings translates almost one to one from the ordinary
 
 \begin{remark}\label{rmk:covers}
     We want to mention here, that the universal cover of an orbifold is exactly what we think of, i.e. the initial object in the category of orbifold coverings.
-    Moreover, there is a notion of orbifold fundamental groups as well and they behave to orbifold covers the same as fundamental groups to coverings in the ordinary case.
+    Moreover, there is a notion of orbifold fundamental groups, which we won't define here.
+    For us it is only important to know that they behave to orbifold covers the same as fundamental groups to coverings in the ordinary case.
     In particular, subgroups (of index \(n\)) of the orbifold fundamental group correspond to (\(n\)-sheeted) orbifold coverings.
+    
 \end{remark}
     
 Having all this in mind, we have two ways of approaching the fundamental chamber \(C\).
@@ -216,27 +238,28 @@ On the other hand, the fundamental chamber is the quotient of the manifold \(\fa
 \section{The cofinal cover}
 % ***********************************************
 
-In this section, we want to at least \emph{sketch} the proof of the existence of a cofinal sequence of two-fold covers, arising by iteratively reflecting in faces.
-Some more results from the theory of orbifolds are needed for the whole proof.
-We will state and use them without proof.
+In this section, we \emph{sketch} the proof of the existence of a cofinal sequence of two-fold covers, arising by iteratively reflecting in faces.
+Some more results from the theory of orbifolds would be needed for the whole proof.
+Since they go beyond the scope of this work, we will state and use them without proof.
 
-In the following, doubling along a face means the construction of a sequence of polytopes \(P_k = P_{k-1} \cup g_{k-1}(P_{k-1})\), where \(g_{k-1}\) is the reflection in one of the faces of the previous polytope \(P_{k-1}\), denoted by \(F_{k-1}\).
+In the following, doubling along faces means the construction of a sequence of right-angled polytopes \(P_k = P_{k-1} \cup g_{k-1}(P_{k-1})\), where \(g_{k-1}\) is the reflection in one of the faces of the previous polytope \(P_{k-1}\), denoted by \(F_{k-1}\).
 The following proposition will tell us, that in the case of a right-angled Coxeter group, we are able to double the fundamental chamber \(C\) in one of its faces and are still able to cover the whole Tits cone \(WC\) by reflecting in the faces of the resulting polytope.
 
 \begin{proposition}\label{prop:double}
-    Let \(P_k \subset \R^n\) be a polytope with orbifold structure, orbifold fundamental group \(\pi_1^{\text{orb}}(P_k)\) and universal cover \(\widetilde{P}\).
+    Let \(P_k \subset \R^n\) be a right-angled polytope with orbifold structure, coming from a doubling sequence starting in \(P_0 = C\).
+    Denote its orbifold fundamental group by \(\pi_1^{\text{orb}}(P_k)\) and its universal cover by \(\widetilde{P}\).
     Then, the fundamental group \(\pi_1^{\text{orb}}(P_{k+1})\) is isomorphic to the group generated by reflections in the faces of the double \(P_{k+1}\).
     Furthermore, the fundamental group \(\pi_1^{\text{orb}}(P_{k+1})\) of the double is an index-\(2\) subgroup of \(\pi_1^{\text{orb}}(P_k)\) and the following two conditions are satisfied.
     \begin{enumerate}
-        \item \(\forall k \in \N: \forall g \in \pi_1^{\text{orb}}(P_k): g(\mathring{P_k}) \cap \mathring{P_k} \neq \emptyset \implies g = 1\), and
+        \item \(\forall k \in \N: \forall g \in \pi_1^{\text{orb}}(P_k): g(\mathring{P}_k) \cap \mathring{P}_k \neq \emptyset \implies g = 1\), and
         \item \(\forall k \in \N: \bigcup_{g \in \pi_1^{\text{orb}}(P_k)} g(P_{k}) = \widetilde{P}\).
     \end{enumerate}
 \end{proposition}
 \begin{proof}
-    We won't proof this here.
+    We will omit this proof here, as it goes beyond the scope of this work.
 \end{proof}
 
-To state the other helping lemma we will need, we first want to show that each chamber in the Tits cone can uniquely be labeled by elements of its corresponding group.
+To state the other auxiliary lemma we will need, we first want to show that each chamber in the Tits cone can uniquely be labeled by elements of its corresponding group.
 
 \begin{lemma}\label{lem:labels}
     Let \(W\) be a Coxeter group and \(WC\) its Tits cone.
@@ -249,17 +272,22 @@ To state the other helping lemma we will need, we first want to show that each c
     Thus, the chambers can be labeled in a unique way.
 \end{proof}
 
+\begin{remark}
+    We remark that each of the right-angled polytopes \(P_k\) can be decomposed into a union of translates of the fundamental chamber \(C\).
+    This means for each polytope \(P_k\) there is a \(n_k \in \N\) and elements \(w_{i,k} \in W\), so that \(P_k = \bigcup_{i=1}^{n_k} w_{i,k}(C)\).
+\end{remark}
+
 We proceed with another helpful result, whose proof relies on the aforementioned results.
 
 \begin{lemma}
     Let \(C \subset \R^n\) be the fundamental chamber of a Coxeter group \(W\).
-    The non-trivial labels \(w_i \neq 1_W\) of the chambers, defining the polytope \(P = \bigcup_{i=1}^n w_i(C)\), are \emph{not} contained in the reflection group, generated by reflecting in its faces.
+    The non-trivial labels \(w_{i,k} \neq 1_W\) of the chambers, defining the polytope \(P_k = \bigcup_{i=1}^{n_k} w_{i,k}(C)\), are \emph{not} contained in the reflection group, generated by reflecting in its faces.
 \end{lemma}
 \begin{proof}
-    Note that by \Cref{lem:labels}, the chambers of the form \(w(C)\) are uniquely labeled by \(w \in W\).
-    Thus, let \(P := \bigcup_{i = 1}^n w_i(C)\) be as in the lemma and \(w_i\) one of its defining labels.
-    Assume, \(w_i \neq 1_W\) is contained in the reflection group generated by reflecting in the faces of \(P\).
-    But then we have that \(w_i(\mathring{P}) \cap \mathring{P} \neq \emptyset\), contradicting \Cref{prop:double}.
+    Note that by \Cref{lem:labels}, the chambers of the form \(w(C)\) are uniquely labeled by the elements \(w \in W\).
+    Thus, let \(P_k := \bigcup_{i = 1}^{n_k} w_{i,k}(C)\) be as in the lemma and \(w_{i,k}\) one of its defining labels.
+    Assume, \(w_{i,k} \neq 1_W\) is contained in the reflection group generated by reflecting in the faces of \(P_k\).
+    But then we have that \(w_{i,k}(\mathring{P}_k) \cap \mathring{P}_k \neq \emptyset\), contradicting \Cref{prop:double}.
 \end{proof}
 
 Using this insight, we define a graph \(G\) with vertices \(V(G) := \{w(C) \;\vert\; w \in W\}\) and edges \(E(G) := W \times S\).
@@ -270,43 +298,58 @@ Note that the element \(wsw^{-1}\) is the only element, that flips the edge \(\{
 Thus, the map \(W \times S \to W, \; (w, s) \mapsto wsw^{-1}\) defines a labeling of the edges by elements in \(W\).
 We will call the combinatorial graph of \(G\) (meaning that every double edge gets collapsed) the \emph{chamber graph} Cham\((W, S)\) of \(W\).
 
-It is obvious, that this graph is isomorphic to the combinatorial Cayley graph of the group \(W\) and we see that the Cayley graph `embeds' into the Tits cone \(WC\).
-% This will be useful to prove the main theorem of this section next.
+% \begin{example}
+%     In the case of the free product of \Cref{ex:freeprod}, by transporting everything to the poincaré disc, we see the following picture.
+% \end{example}
+
+This graph is canonically isomorphic to the combinatorial Cayley graph of the group \(W\) and we thus see that the Cayley graph `embeds' into the Tits cone \(WC\).
 
 \begin{theorem}\label{thm:cofinal}
-    % By doubling in a face of the fundamental chamber and iteratively doubling the resulting chamber, we will at some point cover every chamber in the Tits cone \(WC\).
-    The doubling sequence \(P_k\), starting in the fundamental chamber \(P_0 = C\), is cofinal.
-    This means, the chamber \(P_n\) for some \(n\), covers the whole Tits cone.
+    There exists a cofinal doubling sequence \(P_k\), starting in the fundamental chamber \(P_0 = C\).
+    This means that we have \(WC = \bigcup_{n \in \N} P_n\).
 \end{theorem}
 \begin{proof}
     The proof is by induction on the word length \(\ell(w)\).
     For \(\ell(w) = 0\), the corresponding chamber is the fundamental chamber \(C\), which is covered by itself.
-    \IH{Chambers with labels \(v\) of length \(\ell(v) = k - 1\) are covered by a polytope \(P = \bigcup_{i=1}^n w_i(C)\).}\par\noindent
-    We need to show that chambers of the form \(w(C)\) with \(\ell(w) = k\) can be covered by reflecting in a face of the polytope \(P\).
-    Using the chamber graph Cham\((W, S)\), constructed above, we deduce that for each such \(w\), there is a \(v \in W\) of length \(\ell(v) = k - 1\), connected to \(w\) by an edge in Cham\((W, S)\). % , labeled by \(ws_iw^{-1}\) for an \(i \in I\).
-    This is due to the fact that the chamber graph is isomorphic to the Cayley graph of  \(W\) and the length function of \(W\) is induced by the Cayley graph.
-    But then, the chamber \(w(C)\) is adjacent to the chamber \(v(C)\) and the latter is contained in \(P\) by \textbf{(IH)}.
-    Thus, either \(w(C)\) itself is already contained in \(P\) or we reflect in the face shared by \(w(C)\) and \(v(C)\) to cover \(w(C)\) with the double \(P'\) of \(P\).
-    Now, continuing with the next element \(w\) of length \(k\), we eventually double \(P'\) and repeat this for all such \(w\).
-    This iterative doubling process is valid by \Cref{prop:double} and by induction every chamber \(g(C)\) for \(g \in W\) can be covered.
+    \IH{The chambers with labels \(v\) of length \(\ell(v) = k\) are covered by a polytope \(P_k = \bigcup_{i=1}^{n_k} w_{i,k}(C)\) \newline\hspace*{2em} in the doubling sequence \(\{P_k\}_{k \in \N}\).}\par\noindent
+    We need to show that the chambers \(w(C)\) with labels \(w \in W\) of length \(\ell(w) = k + 1\) can be covered by doubling \(P_k\) finitely many times in faces.
+    First observe that there is a label \(v\), whose chamber \(v(C)\) is contained in \(P_k\) and that is connected to \(w\) by an edge in the Cayles graph.
+    Since the Cayley graph sits inside the Tits cone and is isomorphic to the chamber graph, the chambers \(w(C)\) and \(v(C)\) have to be adjacent, sharing a face that is contained in a face of \(P_k\).
+    Then, we can distinguish two cases.
+    Either, \(w(C)\) is already contained in \(P_k\) and we are done, or we double \(P_k\) in the face shared by \(v(C)\) and \(w(C)\), so that \(w(C)\) is contained in \(P_{k+1}\).
+    Since \(W\) is finitely generated, there are finitely many more labels \(w' \in W\) of length \(\ell(w') = k + 1\) and we repeat the above procedure for each of them.
+    Thus, every chamber in the Tits cone can be covered by doubling finitely many times in faces of the fundamental chamber \(C\).
+    % We need to show that chambers of the form \(w(C)\) with \(\ell(w) = k\) can be covered by reflecting in a face of the polytope \(P\).
+    % Using the chamber graph Cham\((W, S)\), constructed above, we deduce that for each such \(w\), there is a \(v \in W\) of length \(\ell(v) = k - 1\), connected to \(w\) by an edge in Cham\((W, S)\). % , labeled by \(ws_iw^{-1}\) for an \(i \in I\).
+    % This is due to the fact that the chamber graph is isomorphic to the Cayley graph of  \(W\) and the length function of \(W\) is induced by the Cayley graph.
+    % But then, the chamber \(w(C)\) is adjacent to the chamber \(v(C)\) and the latter is contained in \(P\) by \textbf{(IH)}.
+    % Thus, either \(w(C)\) itself is already contained in \(P\) or we reflect in the face shared by \(w(C)\) and \(v(C)\) to cover \(w(C)\) with the double \(P'\) of \(P\).
+    % Now, continuing with the next element \(w\) of length \(k\), we eventually double \(P'\) and repeat this for all such \(w\).
+    % This iterative doubling process is valid by \Cref{prop:double} and by induction every chamber \(g(C)\) for \(g \in W\) can be covered.
 \end{proof}
 
 % The conclusion of this section is that the doubling sequence starting in the fundamental chamber \(C\) of the right-angled Coxeter group \(W\) is a cofinal sequence of two-fold (orbifold) covers.
 % Thus, we conclude that the doubling sequence starting in the fundamental chamber \(C\) is a cofinal sequence of two-fold covers.
 
 \begin{remark}\label{rmk:groupseries}
-    Using \Cref{prop:double}, we see that the cofinality of this sequence translates to the group side.
-    More precisely, this sequence of two-fold covers induces a sequence of index-\(2\) subgroups via the fundamental groups of the covering spaces.
-    As we will at some point cover the whole Tits cone, whose fundamental group is trivial, the intersection of all these groups is trivial.
+    % Using \Cref{prop:double}, we see that the cofinality of this sequence translates to the group side.
+    % More precisely, this sequence of two-fold covers induces a sequence of index-\(2\) subgroups via the fundamental groups of the covering spaces.
+    Note that by \Cref{prop:double} the elements corresponding to labels of chambers inside a right-angled polytope \(P_k\) are not contained in \(\pi_1^{\text{orb}}(P_k)\) and \(\pi_1^{\text{orb}}(P_{k+1})\) is a subgroup in \(\pi_1^{\text{orb}}(P_k)\) of index two.
+    By \Cref{thm:cofinal} we have a doubling sequence \(\{P_k\}_{k \in \N}\) with \(\bigcup_{n \in \N} P_n = WC\).
+    As the fundamental group of \(WC\) is trivial (it is a convex cone), the intersection of the fundamental groups of the \(P_k\) is trivial as well.
+    Thus, the cofinality of the doubling sequence translates to the group side.
 \end{remark}
 
-% \begin{figure}[ht!]
-%     \centering
-%     \subfloat[The fundamnetal chamber \(C\).]{{\includegraphics[width=6cm]{gfx/chamber graph - 1.png}}}\qquad
-%     \subfloat[The double polytope \(P = C \cup s_1(C)\)]{{\includegraphics[width=6cm]{gfx/chamber graph - 2.png}}}\newline
-%     \subfloat[The double polytope \(P' = P \cup s_1s_2s_1(P)\)]{{\includegraphics[width=6cm]{gfx/chamber graph - 3.png}}}
-%     \caption{An example doubling sequence in \(D_\infty\)}
-% \end{figure}
+\begin{example}
+    As an example, transporting the Tits cone of the free product from \Cref{ex:freeprod} to the poincaré disc, a portion of the chamber graph is depicted below.
+    \begin{figure}[h!]
+        \label{fig:chambergraphex}
+        \centering
+        \includegraphics[width=.7\textwidth]{gfx/Chamber graph.png}
+        \caption{The chamber graph of \(\faktor{\Z}{2\Z} \ast \faktor{\Z}{2\Z} \ast \faktor{\Z}{2\Z}\).}
+    \end{figure}
+\end{example}
+
 
 \newpage
 % ***********************************************
@@ -319,7 +362,7 @@ Then, we define the groups \(W_i := \pi_1^{\text{orb}}(P_i) \cap W'\) for \(i \i
 Clearly, each \(W_i\) is a subgroup of \(W'\) as well as it is a subgroup of the orbifold fundamental group of the polytope (with orbifold structure) \(P_i\).
 Using the theory of orbifold coverings, we observe that the construction of these manifolds implies that they are coverings of the polytopes \(P_i\) for each \(i\). % = \faktor{WC}{\pi_1^{\text{orb}}(P_i)}\).
 By \Cref{rmk:groupseries}, the cofinal two-fold tower induces a descending series of fundamental groups of the polytopes \(P_i\).
-Intersecting them with the finite index subgroup \(W'\) will not allow them to grow uncontrollably and thus, the descending series of subgroups formed by the groups \(W_i\) is again cofinal.
+Intersecting them with the finite index subgroup \(W'\) will not  and thus, the descending series of subgroups formed by the groups \(W_i\) is again cofinal.
 
 \noindent
 To keep track of our progress, we note that to show that \(W'\) is RFRS, it remains to show the following two conditions:
@@ -337,8 +380,8 @@ To conclude, we prove the following lemma.
     Suppose, \(g,h \in \faktor{W_i}{W_{i+1}}\) with \(\phi(g) = \phi(h)\), which is equivalent to
     \[g \cdot \pi_1^{\text{orb}}(P_{i+1}) = h \cdot \pi_1^{\text{orb}}(P_{i+1}) \iff g^{-1}h \in \pi_1^{\text{orb}}(P_{i+1}).\]
     % But \(g, h \in \faktor{W_i}{W_{i+1}}\) and \(W_i = \pi_1^{\text{orb}}(P_{i+1}) \cap W'\) imply \(g^{-1}h = 1_A\) and thus, \(g = h \in A\).
-    But the fact that \(g\) and \(h\) lie in \(\faktor{W_i}{W_{i+1}}\), and the definition of the groups \(W_i\) imply that \(g^{-1}h = 1\) in the quotient \(\faktor{W_i}{W_{i+1}}\).
-    We conclude that \(g = h\) and the result follows. 
+    % But the fact that \(g\) and \(h\) lie in \(\faktor{W_i}{W_{i+1}}\), and the definition of the groups \(W_i\) imply that \(g^{-1}h = 1\) in the quotient \(\faktor{W_i}{W_{i+1}}\).
+    Since \(g\) and \(h\) lie in \(\faktor{W_i}{W_{i+1}}\), we have \(gW_{i+1} = hW_{i+1}\) and thus \(g^{-1}h \in W_{i+1}\) from what we conclude that \(g = h\) and the result follows. 
 \end{proof}
 
 An immediate consequence of this is the following result, we record here.
@@ -358,7 +401,7 @@ We state this here as a corollary.
     By the above corollary, we have that the index of \(W_{i+1}\) in \(W_i\) is less than or equal to \(2\).
     % As elaborated on in the beginning of this section, the \(W_i\) form a cofinal descending series of groups.
     % This allows us to conclude that for some \(n \in \N\), we have that \(W_j = \{1\}\) for all \(j \geq n\).
-    Thus, for the index of \(W_i\) in \(W'\) we have the upper bound \([W':W_i] \leq 2 \cdot i < \infty\) for \(i \in \N\).
+    Thus, for the index of \(W_i\) in \(W'\) we have the upper bound \([W':W_i] \leq 2^i < \infty\) for \(i \in \N\).
 \end{proof}
 
 % Verifying the first condition was relatively straightforward.
@@ -370,10 +413,10 @@ We state this here as a corollary.
 \section{Loops bouncing off faces}
 % ***********************************************
 
-As discussed in previous section, we need to show that the rational derived group \((W_i)_r^{(1)}\) is a subgroup of \(W_{i+1}\).
+As discussed in the previous section, we need to show that the rational derived group \((W_i)_r^{(1)}\) is a subgroup of \(W_{i+1}\).
 First, recall the following result, addressing abelian quotients.
 
-\begin{lemma}
+\begin{lemma}\label{lem:abelianquotient}
     Let \(G\) be a group with normal subgroup \(N \triangleleft G\).
     The quotient group \(\faktor{G}{N}\) is abelian if and only if the derived subgroup \(G^{(1)} = [G, G]\) of \(G\) is contained in the normal subgroup \(N\).
 \end{lemma}
@@ -398,7 +441,7 @@ First, recall the following result, addressing abelian quotients.
 \end{proposition}
 \begin{proof}
     The first part is a consequence of \Cref{cor:index} and the fact that any subgroup of index two is normal.
-    Thus, the quotient \(\faktor{W_i}{W_{i+1}}\) is in particular abelian and we are able to apply above lemma.
+    Thus, the quotient \(\faktor{W_i}{W_{i+1}}\) is in particular abelian and we are able to apply \Cref{lem:abelianquotient}.
     This shows that the derived subgroup \((W_i)^{(1)}\) is a subgroup of \(W_{i+1}\).
     In other words, we have a factorization of \(W_i \to \faktor{W_i}{W_{i+1}}\) through the abelianization of \(W_i\).
 \end{proof}
@@ -500,7 +543,7 @@ We give the definition.
     More precisely, there is a neighborhood \(N_F\) with \(N_F \cong F \times (-\varepsilon, \varepsilon)\) for suitable \(\varepsilon > 0\), where \(F\) is identified with \(F \times \{0\}\).
 \end{definition}
 
-The generic projection of \(\gamma\) down to the orbifold \(P_i\) implies that in the projection of the neighborhood \(N_{F_i}\), coming from the two-sidedness, the ray \(\gamma\) is injective, i.e. we don't just walk up to the face and go back without getting reflected. % TODO: check this!
+The generic projection of \(\gamma\) down to the orbifold \(P_i\) implies that in the projection of the neighborhood \(N_{F_i}\), coming from the two-sidedness, the ray \(\gamma\) is injective, i.e. we don't just walk up to the face and go back without getting reflected.
 As a consequence, in the manifold \(M_i\), the ray \(\gamma\) has to really intersect the preimage of \(F_i\).
 To construct said morphism, we will continue by collapsing all the points not contained in the neighborhood of the preimage of the face \(F_i\).
 This means, we define an equivalence relation on the points in \(M_i\) as follows:
@@ -523,7 +566,7 @@ As all the points outside the neighborhood \(N_{F_i}\) get identified, we see a 
 This does not yet yield the desired morphism of fundamental groups.
 We have to pass to another quotient by collapsing each of the fibers \(p_i^{-1}(F_i) \times \{z\}\), for every \(z\) in the open interval \((-\varepsilon, \varepsilon)\), to a single point.
 One is then left with the following picture.
-\begin{figure}[h!]
+\begin{figure}[ht!]
     \label{fig:circle}
     \centering
     \includegraphics[width=.9\textwidth]{gfx/Quotient 2.png}
