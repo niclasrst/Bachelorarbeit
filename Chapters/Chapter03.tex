@@ -339,9 +339,9 @@ We finally have developed enough tools, to construct the desired sequence of sub
 Following \Cref{thm:cofinal}, we fix a cofinal doubling sequence \(P_k\), starting in the fundamental chamber \(P_0 = C\) corresponding to the dual representation of \(W\), i.e. we fix a cofinal sequence of two-fold orbifold covers \(C \leftarrow P_1 \leftarrow P_2 \leftarrow \cdots\).
 Then, we define the groups \(W_i := \pi_1^{\text{orb}}(P_i) \cap W'\) for \(i \in \{0\} \cup \N\), each inducing a manifold via the quotient \(\faktor{int(WC)}{W_i}\).
 Clearly, each \(W_i\) is a subgroup of \(W'\) as well as it is a subgroup of the orbifold fundamental group of the polytope (with orbifold structure) \(P_i\).
-Using the theory of orbifold coverings, we observe that the construction of these manifolds implies that they are coverings of the polytopes \(P_i\) for each \(i\). % = \faktor{WC}{\pi_1^{\text{orb}}(P_i)}\).
+Using the theory of orbifold coverings, we observe that the construction of these manifolds implies that they are coverings of the polytopes \(P_i\) for each \(i\).
 By \Cref{rmk:groupseries}, the cofinal two-fold tower induces a descending series of fundamental groups of the polytopes \(P_i\).
-Intersecting them with the finite index subgroup \(W'\) will not  and thus, the descending series of subgroups formed by the groups \(W_i\) is again cofinal.
+Intersecting them with the finite index subgroup \(W'\) doesn't affect the cofinality and thus, the sequence of subgroups formed by the groups \(W_i\) is again cofinal. % TODO: fix this paragraph
 
 \noindent
 To keep track of our progress, we note that to show that \(W'\) is RFRS, it remains to show the following two conditions:
@@ -441,7 +441,7 @@ Using these two auxiliary lemmas, we can prove the following intermediate result
 \end{proof}
 \newpage
 
-\begin{remark}
+\begin{remark}\label{rmk:factorization}
     Recall that by \Cref{rmk:tensoring} torsion elements will not survive in the rational derived subgroup \((W_i)_r^{(1)}\) of \(W_i\), and by \Cref{prop:factorization} we already have that \((W_i)^{(1)}\) is a subgroup of \(W_{i+1}\).
     We claim that it suffices to show that every element \(w \in W_i\) with non-trivial image in the quotient group \(\faktor{W_i}{W_{i+1}}\) is not torsion in the abelianization \((W_i)_{\text{ab}}\).
     This is justified, as by \Cref{prop:factorization}, we have a factorization through the abelianization of \(W_i\).
@@ -461,8 +461,8 @@ Using these two auxiliary lemmas, we can prove the following intermediate result
 In the following we will denote the manifolds \(\faktor{int(WC)}{W_i}\) by \(M_i\) for \(i \in \{0\} \cup \N\) and the projections to the orbifolds \(P_i\) by \(p_i : M_i \to P_i\).
 Furthermore, we fix an element \(w\) that is contained in \(W_i\) but not in \(W_{i+1}\), together with a loop \(\gamma\), which represents the element \(w\) in the manifold \(M_i\).
 
-\begin{lemma}
-    The loop \(\gamma\) intersects the preimage \(p_i^{-1}(F_i)\) of the face \(F_i\) in which \(P_i\) is doubled to obtain the polytope \(P_{i+1}\), an odd number of times.
+\begin{lemma}\label{lem:loopintersection}
+    The loop \(\gamma\) intersects the preimage \(p_i^{-1}(F_i)\) of the face \(F_i\), in which \(P_i\) is doubled to obtain the polytope \(P_{i+1}\), an odd number of times.
 \end{lemma}
 \begin{proof}
     Project \(\gamma\) down to the polytope \(P_i\) generically, using the projection \(p_i\).
@@ -491,7 +491,7 @@ We record this in the following remark.
     To do so, we look at the following picture, which one should think of in a schematic way.
     We see a loop \(\gamma\) (which, strictly speaking, is the projection of a loop in the manifold \(M_i\)) in the polytope \(P_i\), being reflected in the codimension-one faces of \(P_i\).
     The face of interest \(F_i\) is colored in blue and we assume \(\gamma\) to be the orange path, walked around exactly once, starting in the basepoint \(x_0\).
-    \begin{figure}[h!]
+    \begin{figure}[ht!]
         \label{fig:ray}
         \centering
         \includegraphics[width=.8\textwidth]{gfx/Ray bouncing in P.png}
@@ -527,8 +527,8 @@ In the following, our goal will be to obtain a homomorphism of fundamental group
 This morphism will be induced by a continuous quotient map.
 To make this precise, we have to introduce one more concept, we have not yet mentioned.
 This is the fact that the preimage of a face \(F_i\) in the manifold \(M_i\) is two-sided (moreover it is oriented and embedded).
-This is a technical condition on the preimage \(p_i^{-1}(F_i) \subset M_i\), but it will play an important role in the following.
-We give the definition of what it means to be two-sided.
+This is a technical condition on the preimage \(p_i^{-1}(F_i) \subset M_i\).
+As it will play an important role in the following, we give the definition of what it means to be two-sided.
 
 \begin{definition}
     Let \(M\) be a manifold.
@@ -536,11 +536,12 @@ We give the definition of what it means to be two-sided.
     More precisely, there is a neighborhood \(N_F\) with \(N_F \cong F \times (-\varepsilon, \varepsilon)\) for suitable \(\varepsilon > 0\), where the submanifold \(F\) is identified with the fiber \(F \times \{0\}\).
 \end{definition}
 
+\noindent
 Denote by \(N_{F_i} \subset M_i\) the neighborhood coming from the two-sidedness of the preimage \(p_i^{-1}(F_i) \subset M_i\).
 Using this neighborhood, we can construct the morphism in the next lemma.
 
-\begin{lemma}
-    There exists a continuous quotient map \(q : M_i \to S^1\) that induces a homomorphism of groups \(q^* : \pi_1(M_i) \to \pi_1(S^1)\), between the fundamental groups.
+\begin{lemma}\label{lem:morphism}
+    There exists a continuous quotient map \(q : M_i \to S^1\) that induces a homomorphism of groups \(q_* : \pi_1(M_i) \to \pi_1(S^1)\), between the fundamental groups.
 \end{lemma}
 \begin{proof}
     We will give an constructive proof.
@@ -580,13 +581,51 @@ Using this neighborhood, we can construct the morphism in the next lemma.
     \end{figure}\vspace*{-2\parskip}
 
     \noindent
-    Thus, the quotient map \(q : M_i \to S^1\) is continuous and therefore induces the desired homomorphism \(q^* : \pi_1(M_i) \to \pi_1(S^1)\).
+    Thus, the quotient map \(q : M_i \to S^1\) is continuous and therefore, it induces the desired homomorphism \(q_* : \pi_1(M_i) \to \pi_1(S^1)\) between the corresponding fundamental groups.
+\end{proof}
+
+We will now use the developed results to prove the following key-lemma.
+Before we proceed with this key-lemma, we make one more remark.
+
+\begin{remark} % TODO: fulfill this remark
+    We want to elaborate on the term `projecting generically' we used in the proof of \Cref{lem:loopintersection} now in the context of the two-sidedness of \(p_i^{-1}(F_i)\) in the manifold \(M_i\).
+    The additional adjective `generically' means that the composition
+\end{remark}
+
+\begin{lemma}\label{lem:infiniteorder}
+    The loop \(\gamma\) represents an element of infinite order in the abelianization \((W_i)_{\text{ab}}\).
+\end{lemma}
+\begin{proof}
+    By \Cref{lem:loopintersection}, we know that \(\gamma\) intersects the preimage of \(F_i\) in \(M_i\) an odd number of times.
+    Thus, projecting \(\gamma\) down to \(S^1\), using the continuous map \(q\) from \Cref{lem:morphism}, we see that the projection has to wind around the circle an odd number of times.
+    For that reason, using the induced morphism \(q_*\), we see that \(\gamma\) has to represent an non-trivial element in \(\pi_1(S^1)\).
+    But since \(\pi_1(S^1) \cong \Z\), this immediately implies that \(\gamma\) represents an element of infinite order and moreover, since \(\Z\) is abelian, this implies that \(\gamma\) represents an element of infinite order in \(\pi_1(M_i)_{\text{ab}}\), i.e. \(w\) has infinite order in \(\pi_1(M_i)_{\text{ab}} \cong (W_i)_{\text{ab}}\) as claimed.
+\end{proof}
+
+\begin{corollary}\label{cor:looptwo}
+    The loop \(2\gamma\) in \(M_i\) represents a non-trivial element in the group \(\Q \otimes_\Z \faktor{W_i}{(W_i)_r^{(1)}}\).
+\end{corollary}
+\begin{proof}
+    By \Cref{lem:infiniteorder}, \(\gamma\) represents an element of infinite order in the abelianization \((W_i)_{\text{ab}}\).
+    In particular, this element cannot be contained in the rationally derived subgroup \((W_i)_r^{(1)}\) and the loop \(2\gamma\) has to also represent an element of infinite order with this property.
+    This implies that \(2\gamma\) represents an element that survives in the group \(\Q \otimes_\Z \faktor{W_i}{(W_i)_r^{(1)}}\), as claimed.
+\end{proof}
+
+\begin{corollary}
+    The finite index subgroup \(W'\) of the right-angled Coxeter group \(W\) is RFRS.
+\end{corollary}
+\begin{proof}
+    Since \(\gamma\) is a representative of the element \(w\), we have that \(2\gamma\) is a representative of the element \(w^2\).
+    Thus, by \Cref{cor:looptwo} \(w^2\) is not contained in the rational derived subgroup \((W_i)_r^{(1)}\).
+    But by \Cref{cor:index}, the index of \(W_{i+1}\) in the group \(W_i\) is less than or equal to two, which implies that \(w^2\) has to be contained in \(W_{i+1}\).
+    Considering the factorization from \Cref{rmk:factorization}, we conclude that \(\faktor{W_i}{W_{i+1}} \cong \faktor{\Z}{2\Z}\) is a quotient of the torsion-free abelianization \(\faktor{(W_i)_{\text{ab}}}{\text{Torsion}}\).
+    In particular, we have finally established that every element mapping non-trivially to the group \(\faktor{W_i}{W_{i+1}}\) is not torsion in the abelianization \((W_i)_{\text{ab}}\), and by the discussion in \Cref{rmk:factorization}, we can conclude that \((W_i)_r^{(1)}\) is a subgroup of \(W_{i+1}\).
+    That was the only part missing for \(W'\) to be RFRS and therefore, we have finally proven the main theorem.
 \end{proof}
 
 % To see that the loop \(\gamma\) represents an element of infinite order in \(W_i\), we will construct a morphism of fundamental groups.
 % Namely, from the fundamental group \(\pi_1(M_i)\) of the manifold \(M_i\) to the fundamental group of the circle \(\pi_1(S^1)\).
 % If \(\gamma\) maps non-trivially to \(\pi_1(S^1)\), it has to represent an element of infinite order, as \(\pi_1(S^1) \cong \Z\).
-
 
 % The generic projection of \(\gamma\) down to the orbifold \(P_i\) implies that in the projection of the neighborhood \(N_{F_i}\), coming from the two-sidedness, the ray \(\gamma\) is injective, i.e. we don't just walk up to the face and go back without getting reflected.
 % As a consequence, in the manifold \(M_i\), the ray \(\gamma\) has to really intersect the preimage of \(F_i\).
@@ -633,11 +672,11 @@ Using this neighborhood, we can construct the morphism in the next lemma.
 % Thus, the quotient map to the circle is continuous. % and induces a homomorphism of groups between the fundamental groups \(\pi_1(M_i)\) and \(\pi_1(S^1) \cong \Z\).
 % A continuous map between two topological spaces induces a homomorphism between their fundamental groups, so that we get the desired morphism from \(\pi_1(M_i)\) to \(\pi_1(S^1) \cong \Z\), induced by the composed quotient map \(q\).
 
-Recalling the discussion above, we know that the loop \(\gamma\), intersects the preimage of \(F_i\) an odd number of times in \(M_i\).
-Projecting it down to \(S^1\), we see that the projection has to wind around the circle at least once and for that reason has to represent a non-trivial element in \(\pi_1(S^1)\).
-This implies that the element \(w\), represented by the loop \(\gamma\), has to have infinite order in \((W_i)_\text{ab}\) and therefore is not contained in the rationally derived subgroup \((W_i)_r^{(1)}\). % and therefore is contained in \(\Q \otimes_\Z \faktor{W_i}{(W_i)_r^{(1)}}\).
-Thus, the loop \(2\gamma\) is non-trivial in the group \(\Q \otimes_\Z \faktor{W_i}{(W_i)_r^{(1)}}\). %, from what we deduce that it does not represent any torsion.
-As \(\gamma\) is a representative of \(w\), the loop \(2\gamma\) is a representative of \(w^2\) and it immediately follows that \(w^2 \notin (W_i)_r^{(1)}\), as it cannot be torsion by preceding argument.
+% Recalling the discussion above, we know that the loop \(\gamma\), intersects the preimage of \(F_i\) an odd number of times in \(M_i\).
+% Projecting it down to \(S^1\), we see that the projection has to wind around the circle at least once and for that reason has to represent a non-trivial element in \(\pi_1(S^1)\).
+% This implies that the element \(w\), represented by the loop \(\gamma\), has to have infinite order in \((W_i)_\text{ab}\) and therefore is not contained in the rationally derived subgroup \((W_i)_r^{(1)}\). % and therefore is contained in \(\Q \otimes_\Z \faktor{W_i}{(W_i)_r^{(1)}}\).
+% Thus, the loop \(2\gamma\) is non-trivial in the group \(\Q \otimes_\Z \faktor{W_i}{(W_i)_r^{(1)}}\). %, from what we deduce that it does not represent any torsion.
+% As \(\gamma\) is a representative of \(w\), the loop \(2\gamma\) is a representative of \(w^2\) and it immediately follows that \(w^2 \notin (W_i)_r^{(1)}\), as it cannot be torsion by preceding argument.
 
-But by the fact that we have \([W_i: W_{i+1}] \leq 2\), the element \(w^2\) has to be contained in \(W_{i+1}\) and we see that the group \(\faktor{W_i}{W_{i+1}} \cong \faktor{\Z}{2\Z}\) is a quotient of the torsion-free abelianization, \(\faktor{(W_i)_{\text{ab}}}{\text{Torsion}} \cong \Q \otimes_\Z (W_i)_{\text{ab}}\) by the before mentioned factorization.
-Thus, we have finally shown that every element mapping non-trivially to the quotient \(\faktor{W_i}{W_{i+1}}\) is not torsion, allowing us to deduce that \((W_i)_r^{(1)}\) is a subgroup of \(W_{i+1}\), which completes the proof.
+% But by the fact that we have \([W_i: W_{i+1}] \leq 2\), the element \(w^2\) has to be contained in \(W_{i+1}\) and we see that the group \(\faktor{W_i}{W_{i+1}} \cong \faktor{\Z}{2\Z}\) is a quotient of the torsion-free abelianization, \(\faktor{(W_i)_{\text{ab}}}{\text{Torsion}} \cong \Q \otimes_\Z (W_i)_{\text{ab}}\) by the before mentioned factorization.
+% Thus, we have finally shown that every element mapping non-trivially to the quotient \(\faktor{W_i}{W_{i+1}}\) is not torsion, allowing us to deduce that \((W_i)_r^{(1)}\) is a subgroup of \(W_{i+1}\), which completes the proof.
