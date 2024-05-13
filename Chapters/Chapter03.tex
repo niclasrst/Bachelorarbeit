@@ -341,10 +341,11 @@ Then, we define the groups \(W_i := \pi_1^{\text{orb}}(P_i) \cap W'\) for \(i \i
 Clearly, each \(W_i\) is a subgroup of \(W'\) as well as it is a subgroup of the orbifold fundamental group of the polytope (with orbifold structure) \(P_i\).
 Using the theory of orbifold coverings, we observe that the construction of these manifolds implies that they are coverings of the polytopes \(P_i\) for each \(i\).
 By \Cref{rmk:groupseries}, the cofinal two-fold tower induces a descending series of fundamental groups of the polytopes \(P_i\).
-Intersecting them with the finite index subgroup \(W'\) doesn't affect the cofinality and thus, the sequence of subgroups formed by the groups \(W_i\) is again cofinal. % TODO: fix this paragraph
+Intersecting them with the finite index subgroup \(W'\) does not affect the cofinality and thus, the sequence of subgroups formed by the groups \(W_i\) is again cofinal.
 
 \noindent
-To keep track of our progress, we note that to show that \(W'\) is RFRS, it remains to show the following two conditions:
+% To keep track of our progress, we note that to show that \(W'\) is RFRS, it remains to show the following two conditions:
+We observe that to show that \(W'\) is RFRS, it remains to show the following two conditions:
 \begin{enumerate}
     \item each \(W_i := \pi_1^{\text{orb}}(P_i) \cap W'\) has finite index in the group \(W'\) and
     \item \((W_i)_r^{(1)} = \ker\{W_i \to \Q \otimes_\Z (W_i)_{\text{ab}}\}\) is a subgroup of \(W_{i+1}\).
@@ -455,7 +456,7 @@ Using these two auxiliary lemmas, we can prove the following intermediate result
     \end{figure}\vspace*{-1\parskip}
     
     \noindent
-    In particular, the group \(\faktor{W_i}{W_{i+1}}\) is a quotient of the torsion-free abelianization \(\faktor{(W_i)_{\text{ab}}}{\text{Torsion}}\).
+    In particular, the group \(\faktor{W_i}{W_{i+1}}\) then is a quotient of the torsion-free abelianization \(\faktor{(W_i)_{\text{ab}}}{\text{Torsion}}\).
 \end{remark}
 
 In the following we will denote the manifolds \(\faktor{int(WC)}{W_i}\) by \(M_i\) for \(i \in \{0\} \cup \N\) and the projections to the orbifolds \(P_i\) by \(p_i : M_i \to P_i\).
@@ -585,11 +586,14 @@ Using this neighborhood, we can construct the morphism in the next lemma.
 \end{proof}
 
 We will now use the developed results to prove the following key-lemma.
-Before we proceed with this key-lemma, we make one more remark.
+But before we do so, we want to add one more remark.
 
 \begin{remark} % TODO: fulfill this remark
-    We want to elaborate on the term `projecting generically' we used in the proof of \Cref{lem:loopintersection} now in the context of the two-sidedness of \(p_i^{-1}(F_i)\) in the manifold \(M_i\).
-    The additional adjective `generically' means that the composition
+    % We want to elaborate on the term `projecting generically' we used in the proof of \Cref{lem:loopintersection} now in the context of the two-sidedness of \(p_i^{-1}(F_i)\) in the manifold \(M_i\).
+    % The additional adjective `generically' means that the composition
+    Note that in the proof of \Cref{lem:loopintersection}, we used the term `projecting generically'.
+    We implicitly already used there that the preimage \(p_i^{-1}(F_i)\) is two-sided.
+    The addendum `generically' means that \(p_i : M_i \to P_i\) composed with the projection \(P_i \to (-\varepsilon, \varepsilon)\), to the interval coming from the neighborhood \(p_i^{-1}(N_{F_i})\) in \(M_i\), is actually injective in every neighborhood of an intersection of \(\gamma\) and \(F_i\).
 \end{remark}
 
 \begin{lemma}\label{lem:infiniteorder}
