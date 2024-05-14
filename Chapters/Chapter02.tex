@@ -443,7 +443,7 @@ An element \(w(e_i)\) is said to be
         We already know that \(W_J\) is dihedral, either of order \(2m_{ij}\) or infinite order.
         As pointed out above, every reduced expression of \(v_J\) - an alternating product of \(s_i\) and \(s_j\) - in \(W_J\) has to end in \(s_j\).
         Using this, we distinguish the two cases.
-        \begin{itemize} % TODO: nicht ganz klarer beweis
+        \begin{itemize}
             \item[1)] \(m_{ij} < \infty\): \(W_J\) is dihedral of order \(2m_{ij}\). %and its Cayley graph is a cycle of length \(2m_{ij}\).
                 %   Thus, any element is of length \(\leq m_{ij}\) and has a unique word corresponding to the edge labels in the Cayley graph.
                   Note that the maximum length of \(w \in W_J\) is precisely \(m_{ij}\) (as the Cayley graph is a cycle of length \(2m_{ij}\)) and the element of maximal length is represented by the reduced expressions \(s_is_j\cdots s_is_j\) and \(s_js_i\cdots s_js_i\).
@@ -451,8 +451,9 @@ An element \(w(e_i)\) is said to be
                   Then \(v_J\) is a product of less than \(\frac{m_{ij}}{2}\) terms \(s_is_j\), and each of the products \(s_is_j\) is a rotation about \(\frac{2\pi}{m_{ij}}\) towards \(e_j\).\newline
                   Using that \(e_i\) and \(e_j\) are at angle \(\pi - \frac{\pi}{m_{ij}}\), we see that \(v_J\) rotates \(e_i\) at most about \(\pi - \frac{2\pi}{m_{ij}}\) towards \(e_j\).
                   Thus, \(v_J(e_i)\) still lies inside the cone spanned by \(e_i\) and \(e_j\).
-                  It could very likely be that we have another reflection \(s_j\), but as the angle between \(e_i\) and the reflecting line is \(\frac{\pi}{2} - \frac{\pi}{m_{ij}}\), the resulting vector still lies in the cone.
-                
+                %   It could very likely be that we have another reflection \(s_j\), but as the angle between \(e_i\) and the reflecting line is \(\frac{\pi}{2} - \frac{\pi}{m_{ij}}\), the resulting vector still lies in the cone.
+                  Note that we could have another reflection \(s_j\) preceding, but as the angle between \(e_i\) and the reflecting line is \(\frac{\pi}{2} - \frac{\pi}{m_{ij}}\), the resulting vector still lies in the cone.
+            
             \item[2)] \(m_{ij} = \infty\): In the case of the infinite dihedral group, we have previously seen that \((s_is_j)^n(e_i) = e_i + 2n(e_i + e_j) = (2n + 1) e_i + 2n e_j\).
                   Thus, \(\lambda_i, \lambda_j \geq 0\) with \(\abs{\lambda_i - \lambda_j} = 1\).
             %   This is again a non-negative linear combination of \(e_i\) and \(e_j\).
@@ -485,12 +486,6 @@ With \Cref{cor:lengthsmall} and \Cref{thm:action} in hand, we will finally be ab
     Then there is an \(i\in I\) with corresponding \(s_i\in S\), such that \(\ell(ws_i) < \ell(w)\).
     Now \Cref{cor:lengthsmall} implies \(w(e_i) < 0\), but \(w(e_i) = e_i > 0\) as \(\rho(w) = id_V\), which is a contradiction and thus, the statement holds.
 \end{proof}
-
-% \begin{figure}[h!]
-%     \centering
-%     \caption{The case of \(D_{12}\).}
-%     \includegraphics[width=5cm]{gfx/the dihedral proof case.png}
-% \end{figure} % TODO: fix the image
 
 
 % ***********************************************
@@ -717,7 +712,7 @@ Given a group \(G\) acting on a space \(X\), we will denote by \(Orb_G(x)\) the 
 
 \begin{lemma}\label{lem:covering}
     Let \(G\) be a group, acting by a covering action on a simply connected topological space \(X\).
-    Then the quotient map \(p_G:(X, x_0)\to (G\backslash X, Orb(x_0))\) is a covering map and \(\pi_1(G\backslash X, Orb(x_0))\cong G\).
+    Then the quotient map \(p_G:(X, x_0)\to (G\backslash X, Orb_G(x_0))\) is a covering map and \(\pi_1(G\backslash X, Orb_G(x_0))\cong G\).
 \end{lemma}
 \begin{proof}
     Let \(U\) be an open neighborhood of \(x\in X\), such that \(\{g \in G \;\vert\; gU \cap U \neq \emptyset\} = \{1\}\).
@@ -731,7 +726,7 @@ Given a group \(G\) acting on a space \(X\), we will denote by \(Orb_G(x)\) the 
                 This is a contradiction to \(G\) acting by a covering action.
         \end{itemize}\vspace*{-2\parskip}
     }\vspace*{-2\parskip}
-    \Claim{2}{Every point \(Orb(x) \in G\backslash X\) has a neighborhood \(V \subset G \backslash X\) with \(p_G^{-1}(V) = \bigsqcup_{g \in G} gU\).}
+    \Claim{2}{Every point \(Orb_G(x) \in G\backslash X\) has a neighborhood \(V \subset G \backslash X\) with \(p_G^{-1}(V) = \bigsqcup_{g \in G} gU\).}
     % \Claim{2}{Every point \(Orb(x) \in G\backslash X\) has a neighborhood \(V := p_G(U)\), \(U\) as in \emph{Claim 1}, hence \(p_G^{-1}(V) = \bigsqcup_{g \in G} gU\).}
     \Claimproof{2}{
         By assumption the sets \(gU\) are all disjoint neighborhoods of \(gx \in X\) for all \(g \in G\).
